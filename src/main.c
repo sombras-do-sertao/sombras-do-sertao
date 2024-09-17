@@ -89,7 +89,9 @@ int main() {
   setupButtonsConfig(game);
   setupHome(game);
   setupGame();
+  
   setupProtagonista(&protagonista);
+  setupBulletsProtagonista();
 
   bool redraw = true;
 

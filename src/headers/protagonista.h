@@ -16,12 +16,28 @@ struct Protagonista {
   ALLEGRO_BITMAP *image;
 };
 
+struct BulletProtagonista {
+  int x;
+  int y;
+  int width;
+  int height;
+  int speed;
+  bool active;
+  ALLEGRO_BITMAP *image;
+};
+
 extern struct Protagonista protagonista;
 
+#define BULLETS_PROTAGONISTA_COUNT 100
+extern struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
+
 void setupProtagonista(struct Protagonista *protagonista);
-
 void drawProtagonista(struct Protagonista *protagonista);
-
 void moveProtagonista(struct Protagonista *protagonista, struct AllegroGame *game);
+
+void setupBulletsProtagonista();
+void shootProtagonista(struct Protagonista *protagonista, struct AllegroGame *game);
+
+void handlerProtagonista(struct Protagonista *protagonista, struct AllegroGame *game);
 
 #endif
