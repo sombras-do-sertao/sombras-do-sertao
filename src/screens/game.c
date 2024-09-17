@@ -1,5 +1,6 @@
 #include <allegro5/allegro_primitives.h>
 #include "../headers/screens.h"
+#include "../headers/protagonista.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 
@@ -12,5 +13,7 @@ void setupGame () {
 bool drawGame (struct AllegroGame *game) {
   al_draw_bitmap(bg_game, 0, 0, 0);
   
+  drawProtagonista(&protagonista);
+
   return true;
 }

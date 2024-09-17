@@ -10,6 +10,7 @@
 #include "headers/sound.h"
 #include "headers/components.h"
 #include "headers/screens.h"
+#include "headers/protagonista.h"
 
 void initializeAllegro(struct AllegroGame *game) {
   game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
@@ -54,7 +55,7 @@ void setupAllegro(struct AllegroGame *game) {
   al_register_event_source(game->queue, al_get_keyboard_event_source());
   al_register_event_source(game->queue, al_get_display_event_source(game->display));
   al_set_window_title(game->display, "Sombras do Sertão");
-  // al_set_display_icon(game->display, al_load_bitmap("assets/images/icon.png"));
+  al_set_display_icon(game->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
   al_register_event_source(game->queue, al_get_timer_event_source(game->timer));
 }
 
@@ -88,6 +89,7 @@ int main() {
   setupButtonsConfig(game);
   setupHome(game);
   setupGame();
+  setupProtagonista(&protagonista);
 
   bool redraw = true;
   bool last_mouse_pressd = false;

@@ -20,6 +20,7 @@
 #define AL_COLOR_RED al_map_rgb(128, 0, 0)
 #define AL_COLOR_BROWN al_map_rgb(204, 136, 0)
 #define AL_COLOR_LIGHT_BROWN al_map_rgb(255, 204, 0)
+#define AL_COLOR_DARK_BROWN al_map_rgb(102, 51, 0)
 
 struct AllegroGame {
   ALLEGRO_TIMER *timer;

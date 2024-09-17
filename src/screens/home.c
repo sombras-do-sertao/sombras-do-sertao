@@ -19,7 +19,7 @@ void setupHome(struct AllegroGame *game) {
     "Iniciar Jogo",
     "start_game",
     game->font_big,
-    AL_COLOR_WHITE,
+    AL_COLOR_DARK_BROWN,
     AL_COLOR_BROWN,
     FILLED,
   };
@@ -33,7 +33,7 @@ void setupHome(struct AllegroGame *game) {
     "Configurações",
     "settings",
     game->font_big,
-    AL_COLOR_WHITE,
+    AL_COLOR_DARK_BROWN,
     AL_COLOR_BROWN,
     FILLED,
   };
@@ -47,7 +47,7 @@ void setupHome(struct AllegroGame *game) {
     "Sair",
     "exit",
     game->font_big,
-    AL_COLOR_WHITE,
+    AL_COLOR_DARK_BROWN,
     AL_COLOR_BROWN,
     FILLED,
   };
