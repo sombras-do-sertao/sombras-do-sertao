@@ -31,8 +31,6 @@ struct AllegroGame {
   ALLEGRO_FONT *font_small;
   ALLEGRO_FONT *font_big;
   ALLEGRO_MOUSE_STATE *mouse_state;
-  bool is_mouse_pressed;
-  bool was_mouse_pressed;
   bool is_sound;
 };
 
@@ -47,7 +45,5 @@ typedef enum {
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
 
 bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int box_width, int box_height);
-
-void checkMouseClick(struct AllegroGame *game, bool *last_mouse_pressed, bool *last_was_mouse_pressed);
 
 #endif

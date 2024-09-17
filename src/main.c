@@ -23,8 +23,6 @@ void initializeAllegro(struct AllegroGame *game) {
 
 
   game->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
-  game->is_mouse_pressed = false;
-  game->was_mouse_pressed = false;
 
   game->is_sound = true;
 
@@ -54,9 +52,11 @@ void setupAllegro(struct AllegroGame *game) {
 
   al_register_event_source(game->queue, al_get_keyboard_event_source());
   al_register_event_source(game->queue, al_get_display_event_source(game->display));
+  al_register_event_source(game->queue, al_get_timer_event_source(game->timer));
+  al_register_event_source(game->queue, al_get_mouse_event_source());
+
   al_set_window_title(game->display, "Sombras do Sertão");
   al_set_display_icon(game->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
-  al_register_event_source(game->queue, al_get_timer_event_source(game->timer));
 }
 
 void destroyAllegro(struct AllegroGame *game) {
@@ -92,15 +92,13 @@ int main() {
   setupProtagonista(&protagonista);
 
   bool redraw = true;
-  bool last_mouse_pressd = false;
-  bool was_mouse_pressed = false;
 
   al_start_timer(game->timer);
   bool done = false;
 
   while(!done) {
     al_wait_for_event(game->queue, &game->event);
-    checkMouseClick(game, &last_mouse_pressd, &was_mouse_pressed);
+    al_get_mouse_state(game->mouse_state);
 
     if (!handleScrens(game, &gameState)) {
       done = true;

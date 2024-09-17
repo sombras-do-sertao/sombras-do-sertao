@@ -40,7 +40,7 @@ bool drawConfig (struct AllegroGame *game) {
     if (drawButton(&BUTTONS_CONFIG[i], game)) {
       BUTTONS_CONFIG[i].background_color = AL_COLOR_LIGHT_BLUE;
 
-      if (game->is_mouse_pressed && !game->was_mouse_pressed) {
+      if (game->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         printf("%s clicked\n", BUTTONS_CONFIG[i].text);
         playSound(game, 0);
 

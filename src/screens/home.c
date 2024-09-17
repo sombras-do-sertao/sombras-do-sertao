@@ -67,7 +67,7 @@ bool drawHome (struct AllegroGame *game, GameState *gameState) {
     if (drawButton(&BUTTONS_HOME[i], game)) {
       BUTTONS_HOME[i].background_color = AL_COLOR_LIGHT_BROWN;
 
-      if (game->is_mouse_pressed && !game->was_mouse_pressed) {
+      if (game->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         printf("%s clicked\n", BUTTONS_HOME[i].text);
         playSound(game, 0);
 
