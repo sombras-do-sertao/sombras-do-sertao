@@ -20,7 +20,8 @@ set SRCS=%SRC_DIR%\main.c ^
 %SRC_DIR%\screens.c ^
 %SRC_DIR%\handle.c ^
 %SRC_DIR%\sound.c ^
-%SRC_DIR%\components.c
+%SRC_DIR%\components.c ^
+%SRC_DIR%\protagonista.c
 
 :: Nome do executável
 set TARGET=%BIN_DIR%\game.exe
