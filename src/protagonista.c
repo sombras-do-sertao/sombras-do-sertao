@@ -24,20 +24,24 @@ void drawProtagonista(struct Protagonista *protagonista) {
 void moveProtagonista(struct Protagonista *protagonista, struct AllegroGame *game) {
   int keycode = game->event.keyboard.keycode;
 
-  switch (keycode) {
-    case ALLEGRO_KEY_UP:
-      protagonista->y -= protagonista->speed;
-      break;
-    case ALLEGRO_KEY_DOWN:
-      protagonista->y += protagonista->speed;
-      break;
-    case ALLEGRO_KEY_LEFT:
-      protagonista->x -= protagonista->speed;
-      break;
-    case ALLEGRO_KEY_RIGHT:
-      protagonista->x += protagonista->speed;
-      break;
-    default:
-      break;
+    switch (keycode) {
+      case ALLEGRO_KEY_UP:
+      case ALLEGRO_KEY_W:
+        protagonista->y -= protagonista->speed;
+        break;
+      case ALLEGRO_KEY_DOWN:
+      case ALLEGRO_KEY_S:
+        protagonista->y += protagonista->speed;
+        break;
+      case ALLEGRO_KEY_LEFT:
+      case ALLEGRO_KEY_A:
+        protagonista->x -= protagonista->speed;
+        break;
+      case ALLEGRO_KEY_RIGHT:
+      case ALLEGRO_KEY_D:
+        protagonista->x += protagonista->speed;
+        break;
+      default:
+        break;
   }
 }
