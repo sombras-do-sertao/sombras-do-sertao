@@ -14,6 +14,7 @@ bool drawGame (struct AllegroGame *game) {
   al_draw_bitmap(bg_game, 0, 0, 0);
   
   drawProtagonista(&protagonista);
+  moveProtagonista(&protagonista, game);
 
   return true;
 }

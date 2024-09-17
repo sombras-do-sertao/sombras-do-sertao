@@ -3,7 +3,7 @@
 
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
-
+#include "helper.h"
 struct Protagonista {
   int x;
   int y;
@@ -21,5 +21,7 @@ extern struct Protagonista protagonista;
 void setupProtagonista(struct Protagonista *protagonista);
 
 void drawProtagonista(struct Protagonista *protagonista);
+
+void moveProtagonista(struct Protagonista *protagonista, struct AllegroGame *game);
 
 #endif
