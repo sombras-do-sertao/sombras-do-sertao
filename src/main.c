@@ -86,7 +86,8 @@ int main() {
   setupAllegro(game);
   setupSamples();
   setupButtonsConfig(game);
-  setupButtonsHome(game);
+  setupHome(game);
+  setupGame();
 
   bool redraw = true;
   bool last_mouse_pressd = false;
