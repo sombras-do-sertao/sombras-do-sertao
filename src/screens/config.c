@@ -14,8 +14,8 @@ void setupButtonsConfig(struct AllegroGame *game) {
     "Som: Ligado",
     "sound",
     game->font_big,
-    AL_COLOR_WHITE,
-    AL_COLOR_BLUE,
+    AL_COLOR_DARK_BROWN,
+    AL_COLOR_BROWN,
     FILLED,
   };
   BUTTONS_CONFIG[0] = sound;
@@ -28,19 +28,21 @@ void setupButtonsConfig(struct AllegroGame *game) {
     "Voltar",
     "back",
     game->font_big,
-    AL_COLOR_WHITE,
-    AL_COLOR_BLUE,
+    AL_COLOR_DARK_BROWN,
+    AL_COLOR_BROWN,
     FILLED,
   };
   BUTTONS_CONFIG[1] = back;
 }
 
 bool drawConfig (struct AllegroGame *game) {
+  al_draw_bitmap(bg_home, 0, 0, 0);
+
   for (int i = 0; i < BUTTONS_CONFIG_COUNT; i++) {
     if (drawButton(&BUTTONS_CONFIG[i], game)) {
-      BUTTONS_CONFIG[i].background_color = AL_COLOR_LIGHT_BLUE;
+      BUTTONS_CONFIG[i].background_color = AL_COLOR_LIGHT_BROWN;
 
-      if (game->is_mouse_pressed && !game->was_mouse_pressed) {
+      if (game->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         printf("%s clicked\n", BUTTONS_CONFIG[i].text);
         playSound(game, 0);
 
@@ -59,7 +61,7 @@ bool drawConfig (struct AllegroGame *game) {
         }
       }
     } else {
-      BUTTONS_CONFIG[i].background_color = AL_COLOR_BLUE;
+      BUTTONS_CONFIG[i].background_color = AL_COLOR_BROWN;
     }
   }
 

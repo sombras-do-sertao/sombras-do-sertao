@@ -20,14 +20,3 @@ bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int 
 
   return (mouse_state->x >= box_x && mouse_state->x <= box_right && mouse_state->y >= box_y && mouse_state->y <= box_bottom);
 }
-
-void checkMouseClick(struct AllegroGame *game, bool *last_mouse_pressed, bool *last_was_mouse_pressed) {
-  al_get_mouse_state(game->mouse_state);
-
-  game->is_mouse_pressed = game->mouse_state->buttons & 1;
-
-  game->was_mouse_pressed = *last_mouse_pressed && !game->is_mouse_pressed;
-
-  *last_mouse_pressed = game->is_mouse_pressed;
-  *last_was_mouse_pressed = game->was_mouse_pressed;
-}
