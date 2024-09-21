@@ -20,9 +20,6 @@ set TARGET=%BIN_DIR%\game.exe
 :: Flags do compilador
 set PROJECT_ROOT=%~dp0..\
 
-set CFLAGS=-I"%PROJECT_ROOT%allegro\include"
-set LDFLAGS=-L"%PROJECT_ROOT%allegro\lib" -lallegro -lallegro_font -lallegro_ttf -lallegro_image -lallegro_primitives -lallegro_audio -lallegro_acodec
-
 :: Verificar se os diretórios de inclusão e biblioteca existem
 if not exist "%PROJECT_ROOT%allegro\include" (
   echo Error: Directory %PROJECT_ROOT%allegro\include does not exist.
@@ -36,6 +33,9 @@ if not exist "%PROJECT_ROOT%allegro\lib" (
   exit /b 1
 )
 
+set CFLAGS=-I"%PROJECT_ROOT%allegro\include"
+set LDFLAGS=-L"%PROJECT_ROOT%allegro\lib" -lallegro -lallegro_font -lallegro_ttf -lallegro_image -lallegro_primitives -lallegro_audio -lallegro_acodec
+
 if not exist %BIN_DIR% mkdir %BIN_DIR%
 
 :: Compilar os arquivos fonte
@@ -47,7 +47,11 @@ if %errorlevel% neq 0 (
   exit /b
 )
 
-:: Executar o programa
-%TARGET%
+:: Verificar se a flag --run foi passada
+for %%i in (%*) do (
+  if "%%i"=="--run" (
+    %TARGET%
+  )
+)
 
 endlocal

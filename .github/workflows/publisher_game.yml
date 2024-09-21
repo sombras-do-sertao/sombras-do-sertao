@@ -22,7 +22,7 @@ jobs:
         g++ --version
 
     - name: Run build script
-      run: scripts\run.bat
+      run: scripts\compiler.bat
 
     - name: Upload compiled game
       uses: actions/upload-artifact@v3
