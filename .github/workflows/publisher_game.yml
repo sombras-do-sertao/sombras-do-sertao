@@ -14,7 +14,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up MinGW
-      uses: choco install mingw -y
+      run: choco install mingw -y
+
+    - name: Verify MinGW installation
+      run: |
+        gcc --version
+        g++ --version
 
     - name: Run build script
       run: scripts\run.bat
