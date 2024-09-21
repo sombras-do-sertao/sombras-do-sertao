@@ -1,16 +1,7 @@
 @echo off
 setlocal
 
-cls
-
-set PATH=C:\MinGW\bin;%PATH%
-set PATH=C:\allegro\bin;%PATH%
-
-:: Caso esteja no diretorio script volta 1 diretório
-if (%cd:~-7%) == (scripts) (
-  cd ..
-)
-
+:: Diretórios
 set SRC_DIR=src
 set BIN_DIR=bin
 
@@ -27,8 +18,23 @@ set SRCS=%SRC_DIR%\main.c ^
 set TARGET=%BIN_DIR%\game.exe
 
 :: Flags do compilador
-set CFLAGS=-I"C:\allegro\include"
-set LDFLAGS=-L"C:\allegro\lib" -lallegro -lallegro_font -lallegro_ttf -lallegro_image -lallegro_primitives -lallegro_audio -lallegro_acodec
+set PROJECT_ROOT=%~dp0..\
+
+set CFLAGS=-I"%PROJECT_ROOT%allegro\include"
+set LDFLAGS=-L"%PROJECT_ROOT%allegro\lib" -lallegro -lallegro_font -lallegro_ttf -lallegro_image -lallegro_primitives -lallegro_audio -lallegro_acodec
+
+:: Verificar se os diretórios de inclusão e biblioteca existem
+if not exist "%PROJECT_ROOT%allegro\include" (
+  echo Error: Directory %PROJECT_ROOT%allegro\include does not exist.
+  pause
+  exit /b 1
+)
+
+if not exist "%PROJECT_ROOT%allegro\lib" (
+  echo Error: Directory %PROJECT_ROOT%allegro\lib does not exist.
+  pause
+  exit /b 1
+)
 
 if not exist %BIN_DIR% mkdir %BIN_DIR%
 
