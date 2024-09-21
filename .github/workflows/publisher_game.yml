@@ -16,13 +16,6 @@ jobs:
     - name: Set up MinGW
       uses: egor-tensin/setup-mingw@v1
 
-    - name: Remove missing libpthread.dll.a file
-      run: |
-        $libPath = "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\lib\libpthread.dll.a"
-        if (Test-Path $libPath) {
-          Remove-Item $libPath
-        }
-
     - name: Run build script
       run: scripts\run.bat
 
