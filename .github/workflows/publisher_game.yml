@@ -22,12 +22,11 @@ jobs:
 
     - name: Install MSYS2
       run: choco install msys2 -y
-      
+
     - name: Set up MSYS2 and Install Allegro
-      shell: msys2
       run: |
-        pacman -Sy --noconfirm
-        pacman -S --noconfirm mingw-w64-x86_64-allegro
+        C:\tools\msys64\usr\bin\bash -lc "pacman -Sy --noconfirm"
+        C:\tools\msys64\usr\bin\bash -lc "pacman -S --noconfirm mingw-w64-x86_64-allegro"
 
     - name: Verify MinGW installation
       run: |
