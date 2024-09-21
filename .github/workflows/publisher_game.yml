@@ -16,6 +16,26 @@ jobs:
     - name: Set up MinGW
       run: choco install mingw -y
 
+    - name: Add MinGW to PATH
+      run: |
+        setx PATH "%PATH%;C:\tools\mingw64\bin"
+        refreshenv
+
+    - name: Install MSYS2
+      run: choco install msys2 -y
+      
+    - name: Set up MSYS2
+      run: |
+        refreshenv
+        ridk install 3
+        pacman -Sy --noconfirm
+        pacman -S --noconfirm mingw-w64-x86_64-allegro
+
+    - name: Install Allegro
+      run: |
+        pacman -Sy --noconfirm
+        pacman -S --noconfirm mingw-w64-x86_64-allegro
+
     - name: Verify MinGW installation
       run: |
         gcc --version
