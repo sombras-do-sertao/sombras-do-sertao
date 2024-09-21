@@ -1,0 +1,27 @@
+name: Publish Game
+
+on:
+  pull_request:
+    branches:
+      - master
+      - test
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up GCC
+      uses: egor-tensin/setup-gcc@v1
+
+    - name: Run build script
+      run: scripts\run.bat
+
+    - name: Upload compiled game
+      uses: actions/upload-artifact@v2
+      with:
+        name: compiled-game
+        path: bin\game.exe
