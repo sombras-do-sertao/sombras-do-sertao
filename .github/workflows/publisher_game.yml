@@ -17,21 +17,14 @@ jobs:
       run: choco install mingw -y
 
     - name: Add MinGW to PATH
-      run: |
-        setx PATH "%PATH%;C:\tools\mingw64\bin"
-        refreshenv
+      shell: cmd
+      run: setx PATH "%PATH%;C:\tools\mingw64\bin"
 
     - name: Install MSYS2
       run: choco install msys2 -y
       
-    - name: Set up MSYS2
-      run: |
-        refreshenv
-        ridk install 3
-        pacman -Sy --noconfirm
-        pacman -S --noconfirm mingw-w64-x86_64-allegro
-
-    - name: Install Allegro
+    - name: Set up MSYS2 and Install Allegro
+      shell: msys2
       run: |
         pacman -Sy --noconfirm
         pacman -S --noconfirm mingw-w64-x86_64-allegro
