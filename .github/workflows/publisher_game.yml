@@ -20,8 +20,10 @@ jobs:
 
     - name: Remove missing libpthread.dll.a file
       run: |
-        $ErrorActionPreference = 'Continue'
-        Remove-Item "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\lib\libpthread.dll.a" -ErrorAction SilentlyContinue
+        $libPath = "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\x86_64-w64-mingw32\lib\libpthread.dll.a"
+        if (Test-Path $libPath) {
+          Remove-Item $libPath
+        }
 
     - name: Run build script
       run: scripts\run.bat
