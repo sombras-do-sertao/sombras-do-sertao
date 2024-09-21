@@ -15,8 +15,6 @@ jobs:
 
     - name: Set up MinGW
       uses: egor-tensin/setup-mingw@v1
-      with:
-        architecture: x86_64
 
     - name: Remove missing libpthread.dll.a file
       run: |
