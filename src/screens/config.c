@@ -6,6 +6,8 @@
 struct Button BUTTONS_CONFIG[BUTTONS_CONFIG_COUNT];
 
 void setupButtonsConfig(struct AllegroGame *game) {
+  ALLEGRO_FONT *fontSettings = al_load_font("assets/fonts/LilitaOne-Regular.ttf",32,0);
+  
   struct Button sound = {
     WIDTH_SCREEN / 2 - 100,
     HEIGHT_SCREEN / 2 - 50,
@@ -13,8 +15,8 @@ void setupButtonsConfig(struct AllegroGame *game) {
     50,
     "Som: Ligado",
     "sound",
-    game->font_big,
-    AL_COLOR_DARK_BROWN,
+    fontSettings,
+    AL_COLOR_WHITE,
     AL_COLOR_BROWN,
     FILLED,
   };
@@ -27,8 +29,8 @@ void setupButtonsConfig(struct AllegroGame *game) {
     50,
     "Voltar",
     "back",
-    game->font_big,
-    AL_COLOR_DARK_BROWN,
+    fontSettings,
+    AL_COLOR_WHITE,
     AL_COLOR_BROWN,
     FILLED,
   };
