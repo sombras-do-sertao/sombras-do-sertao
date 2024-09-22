@@ -11,13 +11,14 @@ ALLEGRO_BITMAP *bg_home;
 void setupHome(struct AllegroGame *game) {
   bg_home = al_load_bitmap("assets/images/background/bg_home.jpg");
   ALLEGRO_FONT *fontButton = al_load_font("assets/fonts/LilitaOne-Regular.ttf", 32, 0);
-  
+  int width = 335;
+  int height = 65;
 
   struct Button start_game = {
-    WIDTH_SCREEN / 2 - 100,
+    WIDTH_SCREEN / 2 - width/2,
     HEIGHT_SCREEN / 2 - 50,
-    200,
-    50,
+    width,
+    height,
     "Iniciar Jogo",
     "start_game",
     fontButton, 
@@ -28,10 +29,10 @@ void setupHome(struct AllegroGame *game) {
   BUTTONS_HOME[START_GAME] = start_game;
 
   struct Button settings = {
-    WIDTH_SCREEN / 2 - 100,
+    WIDTH_SCREEN /2 - width/2,
     HEIGHT_SCREEN / 2 + 50,
-    200,
-    50,
+    width,
+    height,
     "Configurações",
     "settings",
     fontButton,
@@ -42,10 +43,10 @@ void setupHome(struct AllegroGame *game) {
   BUTTONS_HOME[SETTINGS] = settings;
 
   struct Button exit = {
-    WIDTH_SCREEN / 2 - 100,
+    WIDTH_SCREEN / 2 - width/2,
     HEIGHT_SCREEN / 2 + 150,
-    200,
-    50,
+    width,
+    height,
     "Sair",
     "exit",
     fontButton,
