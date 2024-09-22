@@ -10,44 +10,47 @@ ALLEGRO_BITMAP *bg_home;
 
 void setupHome(struct AllegroGame *game) {
   bg_home = al_load_bitmap("assets/images/background/bg_home.jpg");
+  ALLEGRO_FONT *fontButton = al_load_font("assets/fonts/LilitaOne-Regular.ttf", 32, 0);
+  int width = 335;
+  int height = 65;
 
   struct Button start_game = {
-    WIDTH_SCREEN / 2 - 100,
+    WIDTH_SCREEN / 2 - width/2,
     HEIGHT_SCREEN / 2 - 50,
-    200,
-    50,
+    width,
+    height,
     "Iniciar Jogo",
     "start_game",
-    game->font_big,
-    AL_COLOR_DARK_BROWN,
+    fontButton, 
+    AL_COLOR_WHITE,
     AL_COLOR_BROWN,
     FILLED,
   };
   BUTTONS_HOME[START_GAME] = start_game;
 
   struct Button settings = {
-    WIDTH_SCREEN / 2 - 100,
+    WIDTH_SCREEN /2 - width/2,
     HEIGHT_SCREEN / 2 + 50,
-    200,
-    50,
+    width,
+    height,
     "Configurações",
     "settings",
-    game->font_big,
-    AL_COLOR_DARK_BROWN,
+    fontButton,
+    AL_COLOR_WHITE,
     AL_COLOR_BROWN,
     FILLED,
   };
   BUTTONS_HOME[SETTINGS] = settings;
 
   struct Button exit = {
-    WIDTH_SCREEN / 2 - 100,
+    WIDTH_SCREEN / 2 - width/2,
     HEIGHT_SCREEN / 2 + 150,
-    200,
-    50,
+    width,
+    height,
     "Sair",
     "exit",
-    game->font_big,
-    AL_COLOR_DARK_BROWN,
+    fontButton,
+    AL_COLOR_WHITE,
     AL_COLOR_BROWN,
     FILLED,
   };
@@ -56,12 +59,14 @@ void setupHome(struct AllegroGame *game) {
 
 bool drawHome (struct AllegroGame *game, GameState *gameState) {
   al_draw_bitmap(bg_home, 0, 0, 0);
+  ALLEGRO_FONT *fontHome = al_load_font("assets/fonts/MochiyPopOne-Regular.ttf",62,0);
+
 
   const char *title = "Sombras do Sertão";
   int title_x = WIDTH_SCREEN / 2;
   int title_y = HEIGHT_SCREEN / 6;
 
-  al_draw_text(game->font_big, AL_COLOR_WHITE, title_x, title_y, ALLEGRO_ALIGN_CENTER, title);
+  al_draw_text(fontHome, AL_COLOR_WHITE, title_x, title_y, ALLEGRO_ALIGN_CENTER, title);
 
   for (int i = 0; i < BUTTONS_HOME_COUNT; i++) {
     if (drawButton(&BUTTONS_HOME[i], game)) {
