@@ -15,7 +15,7 @@ set SRCS=%SRC_DIR%\main.c ^
 %SRC_DIR%\protagonista.c
 
 :: Nome do executável
-set TARGET=%BIN_DIR%\game.exe
+set TARGET=%BIN_DIR%\SombrasDoSertao.exe
 
 :: Flags do compilador
 set PROJECT_ROOT=%~dp0..\
