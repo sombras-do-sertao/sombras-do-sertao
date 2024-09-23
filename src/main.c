@@ -13,6 +13,16 @@
 #include "headers/protagonista.h"
 
 void initializeAllegro(struct AllegroGame *game) {
+  ALLEGRO_MONITOR_INFO monitor_info;
+
+  al_get_monitor_info(0, &monitor_info);
+
+  int monitor_width = monitor_info.x2 - monitor_info.x1;
+  int monitor_height = monitor_info.y2 - monitor_info.y1;
+
+  int window_x = (monitor_width - WIDTH_SCREEN) / 2;
+  int window_y = (monitor_height - HEIGHT_SCREEN) / 2;
+
   game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
   game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
   game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
@@ -21,6 +31,7 @@ void initializeAllegro(struct AllegroGame *game) {
   game->queue = al_create_event_queue();
   game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
 
+  al_set_window_position(game->display, window_x, window_y);
 
   game->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
 
