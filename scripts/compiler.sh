@@ -15,7 +15,7 @@ $SRC_DIR/components.c \
 $SRC_DIR/protagonista.c"
 
 # Nome do executável
-TARGET="$BIN_DIR/out"
+TARGET="$BIN_DIR/SombrasDoSertao"
 
 # Flags do compilador
 CFLAGS=$(pkg-config --cflags allegro-5 allegro_font-5 allegro_image-5 allegro_primitives-5 allegro_ttf-5 allegro_audio-5 allegro_acodec-5)
@@ -32,8 +32,13 @@ gcc $SRCS -o $TARGET $CFLAGS $LDFLAGS
 # Verificar se a compilação foi bem-sucedida
 if [ $? -eq 0 ]; then
   echo "Compilation succeeded!"
-  # Executar o programa
-  ./$TARGET
+  # Verificar se a flag --run foi passada
+  if [[ "$1" == "--run" ]]; then
+    # Executar o programa
+    ./$TARGET
+  else
+    echo "Use the --run flag to execute the program."
+  fi
 else
   echo "Compilation failed!"
   exit 1
