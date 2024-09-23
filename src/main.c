@@ -17,11 +17,11 @@ void initializeAllegro(struct AllegroGame *game) {
 
   al_get_monitor_info(0, &monitor_info);
 
-  int monitor_width = monitor_info.x2 - monitor_info.x1;
-  int monitor_height = monitor_info.y2 - monitor_info.y1;
+  WIDTH_SCREEN = monitor_info.x2 - monitor_info.x1;
+  HEIGHT_SCREEN = monitor_info.y2 - monitor_info.y1;
 
-  int window_x = (monitor_width - WIDTH_SCREEN) / 2;
-  int window_y = (monitor_height - HEIGHT_SCREEN) / 2;
+  int window_x = monitor_info.x1;
+  int window_y = monitor_info.y1;
 
   game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
   game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);

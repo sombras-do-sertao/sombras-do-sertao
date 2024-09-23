@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <allegro5/allegro5.h>
 
+int WIDTH_SCREEN = 1920;
+int HEIGHT_SCREEN = 1080;
+
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
   int text_width = al_get_text_width(font, text);
   int text_height = al_get_font_line_height(font);

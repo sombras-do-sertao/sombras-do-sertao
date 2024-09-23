@@ -4,8 +4,8 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
 
-#define WIDTH_SCREEN 1920
-#define HEIGHT_SCREEN 1080
+extern int WIDTH_SCREEN;
+extern int HEIGHT_SCREEN;
 
 #define FONT_PATH "assets/fonts/Roboto-Regular.ttf"
 #define FONT_SIZE 18
