@@ -10,6 +10,10 @@ void setupGame () {
   bg_game = al_load_bitmap("assets/images/background/bg_temp.jpg");
 }
 
+void destroyGame () {
+  al_destroy_bitmap(bg_game);
+}
+
 bool drawGame (struct AllegroGame *game) {
   al_draw_bitmap(bg_game, 0, 0, 0);
   

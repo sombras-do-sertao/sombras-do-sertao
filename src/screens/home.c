@@ -7,10 +7,14 @@
 
 struct Button BUTTONS_HOME[BUTTONS_HOME_COUNT];
 ALLEGRO_BITMAP *bg_home;
+ALLEGRO_FONT *fontHome;
+ALLEGRO_FONT *fontButton;
 
 void setupHome(struct AllegroGame *game) {
   bg_home = al_load_bitmap("assets/images/background/bg_home.jpg");
-  ALLEGRO_FONT *fontButton = al_load_font("assets/fonts/LilitaOne-Regular.ttf", 32, 0);
+  fontButton = al_load_font("assets/fonts/LilitaOne-Regular.ttf", 32, 0);
+  fontHome = al_load_font("assets/fonts/LilitaOne-Regular.ttf", 64, 0);
+
   int width = 335;
   int height = 65;
 
@@ -57,10 +61,14 @@ void setupHome(struct AllegroGame *game) {
   BUTTONS_HOME[EXIT] = exit;
 }
 
+void destroyHome(void) {
+  al_destroy_bitmap(bg_home);
+  al_destroy_font(fontButton);
+  al_destroy_font(fontHome);
+}
+
 bool drawHome (struct AllegroGame *game, GameState *gameState) {
   al_draw_bitmap(bg_home, 0, 0, 0);
-  ALLEGRO_FONT *fontHome = al_load_font("assets/fonts/MochiyPopOne-Regular.ttf",62,0);
-
 
   const char *title = "Sombras do Sertão";
   int title_x = WIDTH_SCREEN / 2;

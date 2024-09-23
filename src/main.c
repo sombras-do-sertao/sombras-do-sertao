@@ -76,6 +76,10 @@ void destroyAllegro(struct AllegroGame *game) {
   al_shutdown_primitives_addon();
   al_shutdown_image_addon();
 
+  destroyHome();
+  destroyConfig();
+  destroyGame();
+
   free(game->mouse_state);
   free(game);
 }

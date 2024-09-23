@@ -5,8 +5,10 @@
 
 struct Button BUTTONS_CONFIG[BUTTONS_CONFIG_COUNT];
 
+ALLEGRO_FONT *fontSettings;
+
 void setupButtonsConfig(struct AllegroGame *game) {
-  ALLEGRO_FONT *fontSettings = al_load_font("assets/fonts/LilitaOne-Regular.ttf",32,0);
+  fontSettings = al_load_font("assets/fonts/LilitaOne-Regular.ttf",32,0);
   int width = 335;
   int height = 65;
   
@@ -70,4 +72,8 @@ bool drawConfig (struct AllegroGame *game) {
   }
 
   return true;
+}
+
+void destroyConfig(void) {
+  al_destroy_font(fontSettings);
 }
