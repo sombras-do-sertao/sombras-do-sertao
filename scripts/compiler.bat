@@ -21,20 +21,20 @@ set TARGET=%BIN_DIR%\SombrasDoSertao.exe
 set PROJECT_ROOT=%~dp0..\
 
 :: Verificar se os diretórios de inclusão e biblioteca existem
-if not exist "%PROJECT_ROOT%allegro\include" (
+if not exist "%PROJECT_ROOT%bin\allegro\include" (
   echo Error: Directory %PROJECT_ROOT%allegro\include does not exist.
   pause
   exit /b 1
 )
 
-if not exist "%PROJECT_ROOT%allegro\lib" (
+if not exist "%PROJECT_ROOT%bin\allegro\lib" (
   echo Error: Directory %PROJECT_ROOT%allegro\lib does not exist.
   pause
   exit /b 1
 )
 
-set CFLAGS=-I"%PROJECT_ROOT%allegro\include"
-set LDFLAGS=-L"%PROJECT_ROOT%allegro\lib" -lallegro -lallegro_font -lallegro_ttf -lallegro_image -lallegro_primitives -lallegro_audio -lallegro_acodec
+set CFLAGS=-I"%PROJECT_ROOT%bin\allegro\include"
+set LDFLAGS=-L"%PROJECT_ROOT%bin\allegro\lib" -lallegro -lallegro_font -lallegro_ttf -lallegro_image -lallegro_primitives -lallegro_audio -lallegro_acodec
 
 if not exist %BIN_DIR% mkdir %BIN_DIR%
 
