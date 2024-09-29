@@ -13,8 +13,7 @@ void destroyMap() {
     al_destroy_bitmap(bg_map);
 }
 
-bool drawMap(struct ALLEGRO *map) {
+bool drawMap(struct AllegroGame *game) {
     al_draw_bitmap(bg_map, 0, 0, 0);
-
     return true;
 }
