@@ -90,7 +90,7 @@ void destroyAllegro(struct AllegroGame *game) {
   destroyHome();
   destroyConfig();
   destroyGame();
-
+  destroyMap();
   free(game->mouse_state);
   free(game);
 }
