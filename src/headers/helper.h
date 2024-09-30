@@ -40,7 +40,12 @@ typedef enum {
   MENU = 0,
   GAME = 1,
   CONFIG = 2,
-  MAP = 3
+  MAP = 3,
+  STAGE_1 = 4,
+  STAGE_2 = 5,
+  STAGE_3 = 6,
+  STAGE_4 = 7,
+  STAGE_5 = 8
 } GameState;
 
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);

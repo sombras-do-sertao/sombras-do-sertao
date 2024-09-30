@@ -34,6 +34,21 @@ bool handleScrens (struct AllegroGame *game, GameState *gameState) {
       case MAP:
         if(!drawMap(game)) *gameState = MENU;
         break;
+      case STAGE_1:
+        if(!drawStage_1(game)) *gameState = MENU;
+        break;
+      case STAGE_2:
+        if(!drawStage_2(game)) *gameState = MENU;
+        break;
+      case STAGE_3:
+        if(!drawStage_3(game)) *gameState = MENU;
+        break;
+      case STAGE_4:
+        if(!drawStage_4(game)) *gameState = MENU;
+        break;
+      case STAGE_5:
+        if(!drawStage_5(game)) *gameState = MENU;
+        break;
       default:
         break;
     }
