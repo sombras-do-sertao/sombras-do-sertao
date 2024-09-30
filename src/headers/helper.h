@@ -39,7 +39,8 @@ enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
 typedef enum {
   MENU = 0,
   GAME = 1,
-  CONFIG = 2
+  CONFIG = 2,
+  MAP = 3
 } GameState;
 
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);

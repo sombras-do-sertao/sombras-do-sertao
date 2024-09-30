@@ -20,4 +20,9 @@ void setupGame();
 void destroyGame();
 bool drawGame(struct AllegroGame *game);
 
+extern ALLEGRO_BITMAP *bg_map;
+void setupMap();
+void destroyMap();
+bool drawMap(struct AllegroGame *game);
+
 #endif

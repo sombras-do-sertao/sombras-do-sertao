@@ -87,7 +87,7 @@ bool drawHome (struct AllegroGame *game, GameState *gameState) {
         switch (i) {
           case START_GAME:
             printf("Iniciar Jogo\n");
-            *gameState = GAME;
+            *gameState = MAP;
             break;
           case SETTINGS:
             printf("Configurações\n");
