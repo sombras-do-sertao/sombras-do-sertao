@@ -104,7 +104,7 @@ int main() {
   setupButtonsConfig(game);
   setupHome(game);
   setupGame();
-  
+  setupMap();
   setupProtagonista(&protagonista);
   setupBulletsProtagonista();
 
