@@ -107,6 +107,11 @@ int main() {
   setupMap();
   setupProtagonista(&protagonista);
   setupBulletsProtagonista();
+  setupStage_1();
+  setupStage_2();
+  setupStage_3();
+  setupStage_4();
+  setupStage_5();
 
   bool redraw = true;
 
