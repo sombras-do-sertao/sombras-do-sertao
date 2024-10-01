@@ -91,6 +91,11 @@ void destroyAllegro(struct AllegroGame *game) {
   destroyConfig();
   destroyGame();
   destroyMap();
+  destroyStage_1();
+  destroyStage_2();
+  destroyStage_3();
+  destroyStage_4();
+  destroyStage_5();
   free(game->mouse_state);
   free(game);
 }
