@@ -23,7 +23,7 @@ bool drawGame(struct AllegroGame *game);
 extern ALLEGRO_BITMAP *bg_map;
 void setupMap();
 void destroyMap();
-bool drawMap(struct AllegroGame *game);
+bool drawMap(struct AllegroGame *game, GameState *gameState);
 
 extern ALLEGRO_BITMAP *bg_stage_1;
 void setupStage_1();

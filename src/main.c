@@ -68,6 +68,19 @@ void setupAllegro(struct AllegroGame *game) {
 
   al_set_window_title(game->display, "Sombras do Sertão");
   al_set_display_icon(game->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
+
+  setupSamples();
+  setupButtonsConfig(game);
+  setupHome(game);
+  setupGame();
+  setupMap();
+  setupProtagonista(&protagonista);
+  setupBulletsProtagonista();
+  setupStage_1();
+  setupStage_2();
+  setupStage_3();
+  setupStage_4();
+  setupStage_5();
 }
 
 void destroyAllegro(struct AllegroGame *game) {
@@ -91,6 +104,11 @@ void destroyAllegro(struct AllegroGame *game) {
   destroyConfig();
   destroyGame();
   destroyMap();
+  destroyStage_1();
+  destroyStage_2();
+  destroyStage_3();
+  destroyStage_4();
+  destroyStage_5();
   free(game->mouse_state);
   free(game);
 }
@@ -100,18 +118,6 @@ int main() {
   GameState gameState = MENU;
 
   setupAllegro(game);
-  setupSamples();
-  setupButtonsConfig(game);
-  setupHome(game);
-  setupGame();
-  setupMap();
-  setupProtagonista(&protagonista);
-  setupBulletsProtagonista();
-  setupStage_1();
-  setupStage_2();
-  setupStage_3();
-  setupStage_4();
-  setupStage_5();
 
   bool redraw = true;
 
