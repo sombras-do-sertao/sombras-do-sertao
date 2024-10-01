@@ -14,7 +14,7 @@ void destroyStage_1 () {
   al_destroy_bitmap(bg_stage_1);
 }
 
-bool drawStage_1 (struct AllegroGame *game, GameState *gamestate) {
+bool drawStage_1 (struct AllegroGame *game) {
   al_draw_bitmap(bg_stage_1, 0, 0, 0);
   
   handlerProtagonista(&protagonista, game);
