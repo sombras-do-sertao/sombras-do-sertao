@@ -32,7 +32,7 @@ bool handleScrens (struct AllegroGame *game, GameState *gameState) {
         if (!drawGame(game)) *gameState = MENU;
         break;
       case MAP:
-        if(!drawMap(game)) *gameState = MENU;
+        if(!drawMap(game,gameState)) *gameState = MENU;
         break;
       case STAGE_1:
         if(!drawStage_1(game)) *gameState = MENU;
