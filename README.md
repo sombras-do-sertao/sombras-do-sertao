@@ -16,7 +16,7 @@ Sombras do Sertão utiliza a biblioteca Allegro 5, uma poderosa API de desenvolv
 1. **Instale a biblioteca GCC/MinGW**: Para compilar o código-fonte do jogo, você precisará de um compilador compatível com C. Recomendamos o GCC/MinGW, que é um conjunto de ferramentas para desenvolvimento de software em C/C++ para Windows. Você pode baixá-lo [aqui](https://sourceforge.net/projects/mingw/).
 2. **Clone o repositório**: Clone este repositório para o seu ambiente local.
 3. **Compile o jogo**: Temos um script de compilação pronto para uso. Execute o arquivo `scripts/compiler.bat` para compilar o código-fonte. O arquivo executavel gerado estará localizado na pasta `bin`.
-4. **Execute o jogo**: Para executar o jogo você pode passar a flag `--run` para executar o jogo automaticamente após a compilação ou clicar duas vezes no arquivo `SombrasDoSertao.exe` na pasta `bin`.
+4. **Execute o jogo**: Para executar o jogo você pode passar a flag `--run` para executar o jogo automaticamente após a compilação ou clicar duas vezes no arquivo `Sombras do Sertão.bat` na raiz do projeto.
 
 > **Nota**: Para ocorrer tudo certo na compilação, é necessário que o compilador GCC/MinGW esteja adicionado ao PATH do sistema. E também ao chamar o script de compilação deve estar na raiz do projeto.
 
