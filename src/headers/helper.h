@@ -4,8 +4,8 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
 
-#define WIDTH_SCREEN 1920
-#define HEIGHT_SCREEN 1080
+extern int WIDTH_SCREEN;
+extern int HEIGHT_SCREEN;
 
 #define FONT_PATH "assets/fonts/Roboto-Regular.ttf"
 #define FONT_SIZE 18
@@ -18,8 +18,8 @@
 #define AL_COLOR_LIGHT_BLUE al_map_rgb(0, 0, 255)
 #define AL_COLOR_YELLOW al_map_rgb(255, 255, 0)
 #define AL_COLOR_RED al_map_rgb(128, 0, 0)
-#define AL_COLOR_BROWN al_map_rgb(204, 136, 0)
-#define AL_COLOR_LIGHT_BROWN al_map_rgb(255, 204, 0)
+#define AL_COLOR_BROWN al_map_rgb(204, 136, 58)
+#define AL_COLOR_LIGHT_BROWN al_map_rgb(214, 146, 68)
 #define AL_COLOR_DARK_BROWN al_map_rgb(102, 51, 0)
 
 struct AllegroGame {
@@ -39,7 +39,13 @@ enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
 typedef enum {
   MENU = 0,
   GAME = 1,
-  CONFIG = 2
+  CONFIG = 2,
+  MAP = 3,
+  STAGE_1 = 4,
+  STAGE_2 = 5,
+  STAGE_3 = 6,
+  STAGE_4 = 7,
+  STAGE_5 = 8
 } GameState;
 
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);

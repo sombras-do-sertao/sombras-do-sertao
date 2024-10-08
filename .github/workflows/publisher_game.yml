@@ -1,0 +1,43 @@
+name: Publish Game
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up MinGW
+      run: choco install mingw -y
+
+    - name: Add MinGW to PATH
+      shell: cmd
+      run: setx PATH "%PATH%;C:\tools\mingw64\bin"
+
+    - name: Install MSYS2
+      run: choco install msys2 -y
+
+    - name: Set up MSYS2 and Install Allegro
+      run: |
+        C:\tools\msys64\usr\bin\bash -lc "pacman -Sy --noconfirm"
+        C:\tools\msys64\usr\bin\bash -lc "pacman -S --noconfirm mingw-w64-x86_64-allegro"
+
+    - name: Verify MinGW installation
+      run: |
+        gcc --version
+        g++ --version
+
+    - name: Run build script
+      run: scripts\compiler.bat
+
+    - name: Upload compiled game
+      uses: actions/upload-artifact@v3
+      with:
+        name: compiled-game
+        path: bin\game.exe

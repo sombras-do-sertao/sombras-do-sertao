@@ -13,6 +13,16 @@
 #include "headers/protagonista.h"
 
 void initializeAllegro(struct AllegroGame *game) {
+  ALLEGRO_MONITOR_INFO monitor_info;
+
+  al_get_monitor_info(0, &monitor_info);
+
+  WIDTH_SCREEN = monitor_info.x2 - monitor_info.x1;
+  HEIGHT_SCREEN = monitor_info.y2 - monitor_info.y1;
+
+  int window_x = monitor_info.x1;
+  int window_y = monitor_info.y1;
+
   game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
   game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
   game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
@@ -21,6 +31,7 @@ void initializeAllegro(struct AllegroGame *game) {
   game->queue = al_create_event_queue();
   game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
 
+  al_set_window_position(game->display, window_x, window_y);
 
   game->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
 
@@ -57,6 +68,19 @@ void setupAllegro(struct AllegroGame *game) {
 
   al_set_window_title(game->display, "Sombras do Sertão");
   al_set_display_icon(game->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
+
+  setupSamples();
+  setupButtonsConfig(game);
+  setupHome(game);
+  setupGame();
+  setupMap();
+  setupProtagonista(&protagonista);
+  setupBulletsProtagonista();
+  setupStage_1();
+  setupStage_2();
+  setupStage_3();
+  setupStage_4();
+  setupStage_5();
 }
 
 void destroyAllegro(struct AllegroGame *game) {
@@ -76,6 +100,15 @@ void destroyAllegro(struct AllegroGame *game) {
   al_shutdown_primitives_addon();
   al_shutdown_image_addon();
 
+  destroyHome();
+  destroyConfig();
+  destroyGame();
+  destroyMap();
+  destroyStage_1();
+  destroyStage_2();
+  destroyStage_3();
+  destroyStage_4();
+  destroyStage_5();
   free(game->mouse_state);
   free(game);
 }
@@ -85,13 +118,6 @@ int main() {
   GameState gameState = MENU;
 
   setupAllegro(game);
-  setupSamples();
-  setupButtonsConfig(game);
-  setupHome(game);
-  setupGame();
-  
-  setupProtagonista(&protagonista);
-  setupBulletsProtagonista();
 
   bool redraw = true;
 

@@ -1,0 +1,13 @@
+{
+  "C_Cpp.errorSquiggles": "disabled",
+  "files.associations": {
+    "allegro.h": "c",
+    "screens.h": "c",
+    "allegro_primitives.h": "c",
+    "sound.h": "c",
+    "helper.h": "c",
+    "allegro_image.h": "c",
+    "protagonista.h": "c"
+  },
+  "editor.tabSize": 2,
+}
