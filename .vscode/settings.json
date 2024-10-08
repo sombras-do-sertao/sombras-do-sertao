@@ -7,7 +7,8 @@
     "sound.h": "c",
     "helper.h": "c",
     "allegro_image.h": "c",
-    "protagonista.h": "c"
+    "protagonista.h": "c",
+    "enemies.h": "c",
   },
   "editor.tabSize": 2,
 }
