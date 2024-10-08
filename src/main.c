@@ -11,6 +11,7 @@
 #include "headers/components.h"
 #include "headers/screens.h"
 #include "headers/protagonista.h"
+#include "headers/enemies.h"
 
 void initializeAllegro(struct AllegroGame *game) {
   ALLEGRO_MONITOR_INFO monitor_info;
@@ -70,12 +71,17 @@ void setupAllegro(struct AllegroGame *game) {
   al_set_display_icon(game->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
 
   setupSamples();
+
+  setupProtagonista(&protagonista);
+  setupBulletsProtagonista();
+
+  setupEnemies();
+  setupBulletEnemies();
+
   setupButtonsConfig(game);
   setupHome(game);
   setupGame();
   setupMap();
-  setupProtagonista(&protagonista);
-  setupBulletsProtagonista();
   setupStage_1();
   setupStage_2();
   setupStage_3();
@@ -99,6 +105,8 @@ void destroyAllegro(struct AllegroGame *game) {
   al_shutdown_font_addon();
   al_shutdown_primitives_addon();
   al_shutdown_image_addon();
+
+  destroyEnemies();
 
   destroyHome();
   destroyConfig();
