@@ -23,3 +23,16 @@ bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int 
 
   return (mouse_state->x >= box_x && mouse_state->x <= box_right && mouse_state->y >= box_y && mouse_state->y <= box_bottom);
 }
+
+float changeScreen(struct Protagonista *protagonista, int totalStages) {
+
+float window_frame[4] = {0, 1, 2, 3};
+  int stage = 0;
+
+  for(int i = 0; i < totalStages; i++) {
+    if(protagonista->x > WIDTH_SCREEN * i - (protagonista->width/3)) {
+      stage = i;
+    }
+  }
+  return stage;
+}

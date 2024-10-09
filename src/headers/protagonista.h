@@ -4,17 +4,6 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include "helper.h"
-struct Protagonista {
-  int x;
-  int y;
-  int width;
-  int height;
-  int speed;
-  int direction;
-  int lives;
-  int score;
-  ALLEGRO_BITMAP *image;
-};
 
 struct BulletProtagonista {
   int x;
