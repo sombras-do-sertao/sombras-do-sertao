@@ -11,6 +11,7 @@
 #include "headers/components.h"
 #include "headers/screens.h"
 #include "headers/protagonista.h"
+#include "headers/map_protagonista.h"
 #include "headers/enemies.h"
 
 void initializeAllegro(struct AllegroGame *game) {
@@ -77,7 +78,7 @@ void setupAllegro(struct AllegroGame *game) {
 
   setupEnemies();
   setupBulletEnemies();
-
+  setupMapProtagonista(&mapProtagonista);
   setupButtonsConfig(game);
   setupHome(game);
   setupGame();
