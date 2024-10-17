@@ -17,7 +17,7 @@ void drawMapProtagonista(struct MapProtagonista *mapProtagonista) {
   al_draw_bitmap(mapProtagonista->image, mapProtagonista->x, mapProtagonista->y, 0);
 }
 
-void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game, ) {
+void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game) {
   int keycode = game->event.keyboard.keycode;
 
   switch (keycode) {
