@@ -7,7 +7,7 @@
 
 struct MapProtagonista {
   int x;
-  int y;
+  float y;
   int stage;
   ALLEGRO_BITMAP *image;
 };
