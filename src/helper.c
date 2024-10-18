@@ -25,14 +25,16 @@ bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int 
 }
 
 float changeScreen(struct Protagonista *protagonista, int totalStages) {
+//essa função tem que ser relacionada ao x da fase
 
+int position;
 float window_frame[4] = {0, 1, 2, 3};
   int stage = 0;
 
   for(int i = 0; i < totalStages; i++) {
-    if(protagonista->x > WIDTH_SCREEN * i - (protagonista->width/3)) {
+    if(position > WIDTH_SCREEN * i - (protagonista->width/3)) {
       stage = i;
-    }
+    } 
   }
   return stage;
 }

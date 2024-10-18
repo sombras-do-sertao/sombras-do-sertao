@@ -17,11 +17,12 @@ void destroyStage_1 () {
 /*duplica um x, um xDoFrame. Dentro de cada fase ele vai andar com o X e o xDoFrame, quando ele passar da metade da tela o XDoFrame é zerado
 e o personagem é desenhado no xDoFrame*/
 
-bool drawStage_1 (struct AllegroGame *game) {
 
-  al_draw_bitmap_region(bg_stage_1, changeScreen(&protagonista, 4) * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+bool drawStage_1 (struct AllegroGame *game) {
   
+  al_draw_bitmap_region(bg_stage_1, changeScreen(&protagonista, 4) * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   handlerProtagonista(&protagonista, game);
+  
 
   return true;
 }
