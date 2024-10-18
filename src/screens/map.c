@@ -1,6 +1,7 @@
 #include <allegro5/allegro_primitives.h>
 #include "../headers/screens.h"
 #include "../headers/helper.h"
+#include "../headers/map_protagonista.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 
@@ -16,6 +17,8 @@ void destroyMap() {
 bool drawMap(struct AllegroGame *game, GameState *gameState) {
   al_draw_bitmap(bg_map, 0, 0, 0);
 
+  handlerMapProtagonista(&mapProtagonista, game, gameState);
+  
   switch(game->event.keyboard.keycode) {
     case ALLEGRO_KEY_1:
       *gameState = STAGE_1;
@@ -36,5 +39,6 @@ bool drawMap(struct AllegroGame *game, GameState *gameState) {
       return false;
       break;
   }
+
   return true;
-}
+} 
