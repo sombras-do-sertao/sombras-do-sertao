@@ -2,6 +2,7 @@
 #include "headers/helper.h"
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
+#include <stdio.h>
 #include <unistd.h>
 
 struct MapProtagonista mapProtagonista;
@@ -17,15 +18,15 @@ void drawMapProtagonista(struct MapProtagonista *mapProtagonista) {
   al_draw_bitmap(mapProtagonista->image, mapProtagonista->x, mapProtagonista->y, 0);
 }
 
-void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game) {
+void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game, GameState *gameState) {
   int keycode = game->event.keyboard.keycode;
 
   switch (keycode) {
     case ALLEGRO_KEY_LEFT:
     case ALLEGRO_KEY_A:
-    
-      mapProtagonista->stage--;
       
+      mapProtagonista->stage--;
+
       switch (mapProtagonista->stage) {
         case 0:
           for(int i = 0; i < 297-147; i++) {
@@ -78,7 +79,29 @@ void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct Allegro
           }
           break;
         case 6:
-          
+          for(int i = 0; i < 1504-1329; i++) {
+            mapProtagonista->x--;
+          }
+          for (int i = 0; i < (505-476)*0.56 ; i++) {
+            mapProtagonista->x--;
+            mapProtagonista->y += 0.56;
+          }
+          for (int i = 0; i < (476-436)/2; i++) {
+            mapProtagonista->x--;
+            mapProtagonista->y += 2.5;
+          }
+          break;
+        case 7:
+          for (int i = 0; i < (436-392)/2; i++) {
+            mapProtagonista->x--;
+            mapProtagonista->y += 2.5;
+          }
+          for (int i = 0; i < (392-169); i++) {
+            mapProtagonista->y++;
+          }
+          break;
+        case 8:
+
           break;
         default:
           break;
@@ -87,9 +110,9 @@ void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct Allegro
       break;
     case ALLEGRO_KEY_RIGHT:
     case ALLEGRO_KEY_D:
-      
-      mapProtagonista->stage++;
-      
+
+       mapProtagonista->stage++;
+
       switch (mapProtagonista->stage) {
         case 1:
           for(int i = 0; i < 297-147; i++) {
@@ -137,10 +160,35 @@ void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct Allegro
           }
           break;
         case 6:
-          for (int i = 0; i < 1329-1104; i++) {
+          for(int i = 0; i < 1329-1096; i++) {
             mapProtagonista->x++;
           }
           break;
+        case 7:
+          for(int i = 0; i < 1504-1329; i++) {
+            mapProtagonista->x++;
+          }
+          for (int i = 0; i < (505-476)*0.56 ; i++) {
+            mapProtagonista->x++;
+            mapProtagonista->y -= 0.56;
+          }
+          for (int i = 0; i < (476-436)/2; i++) {
+            mapProtagonista->x++;
+            mapProtagonista->y -= 2.5;
+          }
+          break;
+        case 8:
+          for (int i = 0; i < (436-392)/2; i++) {
+            mapProtagonista->x++;
+            mapProtagonista->y -= 2.5;
+          }
+          for (int i = 0; i < (392-169); i++) {
+            mapProtagonista->y--;
+          }          
+          break;
+        case 9:
+
+          break; 
         default:
           break;
       };
@@ -150,15 +198,38 @@ void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct Allegro
 
       switch (mapProtagonista->stage) {
         case 0:
-          
+          *gameState = STAGE_1;
           break;
         case 1:
 
           break;
+        case 2:
+          *gameState = STAGE_2;
+          break;
+        case 3:
+
+          break;
+        case 4:
+          *gameState = STAGE_3;
+          break;
+        case 5:
+
+          break;
+        case 6:
+          *gameState = STAGE_4;
+          break;
+        case 7:
+
+          break;
+        case 8:
+          *gameState = STAGE_5;
+          break;
+        case 9:
+          
+          break;
         default:
           break;
       }
-    
 
       break;
     default:
@@ -166,7 +237,7 @@ void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct Allegro
   };
 }
 
-void handlerMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game) {
+void handlerMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game, GameState *gameState) {
   drawMapProtagonista(mapProtagonista);
-  moveMapProtagonista(mapProtagonista, game);
+  moveMapProtagonista(mapProtagonista, game, gameState);
 }

@@ -16,8 +16,8 @@ extern struct MapProtagonista mapProtagonista;
 
 void setupMapProtagonista(struct MapProtagonista *mapProtagonista);
 void drawMapProtagonista(struct MapProtagonista *mapProtagonista);
-void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game);
+void moveMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game, GameState *gameState);
 
-void handlerMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game);
+void handlerMapProtagonista(struct MapProtagonista *mapProtagonista, struct AllegroGame *game, GameState *gameState);
 
 #endif
