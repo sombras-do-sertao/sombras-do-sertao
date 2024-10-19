@@ -43,6 +43,7 @@ struct Protagonista {
   int direction;
   int lives;
   int score;
+  int stageX;
   ALLEGRO_BITMAP *image;
 };
 
