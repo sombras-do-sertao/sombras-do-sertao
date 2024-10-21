@@ -15,6 +15,8 @@ void setupProtagonista(struct Protagonista *protagonista) {
   protagonista->direction = 1;
   protagonista->lives = 3;
   protagonista->score = 0;
+  protagonista->stageX = 20;
+  protagonista->estagioAtual = 0;
   protagonista->image = al_load_bitmap("assets/images/characters/protagonista.png");
 }
 
@@ -37,10 +39,12 @@ void moveProtagonista(struct Protagonista *protagonista, struct AllegroGame *gam
       case ALLEGRO_KEY_LEFT:
       case ALLEGRO_KEY_A:
         protagonista->x -= protagonista->speed;
+        protagonista->stageX -= protagonista->speed;
         break;
       case ALLEGRO_KEY_RIGHT:
       case ALLEGRO_KEY_D:
         protagonista->x += protagonista->speed;
+        protagonista->stageX += protagonista->speed;
         break;
       default:
         break;
