@@ -44,6 +44,7 @@ struct Protagonista {
   int lives;
   int score;
   int stageX;
+  int estagioAtual;
   ALLEGRO_BITMAP *image;
 };
 

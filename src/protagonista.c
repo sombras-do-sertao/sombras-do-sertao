@@ -16,6 +16,7 @@ void setupProtagonista(struct Protagonista *protagonista) {
   protagonista->lives = 3;
   protagonista->score = 0;
   protagonista->stageX = 20;
+  protagonista->estagioAtual = 0;
   protagonista->image = al_load_bitmap("assets/images/characters/protagonista.png");
 }
 

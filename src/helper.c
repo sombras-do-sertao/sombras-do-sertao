@@ -25,23 +25,33 @@ bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int 
 }
 
 float changeScreen(struct Protagonista *protagonista, int totalStages) {
-//essa função tem que ser relacionada ao x da fase
-/*ao chegar no fim da fase: 
-1 - troca de tela
-2 - x do personagem é movido pro começo da tela*/
 
-  float window_frame[4] = {0, 1, 2, 3};
-  int stage = 0;
-  
-  for(int i = 0; i < totalStages; i++) {
-    if(protagonista->stageX > WIDTH_SCREEN * i - (protagonista->width/3)) {
-      stage = i;
-    } 
+  int stage;
+
+  if(protagonista->stageX > WIDTH_SCREEN * 3 - (protagonista->width/3)) {
+    
+    stage = 3;
+    if(!(protagonista->stageX > (WIDTH_SCREEN * 3 - (protagonista->width/3)) + protagonista->speed)) { //verificação que faz com que ele já tenha entrado na nova fase, para que ele não fique redesenhando o protagonista no x = 0
+      protagonista->x = 0;
+    }
+    //retorna pro mapa
+
+  } else if(protagonista->stageX > WIDTH_SCREEN * 2 - (protagonista->width/3)) {
+    stage = 2;
+     if(!(protagonista->stageX > (WIDTH_SCREEN * 2 - (protagonista->width/3)) + protagonista->speed)) { 
+      protagonista->x = 0;
+    }
+  } else if(protagonista->stageX > WIDTH_SCREEN - (protagonista->width/3)) { //1837
+    stage = 1;
+    if(!(protagonista->stageX > (WIDTH_SCREEN - (protagonista->width/3)) + protagonista->speed)) { 
+      protagonista->x = 0;
+    }
+  } else {
+    stage = 0;
+    // x começa com 0
   }
+    printf("%d, stage: %d\n", protagonista->stageX, stage);
 
-  /*if(stage != 0) {
-    protagonista->x = width_screen * 
-  }*/
 
   return stage;
 }
