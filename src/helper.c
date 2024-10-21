@@ -24,17 +24,22 @@ bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int 
   return (mouse_state->x >= box_x && mouse_state->x <= box_right && mouse_state->y >= box_y && mouse_state->y <= box_bottom);
 }
 
-float changeScreen(struct Protagonista *protagonista, int totalStages) {
+float changeScreen(struct Protagonista *protagonista, int totalStages, GameState *gamestate) {
 
   int stage;
+  int a = 0;
 
   if(protagonista->stageX > WIDTH_SCREEN * 3 - (protagonista->width/3)) {
     
     stage = 3;
-    if(!(protagonista->stageX > (WIDTH_SCREEN * 3 - (protagonista->width/3)) + protagonista->speed)) { //verificação que faz com que ele já tenha entrado na nova fase, para que ele não fique redesenhando o protagonista no x = 0
+    if(!(protagonista->stageX > (WIDTH_SCREEN * 3 - (protagonista->width/3)) + protagonista->speed)) { // coloca o personagem na esquerda da tela antes do primeiro passo dado, se tirar o negado ele não vai andar pq vai retornar true sempre
       protagonista->x = 0;
     }
-    //retorna pro mapa
+     if(protagonista->stageX >= 7680) {
+        *gamestate = MAP;  // caso tenha acabado a fase, volta pro mapa
+        protagonista->stageX = 0;
+        protagonista->x = 0;
+      } 
 
   } else if(protagonista->stageX > WIDTH_SCREEN * 2 - (protagonista->width/3)) {
     stage = 2;
@@ -48,10 +53,8 @@ float changeScreen(struct Protagonista *protagonista, int totalStages) {
     }
   } else {
     stage = 0;
-    // x começa com 0
   }
     printf("%d, stage: %d\n", protagonista->stageX, stage);
-
 
   return stage;
 }
