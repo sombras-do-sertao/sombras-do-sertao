@@ -1,6 +1,7 @@
 #include <allegro5/allegro_primitives.h>
 #include "../headers/screens.h"
 #include "../headers/protagonista.h"
+#include "../headers/enemies.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 #include "../headers/helper.h"
@@ -19,10 +20,10 @@ e o personagem é desenhado no xDoFrame*/
 
 
 bool drawStage_1 (struct AllegroGame *game, GameState *gameState) {
-
   al_draw_bitmap_region(bg_stage_1, changeScreen(&protagonista, 4, gameState) * WIDTH_SCREEN, 0, WIDTH_SCREEN, 1080, 0, 0, 0);
-  handlerProtagonista(&protagonista, game);
   
+  handlerProtagonista(&protagonista, game);
+  handlerEnemies();
 
   return true;
 }

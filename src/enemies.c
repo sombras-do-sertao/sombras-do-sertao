@@ -10,13 +10,13 @@ struct BulletEnemy bullets_enemies[BULLETS_ENEMIES_COUNT];
 
 void setupEnemies() {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
-    enemies[i].x = rand() % 800;
-    enemies[i].y = rand() % 600;
-    enemies[i].width = 32;
-    enemies[i].height = 32;
+    enemies[i].x = rand() % (WIDTH_SCREEN - 100);
+    enemies[i].y = HEIGHT_SCREEN / 2 - 100;
+    enemies[i].width = 500;
+    enemies[i].height = 500;
     enemies[i].speed = 1;
     enemies[i].direction = rand() % 4;
-    enemies[i].active = false;
+    enemies[i].active = true;
     enemies[i].image = al_load_bitmap("assets/images/characters/soldado.png");
   }
 }
@@ -33,12 +33,8 @@ void setupBulletEnemies() {
   }
 }
 
-void drawEnemies() {
-  for (int i = 0; i < ENEMIES_COUNT; i++) {
-    if (enemies[i].active) {
-      al_draw_bitmap(enemies[i].image, enemies[i].x, enemies[i].y, 0);
-    }
-  }
+void drawEnemie(struct Enemy *enemie) {
+  al_draw_bitmap(enemie->image, enemie->x, enemie->y, 0);
 }
 
 void drawBulletEnemies() {
@@ -53,11 +49,9 @@ void moveEnemies() {}
 
 void handlerEnemies() {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
-    if (enemies[i].active) {
-      if (enemies[i].x < 0 || enemies[i].x > 800 || enemies[i].y < 0 || enemies[i].y > 600) {
-        enemies[i].active = false;
-      }
-    }
+    if (!enemies[i].active) continue;
+
+    drawEnemie(&enemies[i]);  
   }
 }
 

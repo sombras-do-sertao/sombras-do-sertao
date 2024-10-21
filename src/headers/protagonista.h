@@ -18,6 +18,7 @@ struct BulletProtagonista {
 extern struct Protagonista protagonista;
 
 #define BULLETS_PROTAGONISTA_COUNT 100
+#define SHOOT_DELAY 0.5
 extern struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
 
 void setupProtagonista(struct Protagonista *protagonista);
