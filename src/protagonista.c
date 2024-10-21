@@ -2,6 +2,7 @@
 #include "headers/helper.h"
 #include "headers/enemies.h"
 #include "headers/colision.h"
+#include "headers/sound.h"
 #include <stdio.h>
 #include <stdbool.h>
 #include <allegro5/allegro_image.h>
@@ -15,7 +16,7 @@ void setupProtagonista(struct Protagonista *protagonista) {
   protagonista->y = HEIGHT_SCREEN / 2;
   protagonista->width = 250;
   protagonista->height = 320;
-  protagonista->speed = 20;
+  protagonista->speed = 50;
   protagonista->direction = 1;
   protagonista->lives = 3;
   protagonista->score = 0;
@@ -78,6 +79,7 @@ void shootProtagonista(struct Protagonista *protagonista, struct AllegroGame *ga
         bullets_protagonista[i].x = protagonista->x + protagonista->width;
         bullets_protagonista[i].y = protagonista->y + protagonista->height / 2 - 70;
         protagonista->last_shoot = current_time;
+        playSound(game, 1);
         break;
       }
     }
