@@ -25,7 +25,7 @@ void destroyMap() {
 }
 
 void passFrame(struct MapProtagonista *mapProtagonista) {
-  al_rest(0.001);
+  al_rest(0.0001);
   al_draw_bitmap(bg_map, 0, 0, 0);
   drawMapProtagonista(mapProtagonista);
   al_flip_display();
@@ -95,6 +95,26 @@ void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapPro
 void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista) {
   int keycode = game->event.keyboard.keycode;
 
+  if (keycode == ALLEGRO_KEY_ENTER) {
+    switch (mapProtagonista->stage) {
+      case 0:
+        *gameState = STAGE_1;
+        break;
+      case 2:
+        *gameState = STAGE_2;
+        break;
+      case 4:
+        *gameState = STAGE_3;
+        break;
+      case 6:
+        *gameState = STAGE_4;
+        break;
+      case 8:
+        *gameState = STAGE_5;
+        break;
+    }
+  }
+
   if (keycode == ALLEGRO_KEY_RIGHT || keycode == ALLEGRO_KEY_D) {
     printf("right: %d stage\n", mapProtagonista->stage);
     switch (mapProtagonista->stage) {
@@ -134,9 +154,51 @@ void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, str
         break;
       case 7:
         protagonistaMovement(1585, 170, mapProtagonista);
+        mapProtagonista->stage++;
         break;
     }
-  } 
+  }
+
+  if (keycode == ALLEGRO_KEY_LEFT || keycode == ALLEGRO_KEY_A) {
+    printf("left: %d stage\n", mapProtagonista->stage);
+    switch (mapProtagonista->stage) {
+      case 1:
+        protagonistaMovement(297, 327, mapProtagonista);
+        protagonistaMovement(147, 327, mapProtagonista);
+        mapProtagonista->stage--;
+        break;
+      case 2:
+        protagonistaMovement(410, 690, mapProtagonista);
+        protagonistaMovement(355, 500, mapProtagonista);
+        mapProtagonista->stage--;
+        break;
+      case 3:
+        protagonistaMovement(680, 690, mapProtagonista);
+        protagonistaMovement(545, 690, mapProtagonista);
+        mapProtagonista->stage--;
+        break;
+      case 4:
+        protagonistaMovement(850, 260, mapProtagonista);
+        protagonistaMovement(765, 475, mapProtagonista);
+        mapProtagonista->stage--;
+        break;
+      case 5:
+        protagonistaMovement(1075, 260, mapProtagonista);
+        protagonistaMovement(960, 260, mapProtagonista);
+        mapProtagonista->stage--;
+        break;
+      case 6:
+        protagonistaMovement(1330, 500, mapProtagonista);
+        protagonistaMovement(1100, 500, mapProtagonista);
+        mapProtagonista->stage--;
+        break;
+      case 7:
+        protagonistaMovement(1500, 500, mapProtagonista);
+        protagonistaMovement(1330, 500, mapProtagonista);
+        mapProtagonista->stage--;
+        break;
+    }
+  }
 }
 
 void drawMapProtagonista (struct MapProtagonista *mapProtagonista) {
