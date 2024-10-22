@@ -75,10 +75,9 @@ void setupAllegro(struct AllegroGame *game) {
 
   setupProtagonista(&protagonista);
   setupBulletsProtagonista();
-
+  setupMapProtagonista(&mapProtagonista);
   setupEnemies();
   setupBulletEnemies();
-
   setupButtonsConfig(game);
   setupHome(game);
   setupGame();
@@ -114,6 +113,7 @@ void destroyAllegro(struct AllegroGame *game) {
   destroyConfig();
   destroyGame();
   destroyMap();
+  destroyMapProtagonista(&mapProtagonista);
   destroyStage_1();
   destroyStage_2();
   destroyStage_3();
