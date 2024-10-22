@@ -78,14 +78,14 @@ void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapPro
     }
   } 
   else if (m < 0) { // É uma função linear decrescente( f(x) = -x )
-    if (finalX > mapProtagonista->x && finalY > mapProtagonista->y) { // Função linear decrescente com deslocamento positivo 
+    if (finalX > mapProtagonista->x && finalY < mapProtagonista->y) { // Função linear decrescente com deslocamento positivo 
       for (int i = 0; i < y/m; i++) {
         mapProtagonista->x++;
         mapProtagonista->y -= m;
         passFrame(mapProtagonista);
       }  
     } 
-    else if (finalX < mapProtagonista->x && finalY < mapProtagonista->y) { // Função linear decrescente com deslocamento negativo 
+    else if (finalX < mapProtagonista->x && finalY > mapProtagonista->y) { // Função linear decrescente com deslocamento negativo 
       for (int i = 0; i > y/m; i--) {
         mapProtagonista->x--;
         mapProtagonista->y += m;
@@ -97,7 +97,7 @@ void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapPro
 
 void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista) {
   int keycode = game->event.keyboard.keycode;
-  
+
   
 }
 
