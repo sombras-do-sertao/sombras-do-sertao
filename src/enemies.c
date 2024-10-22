@@ -5,7 +5,6 @@ struct BulletEnemy bullets_enemies[BULLETS_ENEMIES_COUNT];
 
 // TODO:
 // Para conseguir fazer é nescessario terminar a parte de renderização por partes do jogo
-// - Implement setupEnemies
 // - Implement handlerEnemies
 
 void setupEnemies() {

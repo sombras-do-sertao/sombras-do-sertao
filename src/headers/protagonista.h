@@ -25,6 +25,7 @@ void setupProtagonista(struct Protagonista *protagonista);
 void drawProtagonista(struct Protagonista *protagonista);
 void moveProtagonista(struct Protagonista *protagonista, struct AllegroGame *game);
 
+void drawBulletCount(int bullets, struct AllegroGame *game);
 void setupBulletsProtagonista();
 void shootProtagonista(struct Protagonista *protagonista, struct AllegroGame *game);
 

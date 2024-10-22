@@ -30,6 +30,7 @@ struct AllegroGame {
   ALLEGRO_FONT *font;
   ALLEGRO_FONT *font_small;
   ALLEGRO_FONT *font_big;
+  ALLEGRO_FONT *font_bullet;
   ALLEGRO_MOUSE_STATE *mouse_state;
   bool is_sound;
 };
@@ -46,7 +47,9 @@ struct Protagonista {
   int stageX;
   int estagioAtual;
   double last_shoot;
+  int bullets;
   ALLEGRO_BITMAP *image;
+  ALLEGRO_BITMAP *image_bullet;
 };
 
 enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
