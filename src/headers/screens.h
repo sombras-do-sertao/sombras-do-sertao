@@ -25,6 +25,18 @@ void setupMap();
 void destroyMap();
 bool drawMap(struct AllegroGame *game, GameState *gameState);
 
+extern struct MapProtagonista mapProtagonista;
+struct MapProtagonista {
+  int x;
+  float y;
+  int stage;
+  ALLEGRO_BITMAP *image;
+};
+void setupMapProtagonista(struct MapProtagonista *mapProtagonista);
+void destroyMapProtagonista();
+void drawMapProtagonista(struct MapProtagonista *mapProtagonista);
+void protagonistaMapDisplacement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista);
+
 extern ALLEGRO_BITMAP *bg_stage_1;
 void setupStage_1();
 void destroyStage_1();
