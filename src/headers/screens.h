@@ -35,7 +35,7 @@ struct MapProtagonista {
 void setupMapProtagonista(struct MapProtagonista *mapProtagonista);
 void destroyMapProtagonista();
 void drawMapProtagonista(struct MapProtagonista *mapProtagonista);
-void protagonistaMapDisplacement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista);
+void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista);
 
 extern ALLEGRO_BITMAP *bg_stage_1;
 void setupStage_1();
