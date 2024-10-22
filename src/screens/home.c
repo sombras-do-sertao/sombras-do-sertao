@@ -46,9 +46,23 @@ void setupHome(struct AllegroGame *game) {
   };
   BUTTONS_HOME[SETTINGS] = settings;
 
-  struct Button exit = {
+  struct Button saves = {
     WIDTH_SCREEN / 2 - width/2,
     HEIGHT_SCREEN / 2 + 150,
+    width,
+    height,
+    "Continuar",
+    "Saves",
+    fontButton,
+    AL_COLOR_WHITE,
+    AL_COLOR_BROWN,
+    FILLED,
+  };
+  BUTTONS_HOME[SAVES] = saves;
+
+   struct Button exit = {
+    WIDTH_SCREEN / 2 - width/2,
+    HEIGHT_SCREEN / 2 + 200,
     width,
     height,
     "Sair",
@@ -92,6 +106,10 @@ bool drawHome (struct AllegroGame *game, GameState *gameState) {
           case SETTINGS:
             printf("Configurações\n");
             *gameState = CONFIG;
+            break;
+          case SAVES:
+            printf("Continuar\n");
+            *gamesatate = SAVES;
             break;
           case EXIT:
             return false;

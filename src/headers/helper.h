@@ -48,7 +48,7 @@ struct Protagonista {
   ALLEGRO_BITMAP *image;
 };
 
-enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
+enum MENU_OPTIONS { START_GAME, SETTINGS, SAVES, EXIT, NUM_OPTIONS };
 
 typedef enum {
   MENU = 0,
@@ -59,7 +59,8 @@ typedef enum {
   STAGE_2 = 5,
   STAGE_3 = 6,
   STAGE_4 = 7,
-  STAGE_5 = 8
+  STAGE_5 = 8,
+  SAVES = 9
 } GameState;
 
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);

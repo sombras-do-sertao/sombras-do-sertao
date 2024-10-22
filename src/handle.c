@@ -51,6 +51,8 @@ bool handleScrens (struct AllegroGame *game, GameState *gameState) {
       case STAGE_5:
         if(!drawStage_5(game,gameState)) *gameState = MAP;
         break;
+      case SAVES:
+      
       default:
         break;
     }
