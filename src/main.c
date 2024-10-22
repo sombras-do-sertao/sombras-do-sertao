@@ -111,6 +111,7 @@ void destroyAllegro(struct AllegroGame *game) {
   destroyConfig();
   destroyGame();
   destroyMap();
+  destroyMapProtagonista();
   destroyStage_1();
   destroyStage_2();
   destroyStage_3();
