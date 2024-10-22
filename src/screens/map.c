@@ -3,6 +3,7 @@
 #include "../headers/helper.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
+#include <math.h>
 
 ALLEGRO_BITMAP *bg_map;
 
@@ -25,6 +26,7 @@ void destroyMap() {
 
 void passFrame(struct MapProtagonista *mapProtagonista) {
   al_rest(0.001);
+  al_draw_bitmap(bg_map, 0, 0, 0);
   drawMapProtagonista(mapProtagonista);
   al_flip_display();
 }
@@ -33,62 +35,57 @@ void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapPro
   int x = finalX - mapProtagonista->x;
   float y = finalY - mapProtagonista->y; 
 
-  float m = y/x; // Coeficiente angular
-  
-  if (m == 0 || x == 0) { // Quando o m ou y(quando y é zero o m também é) for zero, a função é na verdade uma constante paralela ao eixo x. Quando x for zero é uma constante paralela ao eixo y
-    if (finalX > mapProtagonista->x) { // Caso de deslocamento positivo no eixo x
+  if (x == 0 && y == 0) return; // No movement needed
+
+  float m = (x != 0) ? y / x : 0; // Coeficiente angular
+
+  if (fabs(m) < 1e-6 || x == 0) { // Comparação aproximada para zero
+    if (finalX > mapProtagonista->x) { // Deslocamento positivo no eixo x
       for (int i = 0; i < x; i++) {
         mapProtagonista->x++;
         passFrame(mapProtagonista);
       } 
-    } 
-    else if (finalX < mapProtagonista->x) { // Caso de deslocamento negativo no eixo x
+  } else if (finalX < mapProtagonista->x) { // Deslocamento negativo no eixo x
       for (int i = 0; i > x; i--) {
         mapProtagonista->x--;
         passFrame(mapProtagonista);
       }
-    }
-    else if (finalY > mapProtagonista->y) { // Caso de deslocamento positivo no eixo y
+  } else if (finalY > mapProtagonista->y) { // Deslocamento positivo no eixo y
       for (int i = 0; i < y; i++) {
         mapProtagonista->y++;
         passFrame(mapProtagonista);
       }
-    }
-    else if (finalY < mapProtagonista->y) { // Caso de deslocamento negativo no eixo y
+  } else if (finalY < mapProtagonista->y) { // Deslocamento negativo no eixo y
       for (int i = 0; i > y; i--) {
         mapProtagonista->y--;
         passFrame(mapProtagonista);
       }
-    }
   }
-  else if (m > 0) { // É uma função linear crescente ( f(x) = x )
-    if (finalX > mapProtagonista->x && finalY > mapProtagonista->y) { // Função linear crescente com deslocamento positivo 
-      for (int i = 0; i < y/m; i++) {
+} else if (m > 0) { // Função linear crescente
+  if (finalX > mapProtagonista->x && finalY > mapProtagonista->y) { // Deslocamento positivo
+      for (int i = 0; i < x; i++) {
         mapProtagonista->x++;
         mapProtagonista->y += m;
         passFrame(mapProtagonista);
       }  
-    } 
-    else if (finalX < mapProtagonista->x && finalY < mapProtagonista->y) { // Função linear crescente com deslocamento negativo 
-      for (int i = 0; i > y/m; i--) {
+  } else if (finalX < mapProtagonista->x && finalY < mapProtagonista->y) { // Deslocamento negativo
+      for (int i = 0; i > x; i--) {
         mapProtagonista->x--;
         mapProtagonista->y -= m;
         passFrame(mapProtagonista);
       }
-    }
-  } 
-  else if (m < 0) { // É uma função linear decrescente( f(x) = -x )
-    if (finalX > mapProtagonista->x && finalY < mapProtagonista->y) { // Função linear decrescente com deslocamento positivo 
-      for (int i = 0; i < y/m; i++) {
+  }
+} else if (m < 0) { // Função linear decrescente
+  if (finalX > mapProtagonista->x && finalY < mapProtagonista->y) { // Deslocamento positivo
+      for (int i = 0; i < x; i++) {
         mapProtagonista->x++;
-        mapProtagonista->y -= m;
+        mapProtagonista->y += m;
         passFrame(mapProtagonista);
       }  
-    } 
-    else if (finalX < mapProtagonista->x && finalY > mapProtagonista->y) { // Função linear decrescente com deslocamento negativo 
-      for (int i = 0; i > y/m; i--) {
+  } else if (finalX < mapProtagonista->x && finalY > mapProtagonista->y) { // Deslocamento negativo
+      for (int i = 0; i > x; i--) {
         mapProtagonista->x--;
-        mapProtagonista->y += m;
+        mapProtagonista->y -= m;
         passFrame(mapProtagonista);
       }
     }
@@ -98,7 +95,48 @@ void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapPro
 void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista) {
   int keycode = game->event.keyboard.keycode;
 
-  
+  if (keycode == ALLEGRO_KEY_RIGHT || keycode == ALLEGRO_KEY_D) {
+    printf("right: %d stage\n", mapProtagonista->stage);
+    switch (mapProtagonista->stage) {
+      case 0:
+        protagonistaMovement(297, 327, mapProtagonista);
+        protagonistaMovement(355, 500, mapProtagonista);
+        mapProtagonista->stage++;
+        break;
+      case 1:
+        protagonistaMovement(410, 690, mapProtagonista);
+        protagonistaMovement(545, 690, mapProtagonista);
+        mapProtagonista->stage++;
+        break;
+      case 2:
+        protagonistaMovement(680, 690, mapProtagonista);
+        protagonistaMovement(765, 475, mapProtagonista);
+        mapProtagonista->stage++;
+        break;
+      case 3:
+        protagonistaMovement(850, 260, mapProtagonista);
+        protagonistaMovement(960, 260, mapProtagonista);
+        mapProtagonista->stage++;
+        break;
+      case 4:
+        protagonistaMovement(1075, 260, mapProtagonista);
+        protagonistaMovement(1100, 500, mapProtagonista);
+        mapProtagonista->stage++;
+        break;
+      case 5:
+        protagonistaMovement(1330, 500, mapProtagonista);
+        mapProtagonista->stage++;
+        break;
+      case 6:
+        protagonistaMovement(1500, 500, mapProtagonista);
+        protagonistaMovement(1575, 430, mapProtagonista);
+        mapProtagonista->stage++;
+        break;
+      case 7:
+        protagonistaMovement(1585, 170, mapProtagonista);
+        break;
+    }
+  } 
 }
 
 void drawMapProtagonista (struct MapProtagonista *mapProtagonista) {
@@ -107,6 +145,9 @@ void drawMapProtagonista (struct MapProtagonista *mapProtagonista) {
 
 bool drawMap(struct AllegroGame *game, GameState *gameState) {
   al_draw_bitmap(bg_map, 0, 0, 0);
+  
+  drawMapProtagonista(&mapProtagonista);
+  protagonistaMapMovement(game, gameState, &mapProtagonista);
 
   return true;
 }
