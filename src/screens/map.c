@@ -35,7 +35,7 @@ void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapPro
 
   float m = y/x; // Coeficiente angular
   
-  if (m == 0 || x == 0) { // Quando o m ou y for zero, a função é na verdade uma constante paralela ao eixo x. Quando x for zero é uma constante paralela ao eixo y
+  if (m == 0 || x == 0) { // Quando o m ou y(quando y é zero o m também é) for zero, a função é na verdade uma constante paralela ao eixo x. Quando x for zero é uma constante paralela ao eixo y
     if (finalX > mapProtagonista->x) { // Caso de deslocamento positivo no eixo x
       for (int i = 0; i < x; i++) {
         mapProtagonista->x++;
@@ -97,7 +97,7 @@ void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapPro
 
 void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista) {
   int keycode = game->event.keyboard.keycode;
-    
+  
   
 }
 
