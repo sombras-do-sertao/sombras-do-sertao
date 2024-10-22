@@ -30,8 +30,26 @@ struct AllegroGame {
   ALLEGRO_FONT *font;
   ALLEGRO_FONT *font_small;
   ALLEGRO_FONT *font_big;
+  ALLEGRO_FONT *font_bullet;
   ALLEGRO_MOUSE_STATE *mouse_state;
   bool is_sound;
+};
+
+struct Protagonista {
+  int x;
+  int y;
+  int width;
+  int height;
+  int speed;
+  int direction;
+  int lives;
+  int score;
+  int stageX;
+  int estagioAtual;
+  double last_shoot;
+  int bullets;
+  ALLEGRO_BITMAP *image;
+  ALLEGRO_BITMAP *image_bullet;
 };
 
 enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
@@ -51,5 +69,8 @@ typedef enum {
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
 
 bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int box_width, int box_height);
+
+//função que regula a troca de telas dentro do jogo, que recebe como parâmetro o protagonista e o total de estágios dentro de cada fase
+float changeScreen(struct Protagonista *protagonista, int totalStages, GameState *gamestate);
 
 #endif

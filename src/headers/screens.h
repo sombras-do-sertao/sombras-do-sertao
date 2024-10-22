@@ -40,26 +40,26 @@ void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, str
 extern ALLEGRO_BITMAP *bg_stage_1;
 void setupStage_1();
 void destroyStage_1();
-bool drawStage_1(struct AllegroGame *game);
+bool drawStage_1(struct AllegroGame *game, GameState *gameState);
 
 extern ALLEGRO_BITMAP *bg_stage_2;
 void setupStage_2();
 void destroyStage_2();
-bool drawStage_2(struct AllegroGame *game);
+bool drawStage_2(struct AllegroGame *game, GameState *gameState);
 
 extern ALLEGRO_BITMAP *bg_stage_3;
 void setupStage_3();
 void destroyStage_3();
-bool drawStage_3(struct AllegroGame *game);
+bool drawStage_3(struct AllegroGame *game, GameState *gameState);
 
 extern ALLEGRO_BITMAP *bg_stage_4;
 void setupStage_4();
 void destroyStage_4();
-bool drawStage_4(struct AllegroGame *game);
+bool drawStage_4(struct AllegroGame *game, GameState *gameState);
 
 extern ALLEGRO_BITMAP *bg_stage_5;
 void setupStage_5();
 void destroyStage_5();
-bool drawStage_5(struct AllegroGame *game);
+bool drawStage_5(struct AllegroGame *game, GameState *gameState);
 
 #endif

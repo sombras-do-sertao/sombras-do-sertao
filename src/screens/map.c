@@ -1,6 +1,8 @@
 #include <allegro5/allegro_primitives.h>
 #include "../headers/screens.h"
 #include "../headers/helper.h"
+#include "../headers/protagonista.h"
+#include "../headers/enemies.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 
@@ -152,9 +154,7 @@ void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, str
   case ALLEGRO_KEY_D:
 
     mapProtagonista->stage++;
-
-    // Refazer usando for
-    
+ 
     switch (mapProtagonista->stage) {
     case 1:
       protagonistaMovement(297, 327, mapProtagonista);

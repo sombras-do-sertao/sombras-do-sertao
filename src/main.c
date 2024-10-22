@@ -27,6 +27,7 @@ void initializeAllegro(struct AllegroGame *game) {
   game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
   game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
   game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
+  game->font_bullet = al_load_font(FONT_PATH, 50, 0);
 
   game->timer = al_create_timer(1.0 / 30.0);
   game->queue = al_create_event_queue();
@@ -92,6 +93,7 @@ void destroyAllegro(struct AllegroGame *game) {
   al_destroy_font(game->font);
   al_destroy_font(game->font_small);
   al_destroy_font(game->font_big);
+  al_destroy_font(game->font_bullet);
   
   al_destroy_display(game->display);
   al_destroy_timer(game->timer);

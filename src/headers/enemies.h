@@ -27,7 +27,7 @@ struct BulletEnemy {
 };
 
 #define BULLETS_ENEMIES_COUNT 100
-#define ENEMIES_COUNT 10
+#define ENEMIES_COUNT 2
 
 extern struct Enemy enemies[ENEMIES_COUNT];
 extern struct BulletEnemy bullets_enemies[BULLETS_ENEMIES_COUNT];
@@ -36,7 +36,7 @@ void setupEnemies();
 
 void setupBulletEnemies();
 
-void drawEnemies();
+void drawEnemie(struct Enemy *enemie);
 
 void drawBulletEnemies();
 

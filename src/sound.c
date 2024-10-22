@@ -37,5 +37,12 @@ void setupSamples(void) {
     .name = "menu-hover"
   };
 
+  Sample shoot = {
+    .id = 2,
+    .path = "assets/audio/disparo.mp3",
+    .name = "shoot"
+  };
+
   samples[0] = menu_click;
+  samples[1] = shoot;
 }

@@ -4,17 +4,6 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include "helper.h"
-struct Protagonista {
-  int x;
-  int y;
-  int width;
-  int height;
-  int speed;
-  int direction;
-  int lives;
-  int score;
-  ALLEGRO_BITMAP *image;
-};
 
 struct BulletProtagonista {
   int x;
@@ -28,13 +17,15 @@ struct BulletProtagonista {
 
 extern struct Protagonista protagonista;
 
-#define BULLETS_PROTAGONISTA_COUNT 100
+#define BULLETS_PROTAGONISTA_COUNT 3
+#define SHOOT_DELAY 0.9
 extern struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
 
 void setupProtagonista(struct Protagonista *protagonista);
 void drawProtagonista(struct Protagonista *protagonista);
 void moveProtagonista(struct Protagonista *protagonista, struct AllegroGame *game);
 
+void drawBulletCount(int bullets, struct AllegroGame *game);
 void setupBulletsProtagonista();
 void shootProtagonista(struct Protagonista *protagonista, struct AllegroGame *game);
 
