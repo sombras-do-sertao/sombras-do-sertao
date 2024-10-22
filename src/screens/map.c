@@ -23,8 +23,8 @@ void destroyMap() {
   al_destroy_bitmap(bg_map);
 }
 
-void destroyMapProtagonista() {
-  
+void destroyMapProtagonista(struct MapProtagonista *mapProtagonista) {
+  al_destroy_bitmap(mapProtagonista->image);
 }
 
 void passFrame(struct MapProtagonista *mapProtagonista) {

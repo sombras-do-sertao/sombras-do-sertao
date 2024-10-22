@@ -33,7 +33,7 @@ struct MapProtagonista {
   ALLEGRO_BITMAP *image;
 };
 void setupMapProtagonista(struct MapProtagonista *mapProtagonista);
-void destroyMapProtagonista();
+void destroyMapProtagonista(struct MapProtagonista *mapProtagonista);
 void drawMapProtagonista(struct MapProtagonista *mapProtagonista);
 void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista);
 
