@@ -54,7 +54,6 @@ float changeScreen(struct Protagonista *protagonista, int totalStages, GameState
   } else {
     stage = 0;
   }
-    printf("%d, stage: %d\n", protagonista->stageX, stage);
 
   return stage;
 }

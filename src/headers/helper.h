@@ -45,6 +45,7 @@ struct Protagonista {
   int score;
   int stageX;
   int estagioAtual;
+  double last_shoot;
   ALLEGRO_BITMAP *image;
 };
 
