@@ -109,7 +109,7 @@ bool drawHome (struct AllegroGame *game, GameState *gameState) {
             break;
           case SAVES:
             printf("Continuar\n");
-            *gamesatate = SAVES;
+            *gamestate = SAVES;
             break;
           case EXIT:
             return false;
