@@ -2,7 +2,7 @@
 #include "../headers/helper.h"
 #include <allegro5/allegro_primitives.h>
 
-bool drawButton(struct Button *button, struct AllegroGame *game) {
+bool drawButton(struct Button *button) {
   int text_width = al_get_text_width(button->font, button->text);
   int text_height = al_get_font_line_height(button->font);
 
@@ -17,5 +17,5 @@ bool drawButton(struct Button *button, struct AllegroGame *game) {
     al_draw_text(button->font, button->font_color, text_x, text_y, ALLEGRO_ALIGN_CENTRE, button->text);
   }
 
-  return isMouseOverBox(game->mouse_state, button->x, button->y, button->width, button->height);
+  return isMouseOverBox(GAME_INFO->mouse_state, button->x, button->y, button->width, button->height);
 }

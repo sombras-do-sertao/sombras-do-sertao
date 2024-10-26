@@ -24,8 +24,7 @@ bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int 
   return (mouse_state->x >= box_x && mouse_state->x <= box_right && mouse_state->y >= box_y && mouse_state->y <= box_bottom);
 }
 
-float changeScreen(struct Protagonista *protagonista, int totalStages, GameState *gamestate) {
-
+float changeScreen(struct Protagonista *protagonista, int totalStages) {
   int stage;
   int a = 0;
 
@@ -36,10 +35,10 @@ float changeScreen(struct Protagonista *protagonista, int totalStages, GameState
       protagonista->x = 0;
     }
      if(protagonista->stageX >= 7680) {
-        *gamestate = MAP;  // caso tenha acabado a fase, volta pro mapa
+        GAME_INFO->state = MAP;  // caso tenha acabado a fase, volta pro mapa
         protagonista->stageX = 0;
         protagonista->x = 0;
-      } 
+      }
 
   } else if(protagonista->stageX > WIDTH_SCREEN * 2 - (protagonista->width/3)) {
     stage = 2;

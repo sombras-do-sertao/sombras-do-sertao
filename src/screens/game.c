@@ -15,10 +15,10 @@ void destroyGame () {
   al_destroy_bitmap(bg_game);
 }
 
-bool drawGame (struct AllegroGame *game) {
+bool drawGame () {
   al_draw_bitmap(bg_game, 0, 0, 0);
   
-  handlerProtagonista(&protagonista, game);
+  handlerProtagonista(&protagonista);
   handlerEnemies();
 
   return true;

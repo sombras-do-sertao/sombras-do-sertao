@@ -13,7 +13,9 @@
 #include "headers/protagonista.h"
 #include "headers/enemies.h"
 
-void initializeAllegro(struct AllegroGame *game) {
+struct AllegroGame *GAME_INFO;
+
+void initializeAllegro() {
   ALLEGRO_MONITOR_INFO monitor_info;
 
   al_get_monitor_info(0, &monitor_info);
@@ -24,28 +26,36 @@ void initializeAllegro(struct AllegroGame *game) {
   int window_x = monitor_info.x1;
   int window_y = monitor_info.y1;
 
-  game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
-  game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
-  game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
-  game->font_bullet = al_load_font(FONT_PATH, 50, 0);
+  GAME_INFO = (struct AllegroGame *) malloc(sizeof(struct AllegroGame));
+  GAME_INFO->state = MENU;
 
-  game->timer = al_create_timer(1.0 / 30.0);
-  game->queue = al_create_event_queue();
-  game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
+  if (!GAME_INFO) {
+    fprintf(stderr, "Fail to allocate memory.\n");
+    exit(1);
+  }
 
-  al_set_window_position(game->display, window_x, window_y);
+  GAME_INFO->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
+  GAME_INFO->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
+  GAME_INFO->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
+  GAME_INFO->font_bullet = al_load_font(FONT_PATH, 50, 0);
 
-  game->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
+  GAME_INFO->timer = al_create_timer(1.0 / 30.0);
+  GAME_INFO->queue = al_create_event_queue();
+  GAME_INFO->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
 
-  game->is_sound = true;
+  al_set_window_position(GAME_INFO->display, window_x, window_y);
 
-  if (!game->timer || !game->queue || !game->display) {
-    fprintf(stderr, "Falha to load Allegro.\n");
+  GAME_INFO->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
+
+  GAME_INFO->is_sound = true;
+
+  if (!GAME_INFO->timer || !GAME_INFO->queue || !GAME_INFO->display) {
+    fprintf(stderr, "Fail to load Allegro.\n");
     exit(1);
   }
 }
 
-void setupAllegro(struct AllegroGame *game) {
+void setupAllegro() {
   al_init();
   al_install_keyboard();
   al_init_image_addon();
@@ -56,30 +66,30 @@ void setupAllegro(struct AllegroGame *game) {
   al_install_audio();
   al_init_acodec_addon();
 
-  initializeAllegro(game);
+  initializeAllegro();
 
-  if (!game->timer || !game->queue || !game->display) {
-    fprintf(stderr, "Falha to load Allegro.\n");
+  if (!GAME_INFO->timer || !GAME_INFO->queue || !GAME_INFO->display) {
+    fprintf(stderr, "Fail to load Allegro.\n");
     exit(1);
   }
 
-  al_register_event_source(game->queue, al_get_keyboard_event_source());
-  al_register_event_source(game->queue, al_get_display_event_source(game->display));
-  al_register_event_source(game->queue, al_get_timer_event_source(game->timer));
-  al_register_event_source(game->queue, al_get_mouse_event_source());
+  al_register_event_source(GAME_INFO->queue, al_get_keyboard_event_source());
+  al_register_event_source(GAME_INFO->queue, al_get_display_event_source(GAME_INFO->display));
+  al_register_event_source(GAME_INFO->queue, al_get_timer_event_source(GAME_INFO->timer));
+  al_register_event_source(GAME_INFO->queue, al_get_mouse_event_source());
 
-  al_set_window_title(game->display, "Sombras do Sertão");
-  al_set_display_icon(game->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
+  al_set_window_title(GAME_INFO->display, "Sombras do Sertão");
+  al_set_display_icon(GAME_INFO->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
 
   setupSamples();
 
   setupProtagonista(&protagonista);
   setupBulletsProtagonista();
-  setupMapProtagonista(&mapProtagonista);
+  setupMapProtagonista();
   setupEnemies();
   setupBulletEnemies();
-  setupButtonsConfig(game);
-  setupHome(game);
+  setupButtonsConfig();
+  setupHome();
   setupGame();
   setupMap();
   setupStage_1();
@@ -89,15 +99,15 @@ void setupAllegro(struct AllegroGame *game) {
   setupStage_5();
 }
 
-void destroyAllegro(struct AllegroGame *game) {
-  al_destroy_font(game->font);
-  al_destroy_font(game->font_small);
-  al_destroy_font(game->font_big);
-  al_destroy_font(game->font_bullet);
+void destroyAllegro() {
+  al_destroy_font(GAME_INFO->font);
+  al_destroy_font(GAME_INFO->font_small);
+  al_destroy_font(GAME_INFO->font_big);
+  al_destroy_font(GAME_INFO->font_bullet);
   
-  al_destroy_display(game->display);
-  al_destroy_timer(game->timer);
-  al_destroy_event_queue(game->queue);
+  al_destroy_display(GAME_INFO->display);
+  al_destroy_timer(GAME_INFO->timer);
+  al_destroy_event_queue(GAME_INFO->queue);
 
   al_uninstall_audio();
   al_uninstall_keyboard();
@@ -113,41 +123,38 @@ void destroyAllegro(struct AllegroGame *game) {
   destroyConfig();
   destroyGame();
   destroyMap();
-  destroyMapProtagonista(&mapProtagonista);
+  destroyMapProtagonista();
   destroyStage_1();
   destroyStage_2();
   destroyStage_3();
   destroyStage_4();
   destroyStage_5();
-  free(game->mouse_state);
-  free(game);
+  free(GAME_INFO->mouse_state);
+  free(GAME_INFO);
 }
 
 int main() {
-  struct AllegroGame *game = (struct AllegroGame *) malloc(sizeof(struct AllegroGame));
-  GameState gameState = MENU;
-
-  setupAllegro(game);
+  setupAllegro();
 
   bool redraw = true;
 
-  al_start_timer(game->timer);
+  al_start_timer(GAME_INFO->timer);
   bool done = false;
 
   while(!done) {
-    al_wait_for_event(game->queue, &game->event);
-    al_get_mouse_state(game->mouse_state);
+    al_wait_for_event(GAME_INFO->queue, &GAME_INFO->event);
+    al_get_mouse_state(GAME_INFO->mouse_state);
 
-    if (!handleScrens(game, &gameState)) {
+    if (!handleScrens()) {
       done = true;
     }
 
-    if (game->event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+    if (GAME_INFO->event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
       done = true;
     }
   }
 
-  destroyAllegro(game);
+  destroyAllegro(GAME_INFO);
 
   return 0;
 }

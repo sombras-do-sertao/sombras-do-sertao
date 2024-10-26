@@ -13,7 +13,7 @@ typedef struct {
 #define MAX_SAMPLES 2
 extern Sample samples[MAX_SAMPLES];
 
-void playSound(struct AllegroGame *game, int sample_index);
+void playSound(int sample_index);
 
 void setupSamples(void);
 

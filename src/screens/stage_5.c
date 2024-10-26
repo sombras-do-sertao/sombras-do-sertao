@@ -15,10 +15,10 @@ void destroyStage_5 () {
   al_destroy_bitmap(bg_stage_5);
 }
 
-bool drawStage_5 (struct AllegroGame *game, GameState *gameState) {
-  al_draw_bitmap_region(bg_stage_5, changeScreen(&protagonista, 4, gameState) * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+bool drawStage_5 () {
+  al_draw_bitmap_region(bg_stage_5, changeScreen(&protagonista, 4) * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   
-  handlerProtagonista(&protagonista, game);
+  handlerProtagonista(&protagonista);
   handlerEnemies();
 
   return true;
