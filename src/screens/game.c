@@ -18,7 +18,7 @@ void destroyGame () {
 bool drawGame () {
   al_draw_bitmap(bg_game, 0, 0, 0);
   
-  handlerProtagonista(&protagonista);
+  handlerProtagonista();
   handlerEnemies();
 
   return true;

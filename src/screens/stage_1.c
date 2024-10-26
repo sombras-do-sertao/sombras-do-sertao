@@ -20,9 +20,9 @@ e o personagem é desenhado no xDoFrame*/
 
 
 bool drawStage_1 () {
-  al_draw_bitmap_region(bg_stage_1, changeScreen(&protagonista, 4) * WIDTH_SCREEN, 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+  al_draw_bitmap_region(bg_stage_1, changeScreen(4) * WIDTH_SCREEN, 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   
-  handlerProtagonista(&protagonista);
+  handlerProtagonista();
   handlerEnemies();
 
   return true;

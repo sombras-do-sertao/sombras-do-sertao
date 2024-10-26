@@ -15,20 +15,37 @@ struct BulletProtagonista {
   ALLEGRO_BITMAP *image;
 };
 
-extern struct Protagonista protagonista;
+struct Protagonista {
+  int x;
+  int y;
+  int width;
+  int height;
+  int speed;
+  int direction;
+  int lives;
+  int score;
+  int stageX;
+  int estagioAtual;
+  double last_shoot;
+  int bullets;
+  ALLEGRO_BITMAP *image;
+  ALLEGRO_BITMAP *image_bullet;
+};
+
+extern struct Protagonista *protagonista;
 
 #define BULLETS_PROTAGONISTA_COUNT 3
 #define SHOOT_DELAY 0.9
 extern struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
 
-void setupProtagonista(struct Protagonista *protagonista);
-void drawProtagonista(struct Protagonista *protagonista);
-void moveProtagonista(struct Protagonista *protagonista);
+void setupProtagonista();
+void drawProtagonista();
+void moveProtagonista();
 
 void drawBulletCount(int bullets);
 void setupBulletsProtagonista();
-void shootProtagonista(struct Protagonista *protagonista);
+void shootProtagonista();
 
-void handlerProtagonista(struct Protagonista *protagonista);
+void handlerProtagonista();
 
 #endif

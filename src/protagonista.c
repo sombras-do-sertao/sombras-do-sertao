@@ -8,10 +8,12 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 
-struct Protagonista protagonista;
 struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
+struct Protagonista *protagonista;
 
-void setupProtagonista(struct Protagonista *protagonista) {
+void setupProtagonista() {
+  protagonista = malloc(sizeof(struct Protagonista));
+
   protagonista->x = 20;
   protagonista->y = HEIGHT_SCREEN / 2;
   protagonista->width = 250;
@@ -28,11 +30,11 @@ void setupProtagonista(struct Protagonista *protagonista) {
   protagonista->image_bullet = al_load_bitmap("assets/images/addons/ammo.png");
 }
 
-void drawProtagonista(struct Protagonista *protagonista) {
+void drawProtagonista() {
   al_draw_bitmap(protagonista->image, protagonista->x, protagonista->y, 0);
 }
 
-void moveProtagonista(struct Protagonista *protagonista) {
+void moveProtagonista() {
   int keycode = GAME_INFO->event.keyboard.keycode;
 
     switch (keycode) {
@@ -71,7 +73,7 @@ void setupBulletsProtagonista() {
   }
 }
 
-void shootProtagonista(struct Protagonista *protagonista) {
+void shootProtagonista() {
   double current_time = al_get_time();
 
   if (GAME_INFO->event.keyboard.keycode == ALLEGRO_KEY_SPACE && 
@@ -123,11 +125,11 @@ void shootProtagonista(struct Protagonista *protagonista) {
 }
 
 void drawBulletCount(int bullets) {
-  al_draw_bitmap(protagonista.image_bullet, 0, 10, 0);
+  al_draw_bitmap(protagonista->image_bullet, 0, 10, 0);
   al_draw_textf(GAME_INFO->font_bullet, AL_COLOR_BLACK, 100, 25, ALLEGRO_ALIGN_LEFT, "%d", bullets);
 }
 
-void handlerProtagonista(struct Protagonista *protagonista) {
+void handlerProtagonista() {
   drawBulletCount(protagonista->bullets);
   drawProtagonista(protagonista);
   moveProtagonista(protagonista);

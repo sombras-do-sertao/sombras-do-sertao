@@ -1,4 +1,5 @@
 #include "headers/helper.h"
+#include "headers/protagonista.h"
 #include <stdio.h>
 #include <allegro5/allegro5.h>
 
@@ -24,7 +25,7 @@ bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int 
   return (mouse_state->x >= box_x && mouse_state->x <= box_right && mouse_state->y >= box_y && mouse_state->y <= box_bottom);
 }
 
-float changeScreen(struct Protagonista *protagonista, int totalStages) {
+float changeScreen(int totalStages) {
   int stage;
   int a = 0;
 

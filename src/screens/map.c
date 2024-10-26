@@ -194,27 +194,27 @@ void protagonistaMapMovement() {
   case ALLEGRO_KEY_ENTER:
     switch (mapProtagonista->stage) {
     case 0:
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
       GAME_INFO->state = STAGE_1;
       break;
     case 2:
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
       GAME_INFO->state = STAGE_2;
       break;
     case 4:
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
       GAME_INFO->state = STAGE_3;
       break;
     case 6:
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
       GAME_INFO->state = STAGE_4;
       break;
     case 8:     
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
       GAME_INFO->state = STAGE_5;
       break;

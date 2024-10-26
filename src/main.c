@@ -83,7 +83,7 @@ void setupAllegro() {
 
   setupSamples();
 
-  setupProtagonista(&protagonista);
+  setupProtagonista();
   setupBulletsProtagonista();
   setupMapProtagonista();
   setupEnemies();

@@ -16,9 +16,9 @@ void destroyStage_2 () {
 }
 
 bool drawStage_2 () {
-  al_draw_bitmap_region(bg_stage_2, changeScreen(&protagonista, 4) * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+  al_draw_bitmap_region(bg_stage_2, changeScreen(4) * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   
-  handlerProtagonista(&protagonista);
+  handlerProtagonista();
   handlerEnemies();
 
   return true;
