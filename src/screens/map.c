@@ -110,6 +110,8 @@ void protagonistaMapMovement() {
   case ALLEGRO_KEY_LEFT:
   case ALLEGRO_KEY_A:
     
+    if (mapProtagonista->stage == 0) return;
+
     mapProtagonista->stage--;
 
     switch (mapProtagonista->stage) {
@@ -151,6 +153,8 @@ void protagonistaMapMovement() {
     break;
   case ALLEGRO_KEY_RIGHT:
   case ALLEGRO_KEY_D:
+
+    if (mapProtagonista->stage == 8) return;
 
     mapProtagonista->stage++;
  
