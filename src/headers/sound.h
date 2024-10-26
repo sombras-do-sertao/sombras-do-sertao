@@ -10,6 +10,11 @@ typedef struct {
   int id;
 } Sample;
 
+typedef enum {
+  MENU_CLICK = 0,
+  SHOOT = 1
+} SampleIndex;
+
 #define MAX_SAMPLES 2
 extern Sample samples[MAX_SAMPLES];
 

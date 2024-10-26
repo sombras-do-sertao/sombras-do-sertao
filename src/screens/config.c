@@ -50,7 +50,7 @@ bool drawConfig () {
 
       if (GAME_INFO->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         printf("%s clicked\n", BUTTONS_CONFIG[i].text);
-        playSound(0);
+        playSound(MENU_CLICK);
 
         switch (i) {
           case 0:

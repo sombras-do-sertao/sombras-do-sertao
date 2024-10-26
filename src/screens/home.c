@@ -82,7 +82,7 @@ bool drawHome () {
 
       if (GAME_INFO->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         printf("%s clicked\n", BUTTONS_HOME[i].text);
-        playSound(0);
+        playSound(MENU_CLICK);
 
         switch (i) {
           case START_GAME:

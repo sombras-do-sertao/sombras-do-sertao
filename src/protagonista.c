@@ -87,7 +87,7 @@ void shootProtagonista(struct Protagonista *protagonista) {
         protagonista->last_shoot = current_time;
         protagonista->bullets--;
 
-        playSound(1);
+        playSound(SHOOT);
         break;
       }
     }
