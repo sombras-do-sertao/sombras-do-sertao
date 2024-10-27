@@ -8,10 +8,12 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 
-struct Protagonista protagonista;
 struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
+struct Protagonista *protagonista;
 
-void setupProtagonista(struct Protagonista *protagonista) {
+void setupProtagonista() {
+  protagonista = malloc(sizeof(struct Protagonista));
+
   protagonista->x = 20;
   protagonista->y = HEIGHT_SCREEN / 2;
   protagonista->width = 250;
@@ -28,12 +30,12 @@ void setupProtagonista(struct Protagonista *protagonista) {
   protagonista->image_bullet = al_load_bitmap("assets/images/addons/ammo.png");
 }
 
-void drawProtagonista(struct Protagonista *protagonista) {
+void drawProtagonista() {
   al_draw_bitmap(protagonista->image, protagonista->x, protagonista->y, 0);
 }
 
-void moveProtagonista(struct Protagonista *protagonista, struct AllegroGame *game) {
-  int keycode = game->event.keyboard.keycode;
+void moveProtagonista() {
+  int keycode = GAME_INFO->event.keyboard.keycode;
 
     switch (keycode) {
       case ALLEGRO_KEY_UP:
@@ -71,10 +73,10 @@ void setupBulletsProtagonista() {
   }
 }
 
-void shootProtagonista(struct Protagonista *protagonista, struct AllegroGame *game) {
+void shootProtagonista() {
   double current_time = al_get_time();
 
-  if (game->event.keyboard.keycode == ALLEGRO_KEY_SPACE && 
+  if (GAME_INFO->event.keyboard.keycode == ALLEGRO_KEY_SPACE && 
       current_time - protagonista->last_shoot >= SHOOT_DELAY && 
       protagonista->bullets > 0
     ) {
@@ -87,7 +89,7 @@ void shootProtagonista(struct Protagonista *protagonista, struct AllegroGame *ga
         protagonista->last_shoot = current_time;
         protagonista->bullets--;
 
-        playSound(game, 1);
+        playSound(SHOOT);
         break;
       }
     }
@@ -122,14 +124,14 @@ void shootProtagonista(struct Protagonista *protagonista, struct AllegroGame *ga
   }
 }
 
-void drawBulletCount(int bullets, struct AllegroGame *game) {
-  al_draw_bitmap(protagonista.image_bullet, 0, 10, 0);
-  al_draw_textf(game->font_bullet, AL_COLOR_BLACK, 100, 25, ALLEGRO_ALIGN_LEFT, "%d", bullets);
+void drawBulletCount(int bullets) {
+  al_draw_bitmap(protagonista->image_bullet, 0, 10, 0);
+  al_draw_textf(GAME_INFO->font_bullet, AL_COLOR_BLACK, 100, 25, ALLEGRO_ALIGN_LEFT, "%d", bullets);
 }
 
-void handlerProtagonista(struct Protagonista *protagonista, struct AllegroGame *game) {
-  drawBulletCount(protagonista->bullets, game);
+void handlerProtagonista() {
+  drawBulletCount(protagonista->bullets);
   drawProtagonista(protagonista);
-  moveProtagonista(protagonista, game);
-  shootProtagonista(protagonista, game);
+  moveProtagonista(protagonista);
+  shootProtagonista(protagonista);
 }

@@ -7,6 +7,8 @@
 extern int WIDTH_SCREEN;
 extern int HEIGHT_SCREEN;
 
+extern struct AllegroGame *GAME_INFO;
+
 #define FONT_PATH "assets/fonts/Roboto-Regular.ttf"
 #define FONT_SIZE 18
 #define FONT_SIZE_SMALL 14
@@ -22,38 +24,6 @@ extern int HEIGHT_SCREEN;
 #define AL_COLOR_LIGHT_BROWN al_map_rgb(214, 146, 68)
 #define AL_COLOR_DARK_BROWN al_map_rgb(102, 51, 0)
 
-struct AllegroGame {
-  ALLEGRO_TIMER *timer;
-  ALLEGRO_EVENT_QUEUE *queue;
-  ALLEGRO_EVENT event;
-  ALLEGRO_DISPLAY *display;
-  ALLEGRO_FONT *font;
-  ALLEGRO_FONT *font_small;
-  ALLEGRO_FONT *font_big;
-  ALLEGRO_FONT *font_bullet;
-  ALLEGRO_MOUSE_STATE *mouse_state;
-  bool is_sound;
-};
-
-struct Protagonista {
-  int x;
-  int y;
-  int width;
-  int height;
-  int speed;
-  int direction;
-  int lives;
-  int score;
-  int stageX;
-  int estagioAtual;
-  double last_shoot;
-  int bullets;
-  ALLEGRO_BITMAP *image;
-  ALLEGRO_BITMAP *image_bullet;
-};
-
-enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
-
 typedef enum {
   MENU = 0,
   GAME = 1,
@@ -66,11 +36,26 @@ typedef enum {
   STAGE_5 = 8
 } GameState;
 
+struct AllegroGame {
+  ALLEGRO_TIMER *timer;
+  ALLEGRO_EVENT_QUEUE *queue;
+  ALLEGRO_EVENT event;
+  ALLEGRO_DISPLAY *display;
+  ALLEGRO_FONT *font;
+  ALLEGRO_FONT *font_small;
+  ALLEGRO_FONT *font_big;
+  ALLEGRO_FONT *font_bullet;
+  ALLEGRO_MOUSE_STATE *mouse_state;
+  GameState state;
+  bool is_sound;
+};
+
+enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
+
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
 
 bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int box_width, int box_height);
 
-//função que regula a troca de telas dentro do jogo, que recebe como parâmetro o protagonista e o total de estágios dentro de cada fase
-float changeScreen(struct Protagonista *protagonista, int totalStages, GameState *gamestate);
+float changeScreen(int totalStages);
 
 #endif

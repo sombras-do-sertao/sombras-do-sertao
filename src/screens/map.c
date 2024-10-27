@@ -7,14 +7,15 @@
 #include <stdio.h>
 
 ALLEGRO_BITMAP *bg_map;
+struct MapProtagonista *mapProtagonista;
 
 void setupMap() {
   bg_map = al_load_bitmap("assets/images/background/bg_map.jpg");
 }
 
-struct MapProtagonista mapProtagonista;
+void setupMapProtagonista () {
+  mapProtagonista = (struct MapProtagonista *) malloc(sizeof(struct MapProtagonista));
 
-void setupMapProtagonista (struct MapProtagonista *mapProtagonista) {
   mapProtagonista->x = 147;
   mapProtagonista->y = 327;
   mapProtagonista->stage = 0;
@@ -25,18 +26,18 @@ void destroyMap() {
   al_destroy_bitmap(bg_map);
 }
 
-void destroyMapProtagonista(struct MapProtagonista *mapProtagonista) {
+void destroyMapProtagonista() {
   al_destroy_bitmap(mapProtagonista->image);
 }
 
-void passFrame(struct MapProtagonista *mapProtagonista) {
+void passFrame() {
   al_rest(0.001);
   al_draw_bitmap(bg_map, 0, 0, 0);
   drawMapProtagonista(mapProtagonista);
   al_flip_display();
 }
 
-void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapProtagonista) {
+void protagonistaMovement(int finalX, int finalY) {
   int x = finalX - mapProtagonista->x;
   float y = finalY - mapProtagonista->y; 
 
@@ -102,49 +103,49 @@ void protagonistaMovement(int finalX, int finalY, struct MapProtagonista *mapPro
   }
 }
 
-void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista) {
-  int keycode = game->event.keyboard.keycode;
+void protagonistaMapMovement() {
+  int keycode = GAME_INFO->event.keyboard.keycode;
 
   switch (keycode) {
   case ALLEGRO_KEY_LEFT:
   case ALLEGRO_KEY_A:
     
+    if (mapProtagonista->stage == 0) return;
+
     mapProtagonista->stage--;
 
-    // Refazer usando for
-     
     switch (mapProtagonista->stage) {
     case 0:
-      protagonistaMovement(297, 327, mapProtagonista);
-      protagonistaMovement(147, 327, mapProtagonista);
+      protagonistaMovement(297, 327);
+      protagonistaMovement(147, 327);
       break;
     case 1:
-      protagonistaMovement(419, 694, mapProtagonista);
-      protagonistaMovement(353, 495, mapProtagonista);
+      protagonistaMovement(419, 694);
+      protagonistaMovement(353, 495);
       break;
     case 2:
-      protagonistaMovement(676, 694, mapProtagonista);
-      protagonistaMovement(550, 694, mapProtagonista);
+      protagonistaMovement(676, 694);
+      protagonistaMovement(550, 694);
       break;
     case 3:
-      protagonistaMovement(861, 269, mapProtagonista);
-      protagonistaMovement(771, 475, mapProtagonista);
+      protagonistaMovement(861, 269);
+      protagonistaMovement(771, 475);
       break; 
     case 4:
-      protagonistaMovement(1074, 269, mapProtagonista);
-      protagonistaMovement(962, 269, mapProtagonista);    
+      protagonistaMovement(1074, 269);
+      protagonistaMovement(962, 269);    
       break;
     case 5:
-      protagonistaMovement(1096, 505, mapProtagonista);
+      protagonistaMovement(1096, 505);
       break;
     case 6:
-      protagonistaMovement(1555, 476, mapProtagonista);
-      protagonistaMovement(1504, 505, mapProtagonista);
-      protagonistaMovement(1329, 505, mapProtagonista);
+      protagonistaMovement(1555, 476);
+      protagonistaMovement(1504, 505);
+      protagonistaMovement(1329, 505);
       break;
     case 7:
-      protagonistaMovement(1589, 392, mapProtagonista);
-      protagonistaMovement(1571, 436, mapProtagonista);
+      protagonistaMovement(1589, 392);
+      protagonistaMovement(1571, 436);
       break;
     default:
       break;
@@ -153,40 +154,42 @@ void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, str
   case ALLEGRO_KEY_RIGHT:
   case ALLEGRO_KEY_D:
 
+    if (mapProtagonista->stage == 8) return;
+
     mapProtagonista->stage++;
  
     switch (mapProtagonista->stage) {
     case 1:
-      protagonistaMovement(297, 327, mapProtagonista);
-      protagonistaMovement(353, 495, mapProtagonista);
+      protagonistaMovement(297, 327);
+      protagonistaMovement(353, 495);
       break;
     case 2:
-      protagonistaMovement(419, 694, mapProtagonista);
-      protagonistaMovement(550, 694, mapProtagonista);
+      protagonistaMovement(419, 694);
+      protagonistaMovement(550, 694);
       break;
     case 3:
-      protagonistaMovement(676, 694, mapProtagonista);
-      protagonistaMovement(771, 475, mapProtagonista);
+      protagonistaMovement(676, 694);
+      protagonistaMovement(771, 475);
       break;
     case 4:
-      protagonistaMovement(861, 269, mapProtagonista);
-      protagonistaMovement(962, 269, mapProtagonista);
+      protagonistaMovement(861, 269);
+      protagonistaMovement(962, 269);
       break;
     case 5:
-      protagonistaMovement(1074, 269, mapProtagonista);
-      protagonistaMovement(1096, 505, mapProtagonista);
+      protagonistaMovement(1074, 269);
+      protagonistaMovement(1096, 505);
       break;
     case 6:
-      protagonistaMovement(1329, 505, mapProtagonista);
+      protagonistaMovement(1329, 505);
       break;
     case 7:
-      protagonistaMovement(1504, 505, mapProtagonista);
-      protagonistaMovement(1555, 476, mapProtagonista);
-      protagonistaMovement(1571, 436, mapProtagonista);
+      protagonistaMovement(1504, 505);
+      protagonistaMovement(1555, 476);
+      protagonistaMovement(1571, 436);
       break;
     case 8:
-      protagonistaMovement(1589, 392, mapProtagonista);
-      protagonistaMovement(1589, 169, mapProtagonista);
+      protagonistaMovement(1589, 392);
+      protagonistaMovement(1589, 169);
       break;
     default:
       break;
@@ -195,29 +198,29 @@ void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, str
   case ALLEGRO_KEY_ENTER:
     switch (mapProtagonista->stage) {
     case 0:
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
-      *gameState = STAGE_1;
+      GAME_INFO->state = STAGE_1;
       break;
     case 2:
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
-      *gameState = STAGE_2;
+      GAME_INFO->state = STAGE_2;
       break;
     case 4:
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
-      *gameState = STAGE_3;
+      GAME_INFO->state = STAGE_3;
       break;
     case 6:
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
-      *gameState = STAGE_4;
+      GAME_INFO->state = STAGE_4;
       break;
     case 8:     
-      setupProtagonista(&protagonista);
+      setupProtagonista();
       setupEnemies(); 
-      *gameState = STAGE_5;
+      GAME_INFO->state = STAGE_5;
       break;
     default:
       break;  
@@ -228,14 +231,14 @@ void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, str
   }
 }
 
-void drawMapProtagonista (struct MapProtagonista *mapProtagonista) {
+void drawMapProtagonista () {
   al_draw_bitmap(mapProtagonista->image, mapProtagonista->x, mapProtagonista->y, 0);
 }
 
-bool drawMap(struct AllegroGame *game, GameState *gameState) {
+bool drawMap() {
   al_draw_bitmap(bg_map, 0, 0, 0);
-  drawMapProtagonista(&mapProtagonista);
-  protagonistaMapMovement(game, gameState, &mapProtagonista);
+  drawMapProtagonista();
+  protagonistaMapMovement();
 
   return true;
 }

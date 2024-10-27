@@ -29,6 +29,6 @@ extern struct Button BUTTONS_CONFIG[BUTTONS_CONFIG_COUNT];
 #define BUTTONS_HOME_COUNT 3
 extern struct Button BUTTONS_HOME[BUTTONS_HOME_COUNT];
 
-bool drawButton(struct Button *button, struct AllegroGame *game);
+bool drawButton(struct Button *button);
 
 #endif

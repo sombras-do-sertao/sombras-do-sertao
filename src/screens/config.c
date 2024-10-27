@@ -7,7 +7,7 @@ struct Button BUTTONS_CONFIG[BUTTONS_CONFIG_COUNT];
 
 ALLEGRO_FONT *fontSettings;
 
-void setupButtonsConfig(struct AllegroGame *game) {
+void setupButtonsConfig() {
   fontSettings = al_load_font("assets/fonts/LilitaOne-Regular.ttf",32,0);
   int width = 335;
   int height = 65;
@@ -41,25 +41,25 @@ void setupButtonsConfig(struct AllegroGame *game) {
   BUTTONS_CONFIG[1] = back;
 }
 
-bool drawConfig (struct AllegroGame *game) {
+bool drawConfig () {
   al_draw_bitmap(bg_home, 0, 0, 0);
 
   for (int i = 0; i < BUTTONS_CONFIG_COUNT; i++) {
-    if (drawButton(&BUTTONS_CONFIG[i], game)) {
+    if (drawButton(&BUTTONS_CONFIG[i])) {
       BUTTONS_CONFIG[i].background_color = AL_COLOR_LIGHT_BROWN;
 
-      if (game->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+      if (GAME_INFO->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         printf("%s clicked\n", BUTTONS_CONFIG[i].text);
-        playSound(game, 0);
+        playSound(MENU_CLICK);
 
         switch (i) {
           case 0:
-            if (game->is_sound) {
+            if (GAME_INFO->is_sound) {
               BUTTONS_CONFIG[i].text = "Som: Desligado";
-              game->is_sound = false;
+              GAME_INFO->is_sound = false;
             } else {
               BUTTONS_CONFIG[i].text = "Som: Ligado";
-              game->is_sound = true;
+              GAME_INFO->is_sound = true;
             }
             break;
           case 1:

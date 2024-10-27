@@ -10,7 +10,7 @@ ALLEGRO_BITMAP *bg_home;
 ALLEGRO_FONT *fontHome;
 ALLEGRO_FONT *fontButton;
 
-void setupHome(struct AllegroGame *game) {
+void setupHome() {
   bg_home = al_load_bitmap("assets/images/background/bg_home.jpg");
   fontButton = al_load_font("assets/fonts/LilitaOne-Regular.ttf", 32, 0);
   fontHome = al_load_font("assets/fonts/LilitaOne-Regular.ttf", 64, 0);
@@ -67,7 +67,7 @@ void destroyHome(void) {
   al_destroy_font(fontHome);
 }
 
-bool drawHome (struct AllegroGame *game, GameState *gameState) {
+bool drawHome () {
   al_draw_bitmap(bg_home, 0, 0, 0);
 
   const char *title = "Sombras do Sertão";
@@ -77,21 +77,21 @@ bool drawHome (struct AllegroGame *game, GameState *gameState) {
   al_draw_text(fontHome, AL_COLOR_WHITE, title_x, title_y, ALLEGRO_ALIGN_CENTER, title);
 
   for (int i = 0; i < BUTTONS_HOME_COUNT; i++) {
-    if (drawButton(&BUTTONS_HOME[i], game)) {
+    if (drawButton(&BUTTONS_HOME[i])) {
       BUTTONS_HOME[i].background_color = AL_COLOR_LIGHT_BROWN;
 
-      if (game->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+      if (GAME_INFO->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         printf("%s clicked\n", BUTTONS_HOME[i].text);
-        playSound(game, 0);
+        playSound(MENU_CLICK);
 
         switch (i) {
           case START_GAME:
             printf("Iniciar Jogo\n");
-            *gameState = MAP;
+            GAME_INFO->state = MAP;
             break;
           case SETTINGS:
             printf("Configurações\n");
-            *gameState = CONFIG;
+            GAME_INFO->state = CONFIG;
             break;
           case EXIT:
             return false;

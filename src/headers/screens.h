@@ -7,59 +7,59 @@
 #include "helper.h"
 
 extern ALLEGRO_BITMAP *bg_home;
-void setupHome(struct AllegroGame *game);
+void setupHome();
 void destroyHome(void);
-bool drawHome(struct AllegroGame *game, GameState *gameState);
+bool drawHome();
 
-bool drawConfig(struct AllegroGame *game);
+bool drawConfig();
 void destroyConfig(void);
-void setupButtonsConfig(struct AllegroGame *game);
+void setupButtonsConfig();
 
 extern ALLEGRO_BITMAP *bg_game;
 void setupGame();
 void destroyGame();
-bool drawGame(struct AllegroGame *game);
+bool drawGame();
 
 extern ALLEGRO_BITMAP *bg_map;
 void setupMap();
 void destroyMap();
-bool drawMap(struct AllegroGame *game, GameState *gameState);
+bool drawMap();
 
-extern struct MapProtagonista mapProtagonista;
 struct MapProtagonista {
   int x;
   float y;
   int stage;
   ALLEGRO_BITMAP *image;
 };
-void setupMapProtagonista(struct MapProtagonista *mapProtagonista);
-void destroyMapProtagonista(struct MapProtagonista *mapProtagonista);
-void drawMapProtagonista(struct MapProtagonista *mapProtagonista);
-void protagonistaMapMovement(struct AllegroGame *game, GameState *gameState, struct MapProtagonista *mapProtagonista);
+
+void setupMapProtagonista();
+void destroyMapProtagonista();
+void drawMapProtagonista();
+void protagonistaMapMovement();
 
 extern ALLEGRO_BITMAP *bg_stage_1;
 void setupStage_1();
 void destroyStage_1();
-bool drawStage_1(struct AllegroGame *game, GameState *gameState);
+bool drawStage_1();
 
 extern ALLEGRO_BITMAP *bg_stage_2;
 void setupStage_2();
 void destroyStage_2();
-bool drawStage_2(struct AllegroGame *game, GameState *gameState);
+bool drawStage_2();
 
 extern ALLEGRO_BITMAP *bg_stage_3;
 void setupStage_3();
 void destroyStage_3();
-bool drawStage_3(struct AllegroGame *game, GameState *gameState);
+bool drawStage_3();
 
 extern ALLEGRO_BITMAP *bg_stage_4;
 void setupStage_4();
 void destroyStage_4();
-bool drawStage_4(struct AllegroGame *game, GameState *gameState);
+bool drawStage_4();
 
 extern ALLEGRO_BITMAP *bg_stage_5;
 void setupStage_5();
 void destroyStage_5();
-bool drawStage_5(struct AllegroGame *game, GameState *gameState);
+bool drawStage_5();
 
 #endif

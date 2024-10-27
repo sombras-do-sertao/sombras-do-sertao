@@ -6,8 +6,8 @@
 
 Sample samples[MAX_SAMPLES];
 
-void playSound(struct AllegroGame *game, int sample_index) {
-  if (!game->is_sound) {
+void playSound(int sample_index) {
+  if (!GAME_INFO->is_sound) {
     return;
   }
 
