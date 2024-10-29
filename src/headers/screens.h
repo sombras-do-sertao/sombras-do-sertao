@@ -50,4 +50,8 @@ void setupStage_5();
 void destroyStage_5();
 bool drawStage_5(struct AllegroGame *game, GameState *gameState);
 
+void setupSaves();
+void destroySaves();
+bool drawSaves(struct AllegroGame *game, GameState *gameState);
+
 #endif

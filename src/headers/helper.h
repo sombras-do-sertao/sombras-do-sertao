@@ -48,7 +48,7 @@ struct Protagonista {
   ALLEGRO_BITMAP *image;
 };
 
-enum MENU_OPTIONS { START_GAME, SETTINGS, SAVES, EXIT, NUM_OPTIONS };
+enum MENU_OPTIONS { START_GAME, SETTINGS, SAVE, EXIT, NUM_OPTIONS };
 
 typedef enum {
   MENU = 0,
