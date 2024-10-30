@@ -28,6 +28,7 @@ struct Protagonista {
   int estagioAtual;
   double last_shoot;
   int bullets;
+  int honor;
   ALLEGRO_BITMAP *image;
   ALLEGRO_BITMAP *image_bullet;
 };

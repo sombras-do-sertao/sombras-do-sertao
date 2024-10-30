@@ -28,6 +28,7 @@ void setupProtagonista() {
   protagonista->bullets = 3;
   protagonista->image = al_load_bitmap("assets/images/characters/protagonista.png");
   protagonista->image_bullet = al_load_bitmap("assets/images/addons/ammo.png");
+  protagonista->honor = 0;
 }
 
 void drawProtagonista() {
