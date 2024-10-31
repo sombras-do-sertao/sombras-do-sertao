@@ -30,6 +30,9 @@ struct saveFile {
   int height; 
   char *name;
   char *alias; 
+  int fase;
+  int horas;
+  int honra;
   ALLEGRO_FONT *font;
   ALLEGRO_COLOR font_color;
   ALLEGRO_BITMAP *image;
@@ -46,5 +49,6 @@ extern struct saveFile FILES[SAVEFILES_COUNT];
 
 
 bool drawButton(struct Button *button);
+bool drawSaveFile(struct saveFile *saveFile);
 
 #endif

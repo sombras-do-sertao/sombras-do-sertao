@@ -5,10 +5,10 @@
 
 struct saveFile FILES[SAVEFILES_COUNT];
 
-ALLEGRO_FONT *fontSettings;
-ALLEGRO_BITMAP *fileBackground
-setupSaves(){
-  fontSettings = al_load_font("assets/fonts/LilitaOne-Regular.ttf",32,0);
+ALLEGRO_FONT *fontSaves;
+ALLEGRO_BITMAP *fileBackground;
+void setupSaves(){
+  fontSaves = al_load_font("assets/fonts/LilitaOne-Regular.ttf",32,0);
   fileBackground = al_load_bitmap("assets/images/background/save.jpg");
   int width = 404;
   int height = 72;
@@ -18,9 +18,12 @@ setupSaves(){
     HEIGHT_SCREEN / 2 - 72,
     width,
     height,
-    "Pedro",
-    "Save 01", 
-    fontSettings,
+    "Vazio",
+    "Save 01",
+    0, //fase
+    0, //horas
+    0, //honra  
+    fontSaves,
     AL_COLOR_WHITE,
     fileBackground,
   }; save1 = FILES[0];
@@ -30,9 +33,12 @@ setupSaves(){
     HEIGHT_SCREEN / 2 + 72,
     width,
     height,
-    "Lucas",
-    "Save 02", 
-    fontSettings,
+    "Vazio",
+    "Save 02",
+    0, //fase
+    0, //horas
+    0, //honra   
+    fontSaves,
     AL_COLOR_WHITE,
     fileBackground,
   }; save2 = FILES[1];
@@ -42,21 +48,36 @@ setupSaves(){
     HEIGHT_SCREEN / 2 + 216,
     width,
     height,
-    "Eduardo",
+    "Vazio",
     "Save 03", 
-    fontSettings,
+    0, //fase
+    0, //horas
+    0, //honra  
+    fontSaves,
     AL_COLOR_WHITE,
     fileBackground,
   }; save3 = FILES[2];
 
 }
 
- /*int x;
+bool drawSaves() {
+  al_draw_bitmap(bg_home, 0, 0, 0);
+  drawSaveFile(&FILES[0]);
+}
+
+void destroySaves() {
+  al_destroy_font(fontSaves);
+}
+
+/* int x;
   int y;
   int width;
   int height; 
   char *name;
   char *alias; 
+  int fase;
+  int horas;
+  int honra;
   ALLEGRO_FONT *font;
   ALLEGRO_COLOR font_color;
   ALLEGRO_BITMAP *image;*/
