@@ -65,6 +65,6 @@ bool drawStage_5();
 extern ALLEGRO_BITMAP *fileBackground;
 void setupSaves();
 void destroySaves();
-bool drawSetupSaves();
+bool drawSaves();
 
 #endif

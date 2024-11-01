@@ -97,6 +97,7 @@ void setupAllegro() {
   setupStage_3();
   setupStage_4();
   setupStage_5();
+  setupSaves();
 }
 
 void destroyAllegro() {
@@ -129,6 +130,7 @@ void destroyAllegro() {
   destroyStage_3();
   destroyStage_4();
   destroyStage_5();
+  destroySaves();
   free(GAME_INFO->mouse_state);
   free(GAME_INFO);
 }

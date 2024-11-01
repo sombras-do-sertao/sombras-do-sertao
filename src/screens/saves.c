@@ -57,10 +57,12 @@ void setupSaves(){
     AL_COLOR_WHITE,
     fileBackground,
   }; save3 = FILES[2];
+  printf("\nsetup saves executada \n");
 
 }
 
 bool drawSaves() {
+  printf("\n draw saves executada \n");
   al_draw_bitmap(bg_home, 0, 0, 0);
   drawSaveFile(&FILES[0]);
 }
