@@ -2,7 +2,6 @@
 #include "../headers/helper.h"
 #include <allegro5/allegro_font.h>
 #include <stdio.h>
-#include <allegro5/allegro_primitives.h>
 
 
 bool drawSaveFile(struct saveFile *saveFile) {
