@@ -2,6 +2,8 @@
 #include "../headers/helper.h"
 #include <allegro5/allegro_font.h>
 #include <stdio.h>
+#include <allegro5/allegro_primitives.h>
+
 
 bool drawSaveFile(struct saveFile *saveFile) {
   //Declaração das variáveis
@@ -18,7 +20,7 @@ bool drawSaveFile(struct saveFile *saveFile) {
   int currentStage_y;*/
   printf("\n draw save file executada\n");
   //Escrita dos textos
-  
+  al_draw_text(saveFile->font, saveFile->font_color, name_x, name_y, 0, saveFile->name);
 }
 
 /* int x;
