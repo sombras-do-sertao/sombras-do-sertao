@@ -30,12 +30,13 @@ struct saveFile {
   int height; 
   char *name;
   char *alias; 
-  int fase;
-  int horas;
-  int honra;
+  char *faseAtual;
+  char *horas;
+  char *honra;
   ALLEGRO_FONT *font;
   ALLEGRO_COLOR font_color;
   ALLEGRO_BITMAP *image;
+  ALLEGRO_FONT *smallerFont;
 };
 
 #define BUTTONS_CONFIG_COUNT 2
