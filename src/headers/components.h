@@ -44,11 +44,10 @@ extern struct Button BUTTONS_CONFIG[BUTTONS_CONFIG_COUNT];
 #define BUTTONS_HOME_COUNT 4
 extern struct Button BUTTONS_HOME[BUTTONS_HOME_COUNT];
 
-#define SAVEFILES_COUNT 3
+#define SAVEFILES_COUNT 4
 extern struct saveFile FILES[SAVEFILES_COUNT];
 
 
 bool drawButton(struct Button *button);
 bool drawSaveFile(struct saveFile *saveFile);
-
 #endif
