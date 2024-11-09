@@ -33,7 +33,7 @@ void destroyMapProtagonista() {
 void passFrame() {
   al_rest(0.001);
   al_draw_bitmap(bg_map, 0, 0, 0);
-  drawMapProtagonista(mapProtagonista);
+  drawMapProtagonista();
   al_flip_display();
 }
 
@@ -47,25 +47,25 @@ void protagonistaMovement(int finalX, int finalY) {
     if (finalX > mapProtagonista->x) { // Caso de deslocamento positivo no eixo x
       for (int i = 0; i < x; i++) {
         mapProtagonista->x++;
-        passFrame(mapProtagonista);
+        passFrame();
       } 
     } 
     else if (finalX < mapProtagonista->x) { // Caso de deslocamento negativo no eixo x
       for (int i = 0; i > x; i--) {
         mapProtagonista->x--;
-        passFrame(mapProtagonista);
+        passFrame();
       }
     }
     else if (finalY > mapProtagonista->y) { // Caso de deslocamento positivo no eixo y
       for (int i = 0; i < y; i++) {
         mapProtagonista->y++;
-        passFrame(mapProtagonista);
+        passFrame();
       }
     }
     else if (finalY < mapProtagonista->y) { // Caso de deslocamento negativo no eixo y
       for (int i = 0; i > y; i--) {
         mapProtagonista->y--;
-        passFrame(mapProtagonista);
+        passFrame();
       }
     }
   }
@@ -74,14 +74,14 @@ void protagonistaMovement(int finalX, int finalY) {
       for (int i = 0; i < y/m; i++) {
         mapProtagonista->x++;
         mapProtagonista->y += m;
-        passFrame(mapProtagonista);
+        passFrame();
       }  
     } 
     else if (finalX < mapProtagonista->x && finalY < mapProtagonista->y) { // Função linear crescente com deslocamento negativo 
       for (int i = 0; i > y/m; i--) {
         mapProtagonista->x--;
         mapProtagonista->y -= m;
-        passFrame(mapProtagonista);
+        passFrame();
       }
     }
   } 
@@ -90,14 +90,14 @@ void protagonistaMovement(int finalX, int finalY) {
       for (int i = 0; i < y/m; i++) {
         mapProtagonista->x++;
         mapProtagonista->y -= m*-1;
-        passFrame(mapProtagonista);
+        passFrame();
       }  
     } 
     else if (finalX < mapProtagonista->x && finalY > mapProtagonista->y) { // Função linear decrescente com deslocamento negativo 
       for (int i = 0; i > y/m; i--) {
         mapProtagonista->x--;
         mapProtagonista->y += m*-1;
-        passFrame(mapProtagonista);
+        passFrame();
       }
     }
   }
