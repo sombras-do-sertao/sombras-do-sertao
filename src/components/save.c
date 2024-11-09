@@ -32,5 +32,5 @@ bool drawSaveFile(struct saveFile *saveFile, int index) {
   al_draw_text(saveFile->smallerFont, saveFile->font_color,  honor_x, honor_y, 0, saveFile->honra);
   al_draw_text(saveFile->smallerFont, saveFile->font_color,  hours_x, hours_y, 0, saveFile->minutos);
 
-  return isMouseOverBox(GAME_INFO->mouse_state, x, y, width, height);
+  return isMouseOverBox(GAME_INFO->mouse_state, x - 180, y, width + 360, height);
 }

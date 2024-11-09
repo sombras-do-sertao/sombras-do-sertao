@@ -25,6 +25,8 @@ void setupMap();
 void destroyMap();
 bool drawMap();
 
+extern struct MapProtagonista *MAPA_PROTAGONISTA;
+
 struct MapProtagonista {
   int x;
   float y;

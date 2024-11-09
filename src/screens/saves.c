@@ -65,7 +65,7 @@ void setupSaves(){
     }
 
     save.font = fontSaves;
-    save.font_color = al_map_rgb(255, 255, 255);
+    save.font_color = AL_COLOR_WHITE;
     save.image = fileBackground;
     save.smallerFont = smaller_font;
 
@@ -85,7 +85,23 @@ bool drawSaves() {
   al_draw_text(fontSaveTitle, AL_COLOR_WHITE, title_x, title_y, 0, title_text);
 
   for(int i = 0; i < SAVEFILES_COUNT; i++) {
-    drawSaveFile(&FILES[i], i);
+    if (drawSaveFile(&FILES[i], i)) {
+      FILES[i].font_color = AL_COLOR_YELLOW;
+
+      if (GAME_INFO->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+        printf("%s clicked\n", FILES[i].name);
+        playSound(MENU_CLICK);
+
+        printf("Stage: %d\n", atoi(FILES[i].faseAtual));
+        
+        MAPA_PROTAGONISTA->stage = atoi(FILES[i].faseAtual);
+        GAME_INFO->state = MAP;
+
+        printf("Stage: %d\n", MAPA_PROTAGONISTA->stage);
+      }
+    } else {
+      FILES[i].font_color = AL_COLOR_WHITE;
+    }
   }
 
  return true;
