@@ -101,15 +101,12 @@ bool drawHome () {
 
         switch (i) {
           case SAVE_OPTIONS:
-            printf("Continuar\n");
             GAME_INFO->state = SAVES;
             break;
           case START_GAME:
-            printf("Novo Jogo\n");
             GAME_INFO->state = MAP;
             break;
           case SETTINGS:
-            printf("Configurações\n");
             GAME_INFO->state = CONFIG;
             break;
           case EXIT:

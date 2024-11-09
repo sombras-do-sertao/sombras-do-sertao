@@ -24,14 +24,10 @@ struct Button {
 };
 
 struct saveFile {
-  int x;
-  int y;
-  int width;
-  int height; 
   char *name;
   char *alias; 
   char *faseAtual;
-  char *horas;
+  char *minutos;
   char *honra;
   ALLEGRO_FONT *font;
   ALLEGRO_COLOR font_color;
@@ -45,10 +41,10 @@ extern struct Button BUTTONS_CONFIG[BUTTONS_CONFIG_COUNT];
 #define BUTTONS_HOME_COUNT 4
 extern struct Button BUTTONS_HOME[BUTTONS_HOME_COUNT];
 
+bool drawButton(struct Button *button);
+
 #define SAVEFILES_COUNT 4
 extern struct saveFile FILES[SAVEFILES_COUNT];
 
-
-bool drawButton(struct Button *button);
-bool drawSaveFile(struct saveFile *saveFile);
+bool drawSaveFile(struct saveFile *saveFile, int index);
 #endif

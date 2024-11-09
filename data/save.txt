@@ -1,0 +1,27 @@
+Save 1:
+name: Pedrão
+alias: Save 1
+faseAtual: 3
+minutos: 10
+honra: 20
+
+Save 2:
+name: Dudu
+alias: Save 2
+faseAtual: 1
+minutos: 10
+honra: 50
+
+Save 3:
+name: Lucão
+alias: Save 3
+faseAtual: 1
+minutos: 7
+honra: 0
+
+Save 4:
+name: Luiz e andrew
+alias: Save 4
+faseAtual: 6
+minutos: 4
+honra: 90
