@@ -9,6 +9,9 @@
     "allegro_image.h": "c",
     "protagonista.h": "c",
     "enemies.h": "c",
+    "components.h": "c",
+    "allegro_font.h": "c",
+    "stdio.h": "c"
   },
   "editor.tabSize": 2,
 }

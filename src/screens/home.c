@@ -18,12 +18,26 @@ void setupHome() {
   int width = 335;
   int height = 65;
 
-  struct Button start_game = {
-    WIDTH_SCREEN / 2 - width/2,
+  struct Button saves = {
+    WIDTH_SCREEN /2 - width/2,
     HEIGHT_SCREEN / 2 - 50,
     width,
     height,
-    "Iniciar Jogo",
+    "Continuar",
+    "saves",
+    fontButton,
+    AL_COLOR_WHITE,
+    AL_COLOR_BROWN,
+    FILLED,
+  };
+  BUTTONS_HOME[SAVE_OPTIONS] = saves;
+
+   struct Button start_game = {
+    WIDTH_SCREEN / 2 - width/2,
+    HEIGHT_SCREEN / 2 + 50,
+    width,
+    height,
+    "Novo Jogo",
     "start_game",
     fontButton, 
     AL_COLOR_WHITE,
@@ -34,7 +48,7 @@ void setupHome() {
 
   struct Button settings = {
     WIDTH_SCREEN /2 - width/2,
-    HEIGHT_SCREEN / 2 + 50,
+    HEIGHT_SCREEN / 2 + 150,
     width,
     height,
     "Configurações",
@@ -46,9 +60,10 @@ void setupHome() {
   };
   BUTTONS_HOME[SETTINGS] = settings;
 
+
   struct Button exit = {
     WIDTH_SCREEN / 2 - width/2,
-    HEIGHT_SCREEN / 2 + 150,
+    HEIGHT_SCREEN / 2 + 250,
     width,
     height,
     "Sair",
@@ -85,12 +100,13 @@ bool drawHome () {
         playSound(MENU_CLICK);
 
         switch (i) {
+          case SAVE_OPTIONS:
+            GAME_INFO->state = SAVES;
+            break;
           case START_GAME:
-            printf("Iniciar Jogo\n");
             GAME_INFO->state = MAP;
             break;
           case SETTINGS:
-            printf("Configurações\n");
             GAME_INFO->state = CONFIG;
             break;
           case EXIT:

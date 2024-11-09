@@ -51,6 +51,8 @@ bool handleScrens () {
       case STAGE_5:
         if(!drawStage_5()) GAME_INFO->state = MAP;
         break;
+      case SAVES:
+        if(!drawSaves()) GAME_INFO->state = MENU; 
       default:
         break;
     }

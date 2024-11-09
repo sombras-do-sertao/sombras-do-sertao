@@ -1,6 +1,8 @@
 @echo off
 setlocal
 
+cls
+
 :: Diretórios
 set SRC_DIR=src
 set BIN_DIR=bin

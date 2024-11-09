@@ -82,7 +82,7 @@ void setupAllegro() {
   al_set_display_icon(GAME_INFO->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
 
   setupSamples();
-
+  setupSaves();
   setupProtagonista();
   setupBulletsProtagonista();
   setupMapProtagonista();
@@ -129,6 +129,7 @@ void destroyAllegro() {
   destroyStage_3();
   destroyStage_4();
   destroyStage_5();
+  destroySaves();
   free(GAME_INFO->mouse_state);
   free(GAME_INFO);
 }

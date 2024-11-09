@@ -33,7 +33,8 @@ typedef enum {
   STAGE_2 = 5,
   STAGE_3 = 6,
   STAGE_4 = 7,
-  STAGE_5 = 8
+  STAGE_5 = 8,
+  SAVES = 9
 } GameState;
 
 struct AllegroGame {
@@ -50,7 +51,7 @@ struct AllegroGame {
   bool is_sound;
 };
 
-enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
+enum MENU_OPTIONS { START_GAME, SAVE_OPTIONS ,SETTINGS, EXIT, NUM_OPTIONS };
 
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
 
