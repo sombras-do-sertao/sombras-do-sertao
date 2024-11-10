@@ -18,7 +18,7 @@ void setupProtagonista() {
   protagonista->y = HEIGHT_SCREEN / 2;
   protagonista->width = 250;
   protagonista->height = 320;
-  protagonista->speed = 50;
+  protagonista->speed = 20;
   protagonista->direction = 1;
   protagonista->lives = 3;
   protagonista->score = 0;
@@ -34,30 +34,20 @@ void drawProtagonista() {
   al_draw_bitmap(protagonista->image, protagonista->x, protagonista->y, 0);
 }
 
-void moveProtagonista() {
-  int keycode = GAME_INFO->event.keyboard.keycode;
-
-    switch (keycode) {
-      case ALLEGRO_KEY_UP:
-      case ALLEGRO_KEY_W:
-        protagonista->y -= protagonista->speed;
-        break;
-      case ALLEGRO_KEY_DOWN:
-      case ALLEGRO_KEY_S:
-        protagonista->y += protagonista->speed;
-        break;
-      case ALLEGRO_KEY_LEFT:
-      case ALLEGRO_KEY_A:
-        protagonista->x -= protagonista->speed;
-        protagonista->stageX -= protagonista->speed;
-        break;
-      case ALLEGRO_KEY_RIGHT:
-      case ALLEGRO_KEY_D:
-        protagonista->x += protagonista->speed;
-        protagonista->stageX += protagonista->speed;
-        break;
-      default:
-        break;
+void moveProtagonista() {  
+  if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_UP) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_W)) {
+    protagonista->y -= protagonista->speed;
+  }
+  if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_DOWN) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_S)) {
+    protagonista->y += protagonista->speed;
+  }
+  if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_LEFT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_A)) {
+    protagonista->x -= protagonista->speed;
+    protagonista->stageX -= protagonista->speed;
+  }
+  if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_RIGHT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_D)) {
+    protagonista->x += protagonista->speed;
+    protagonista->stageX += protagonista->speed;
   }
 }
 
@@ -76,7 +66,7 @@ void setupBulletsProtagonista() {
 void shootProtagonista() {
   double current_time = al_get_time();
 
-  if (GAME_INFO->event.keyboard.keycode == ALLEGRO_KEY_SPACE && 
+  if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_SPACE) && 
       current_time - protagonista->last_shoot >= SHOOT_DELAY && 
       protagonista->bullets > 0
     ) {

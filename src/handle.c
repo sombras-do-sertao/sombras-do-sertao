@@ -10,14 +10,14 @@ bool handleScrens () {
   else if(GAME_INFO->event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
     return false;
 
-  if(GAME_INFO->event.type == ALLEGRO_EVENT_KEY_DOWN) {
-    if(GAME_INFO->event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
-      if (GAME_INFO->state >= STAGE_1 && GAME_INFO->state <= STAGE_5) {
-        GAME_INFO->state = MAP;
-      } else {
-        GAME_INFO->state = MENU;
+    if (GAME_INFO->event.type == ALLEGRO_EVENT_KEY_DOWN) {
+      if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_ESCAPE)) {
+          if (GAME_INFO->state >= STAGE_1 && GAME_INFO->state <= STAGE_5) {
+            GAME_INFO->state = MAP;
+          } else {
+            GAME_INFO->state = MENU;
+          }
       }
-    }
   }
 
   if(redraw && al_is_event_queue_empty(GAME_INFO->queue)) {

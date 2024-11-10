@@ -104,12 +104,7 @@ void protagonistaMovement(int finalX, int finalY) {
 }
 
 void protagonistaMapMovement() {
-  int keycode = GAME_INFO->event.keyboard.keycode;
-
-  switch (keycode) {
-  case ALLEGRO_KEY_LEFT:
-  case ALLEGRO_KEY_A:
-    
+  if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_LEFT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_A)) {
     if (MAPA_PROTAGONISTA->stage == 0) return;
 
     MAPA_PROTAGONISTA->stage--;
@@ -150,52 +145,48 @@ void protagonistaMapMovement() {
     default:
       break;
     }
-    break;
-  case ALLEGRO_KEY_RIGHT:
-  case ALLEGRO_KEY_D:
-
+  } else if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_RIGHT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_D)) {
     if (MAPA_PROTAGONISTA->stage == 8) return;
 
     MAPA_PROTAGONISTA->stage++;
- 
+
     switch (MAPA_PROTAGONISTA->stage) {
-    case 1:
-      protagonistaMovement(297, 327);
-      protagonistaMovement(353, 495);
-      break;
-    case 2:
-      protagonistaMovement(419, 694);
-      protagonistaMovement(550, 694);
-      break;
-    case 3:
-      protagonistaMovement(676, 694);
-      protagonistaMovement(771, 475);
-      break;
-    case 4:
-      protagonistaMovement(861, 269);
-      protagonistaMovement(962, 269);
-      break;
-    case 5:
-      protagonistaMovement(1074, 269);
-      protagonistaMovement(1096, 505);
-      break;
-    case 6:
-      protagonistaMovement(1329, 505);
-      break;
-    case 7:
-      protagonistaMovement(1504, 505);
-      protagonistaMovement(1555, 476);
-      protagonistaMovement(1571, 436);
-      break;
-    case 8:
-      protagonistaMovement(1589, 392);
-      protagonistaMovement(1589, 169);
-      break;
-    default:
-      break;
-    } 
-    break;
-  case ALLEGRO_KEY_ENTER:
+      case 1:
+        protagonistaMovement(297, 327);
+        protagonistaMovement(353, 495);
+        break;
+      case 2:
+        protagonistaMovement(419, 694);
+        protagonistaMovement(550, 694);
+        break;
+      case 3:
+        protagonistaMovement(676, 694);
+        protagonistaMovement(771, 475);
+        break;
+      case 4:
+        protagonistaMovement(861, 269);
+        protagonistaMovement(962, 269);
+        break;
+      case 5:
+        protagonistaMovement(1074, 269);
+        protagonistaMovement(1096, 505);
+        break;
+      case 6:
+        protagonistaMovement(1329, 505);
+        break;
+      case 7:
+        protagonistaMovement(1504, 505);
+        protagonistaMovement(1555, 476);
+        protagonistaMovement(1571, 436);
+        break;
+      case 8:
+        protagonistaMovement(1589, 392);
+        protagonistaMovement(1589, 169);
+        break;
+      default:
+        break;
+    }
+  } else if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_ENTER)) {
     switch (MAPA_PROTAGONISTA->stage) {
     case 0:
       setupProtagonista();
@@ -225,9 +216,6 @@ void protagonistaMapMovement() {
     default:
       break;  
     }
-    break;
-  default:
-    break;
   }
 }
 

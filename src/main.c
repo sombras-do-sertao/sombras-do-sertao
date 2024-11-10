@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
@@ -27,9 +28,16 @@ void initializeAllegro() {
   int window_y = monitor_info.y1;
 
   GAME_INFO = (struct AllegroGame *) malloc(sizeof(struct AllegroGame));
+  GAME_INFO->save = (struct GameSave *) malloc(sizeof(struct GameSave));
+  GAME_INFO->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
   GAME_INFO->state = MENU;
 
   if (!GAME_INFO) {
+    fprintf(stderr, "Fail to allocate memory.\n");
+    exit(1);
+  }
+
+  if (!GAME_INFO->save) {
     fprintf(stderr, "Fail to allocate memory.\n");
     exit(1);
   }
@@ -43,16 +51,18 @@ void initializeAllegro() {
   GAME_INFO->queue = al_create_event_queue();
   GAME_INFO->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
 
-  al_set_window_position(GAME_INFO->display, window_x, window_y);
-
-  GAME_INFO->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
-
   GAME_INFO->is_sound = true;
+
+  GAME_INFO->save->stage = 0;
+  GAME_INFO->save->honor = 0;
+  GAME_INFO->save->minutes = 0.0;
 
   if (!GAME_INFO->timer || !GAME_INFO->queue || !GAME_INFO->display) {
     fprintf(stderr, "Fail to load Allegro.\n");
     exit(1);
   }
+
+  al_set_window_position(GAME_INFO->display, window_x, window_y);
 }
 
 void setupAllegro() {
@@ -130,6 +140,7 @@ void destroyAllegro() {
   destroyStage_4();
   destroyStage_5();
   destroySaves();
+  free(GAME_INFO->save);
   free(GAME_INFO->mouse_state);
   free(GAME_INFO);
 }
@@ -145,6 +156,11 @@ int main() {
   while(!done) {
     al_wait_for_event(GAME_INFO->queue, &GAME_INFO->event);
     al_get_mouse_state(GAME_INFO->mouse_state);
+
+    al_get_keyboard_state(&GAME_INFO->key_state);
+
+    printf("State: %d\n", GAME_INFO->state);
+    printf("Minutes: %f\n", GAME_INFO->save->minutes);
 
     if (!handleScrens()) {
       done = true;
