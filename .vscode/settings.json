@@ -13,7 +13,8 @@
     "allegro_font.h": "c",
     "stdio.h": "c",
     "allegro_native_dialog.h": "c",
-    "string.h": "c"
+    "string.h": "c",
+    "colision.h": "c"
   },
   "editor.tabSize": 2,
 }

@@ -12,4 +12,6 @@ bool colision_bullet_in_enemy(struct BulletProtagonista *bullet, struct Enemy *e
 
 bool colision_bullet_in_protagonista(struct BulletEnemy *bullet, struct Protagonista *protagonista);
 
+bool colision_bullet_in_protagonista(struct BulletEnemy *bullet, struct Protagonista *protagonista);
+
 #endif
