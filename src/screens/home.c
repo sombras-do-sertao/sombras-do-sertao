@@ -2,6 +2,7 @@
 #include "../headers/screens.h"
 #include "../headers/sound.h"
 #include "../headers/components.h"
+#include "../headers/save.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 
@@ -103,9 +104,12 @@ bool drawHome () {
           case SAVE_OPTIONS:
             GAME_INFO->state = SAVES;
             break;
-          case START_GAME:
+          case START_GAME: {
+            saveHandler();
+            MAPA_PROTAGONISTA->stage = 0;
             GAME_INFO->state = MAP;
             break;
+          }
           case SETTINGS:
             GAME_INFO->state = CONFIG;
             break;

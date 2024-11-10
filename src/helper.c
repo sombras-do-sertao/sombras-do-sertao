@@ -1,5 +1,6 @@
 #include "headers/helper.h"
 #include "headers/protagonista.h"
+#include "headers/screens.h"
 #include <stdio.h>
 #include <allegro5/allegro5.h>
 
@@ -29,30 +30,23 @@ float changeScreen(int totalStages) {
   int stage;
   int a = 0;
 
-  if(protagonista->stageX > WIDTH_SCREEN * 3 - (protagonista->width/3)) {
-    
-    stage = 3;
-    if(!(protagonista->stageX > (WIDTH_SCREEN * 3 - (protagonista->width/3)) + protagonista->speed)) { // coloca o personagem na esquerda da tela antes do primeiro passo dado, se tirar o negado ele não vai andar pq vai retornar true sempre
-      protagonista->x = 0;
-    }
-     if(protagonista->stageX >= 7680) {
-        GAME_INFO->state = MAP;  // caso tenha acabado a fase, volta pro mapa
-        protagonista->stageX = 0;
+  int screen_thresholds[] = {WIDTH_SCREEN * 3, WIDTH_SCREEN * 2, WIDTH_SCREEN};
+  stage = 0;
+
+  for (int i = 0; i < 3; i++) {
+    if (protagonista->stageX > screen_thresholds[i] - (protagonista->width / 3)) {
+      stage = i + 1;
+      if (!(protagonista->stageX > (screen_thresholds[i] - (protagonista->width / 3)) + protagonista->speed)) {
         protagonista->x = 0;
       }
+      break;
+    }
+  }
 
-  } else if(protagonista->stageX > WIDTH_SCREEN * 2 - (protagonista->width/3)) {
-    stage = 2;
-     if(!(protagonista->stageX > (WIDTH_SCREEN * 2 - (protagonista->width/3)) + protagonista->speed)) { 
-      protagonista->x = 0;
-    }
-  } else if(protagonista->stageX > WIDTH_SCREEN - (protagonista->width/3)) { //1837
-    stage = 1;
-    if(!(protagonista->stageX > (WIDTH_SCREEN - (protagonista->width/3)) + protagonista->speed)) { 
-      protagonista->x = 0;
-    }
-  } else {
-    stage = 0;
+  if (protagonista->stageX >= 7680) {
+    GAME_INFO->state = MAP;
+    protagonista->stageX = 0;
+    protagonista->x = 0;
   }
 
   return stage;

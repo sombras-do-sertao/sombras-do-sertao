@@ -11,7 +11,9 @@
     "enemies.h": "c",
     "components.h": "c",
     "allegro_font.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "allegro_native_dialog.h": "c",
+    "string.h": "c"
   },
   "editor.tabSize": 2,
 }

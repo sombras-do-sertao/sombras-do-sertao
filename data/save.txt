@@ -1,27 +1,27 @@
 Save 1:
 name: Pedrão
 alias: Save 1
-faseAtual: 3
-minutos: 10
-honra: 20
+stage: 2
+minutes: 10.32
+honor: 20
 
 Save 2:
 name: Dudu
 alias: Save 2
-faseAtual: 1
-minutos: 10
-honra: 50
+stage: 4
+minutes: 10.32
+honor: 50
 
 Save 3:
 name: Lucão
 alias: Save 3
-faseAtual: 1
-minutos: 7
-honra: 0
+stage: 0
+minutes: 7.2
+honor: 0
 
 Save 4:
 name: Luiz e andrew
 alias: Save 4
-faseAtual: 6
-minutos: 4
-honra: 90
+stage: 6
+minutes: 4.1
+honor: 90

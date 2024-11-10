@@ -1,5 +1,6 @@
 #include "../headers/components.h"
 #include "../headers/helper.h"
+#include "../headers/save.h"
 #include <allegro5/allegro_font.h>
 #include <stdio.h>
 
@@ -19,8 +20,8 @@ bool drawSaveFile(struct saveFile *saveFile, int index) {
   int honor_x = currentStage_x + 310;
   int honor_y = currentStage_y + 10;
 
-  int hours_x = honor_x + 180;
-  int hours_y = honor_y;
+  int minutes_x = honor_x + 180;
+  int minutes_y = honor_y;
   
   int imageX = WIDTH_SCREEN /2 - 379;
   int imageY = y;
@@ -28,9 +29,16 @@ bool drawSaveFile(struct saveFile *saveFile, int index) {
   al_draw_bitmap(saveFile->image, imageX, imageY, 0);
 
   al_draw_text(saveFile->font, saveFile->font_color, name_x, name_y, 0, saveFile->name);
-  al_draw_text(saveFile->smallerFont, saveFile->font_color, currentStage_x, currentStage_y, 0, saveFile->faseAtual);
-  al_draw_text(saveFile->smallerFont, saveFile->font_color,  honor_x, honor_y, 0, saveFile->honra);
-  al_draw_text(saveFile->smallerFont, saveFile->font_color,  hours_x, hours_y, 0, saveFile->minutos);
+  al_draw_text(saveFile->smallerFont, saveFile->font_color, currentStage_x, currentStage_y, 0, "Fase:");
+  al_draw_text(saveFile->smallerFont, saveFile->font_color, currentStage_x + 50, currentStage_y, 0, saveFile->stage);
+  al_draw_text(saveFile->smallerFont, saveFile->font_color,  honor_x, honor_y, 0, saveFile->honor);
+  al_draw_text(saveFile->smallerFont, saveFile->font_color,  minutes_x, minutes_y, 0, saveFile->minutes);
+    
+  if (atoi(saveFile->minutes) > 1) {
+    int text_width = al_get_text_width(saveFile->smallerFont, saveFile->minutes);
+    minutes_x += text_width;
+    al_draw_text(saveFile->smallerFont, saveFile->font_color, minutes_x + 5, minutes_y, 0, "S");
+  }
 
-  return isMouseOverBox(GAME_INFO->mouse_state, x, y, width, height);
+  return isMouseOverBox(GAME_INFO->mouse_state, x - 180, y, width + 360, height);
 }

@@ -37,6 +37,12 @@ typedef enum {
   SAVES = 9
 } GameState;
 
+struct GameSave {
+  int stage;
+  int honor;
+  float minutes;
+};
+
 struct AllegroGame {
   ALLEGRO_TIMER *timer;
   ALLEGRO_EVENT_QUEUE *queue;
@@ -47,7 +53,9 @@ struct AllegroGame {
   ALLEGRO_FONT *font_big;
   ALLEGRO_FONT *font_bullet;
   ALLEGRO_MOUSE_STATE *mouse_state;
+  ALLEGRO_KEYBOARD_STATE key_state;
   GameState state;
+  struct GameSave *save;
   bool is_sound;
 };
 
