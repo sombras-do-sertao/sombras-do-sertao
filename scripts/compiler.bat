@@ -16,7 +16,7 @@ set TARGET=%BIN_DIR%\SombrasDoSertao.exe
 :: Configurações do Allegro
 set PROJECT_ROOT=%~dp0..\
 set CFLAGS=-I"%PROJECT_ROOT%bin\allegro\include"
-set LDFLAGS=-L"%PROJECT_ROOT%bin\allegro\lib" -lallegro -lallegro_font -lallegro_ttf -lallegro_image -lallegro_primitives -lallegro_audio -lallegro_acodec
+set LDFLAGS=-L"%PROJECT_ROOT%bin\allegro\lib" -lallegro -lallegro_font -lallegro_ttf -lallegro_image -lallegro_primitives -lallegro_audio -lallegro_acodec -lallegro_dialog -lallegro_main
 
 :: Compilar os arquivos fonte
 gcc %SRCS% -o %TARGET% %CFLAGS% %LDFLAGS%

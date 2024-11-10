@@ -5,6 +5,7 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_native_dialog.h>
 
 #include "headers/helper.h"
 #include "headers/handle.h"
@@ -75,6 +76,7 @@ void setupAllegro() {
   al_install_mouse();
   al_install_audio();
   al_init_acodec_addon();
+  al_init_native_dialog_addon();
 
   initializeAllegro();
 
@@ -92,6 +94,7 @@ void setupAllegro() {
   al_set_display_icon(GAME_INFO->display, al_load_bitmap("assets/images/icon/icon.jpeg"));
 
   setupSamples();
+  loadSaves();
   setupSaves();
   setupProtagonista();
   setupBulletsProtagonista();
@@ -126,6 +129,7 @@ void destroyAllegro() {
   al_shutdown_font_addon();
   al_shutdown_primitives_addon();
   al_shutdown_image_addon();
+  al_shutdown_native_dialog_addon();
 
   destroyEnemies();
 
@@ -158,9 +162,6 @@ int main() {
     al_get_mouse_state(GAME_INFO->mouse_state);
 
     al_get_keyboard_state(&GAME_INFO->key_state);
-
-    printf("State: %d\n", GAME_INFO->state);
-    printf("Minutes: %f\n", GAME_INFO->save->minutes);
 
     if (!handleScrens()) {
       done = true;
