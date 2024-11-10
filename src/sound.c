@@ -43,6 +43,13 @@ void setupSamples(void) {
     .name = "shoot"
   };
 
+  Sample shootEnemy = {
+    .id = 3,
+    .path = "assets/audio/disparo_inimigo.mp3",
+    .name = "shootEnemy"
+  };
+
   samples[0] = menu_click;
   samples[1] = shoot;
+  samples[2] = shootEnemy;
 }
