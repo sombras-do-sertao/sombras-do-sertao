@@ -11,13 +11,15 @@
 struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
 struct Protagonista *protagonista;
 
+int frameX = 0;
+int frameY = 0;
 void setupProtagonista() {
   protagonista = malloc(sizeof(struct Protagonista));
 
   protagonista->x = 20;
   protagonista->y = HEIGHT_SCREEN / 2;
-  protagonista->width = 250;
-  protagonista->height = 330;
+  protagonista->width = 295;
+  protagonista->height = 341;
   protagonista->speed = 20;
   protagonista->direction = 1;
   protagonista->lives = 3;
@@ -26,14 +28,17 @@ void setupProtagonista() {
   protagonista->estagioAtual = 0;
   protagonista->last_shoot = 0;
   protagonista->bullets = 3;
-  protagonista->image = al_load_bitmap("assets/images/characters/protagonista.png");
+  protagonista->image = al_load_bitmap("assets/images/characters/sprites/protagonista_andando.png");
   protagonista->image_bullet = al_load_bitmap("assets/images/addons/ammo.png");
 }
 
 void drawProtagonista() {
-  al_draw_bitmap(protagonista->image, protagonista->x, protagonista->y, 0);
+  if(frameX > 4 || frameX < 0) {
+    frameX = 0;
+  }
+  al_draw_bitmap_region(protagonista->image, frameX * 296, frameY * 342, protagonista->width, protagonista->height, protagonista->x, protagonista->y, 0);
 }
-
+//295 x 341
 void moveProtagonista() {
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_UP) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_W)) {
     if (protagonista->y + protagonista->height <= HEIGHT_SCREEN - protagonista->height) {
@@ -52,10 +57,14 @@ void moveProtagonista() {
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_LEFT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_A)) {
     protagonista->x -= protagonista->speed;
     protagonista->stageX -= protagonista->speed;
+    frameY = 1;
+    frameX--;
   }
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_RIGHT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_D)) {
     protagonista->x += protagonista->speed;
     protagonista->stageX += protagonista->speed;
+    frameY = 0;
+    frameX++;
   }
 }
 
@@ -66,6 +75,7 @@ void setupBulletsProtagonista() {
     bullets_protagonista[i].width = 32;
     bullets_protagonista[i].height = 32;
     bullets_protagonista[i].speed = 50;
+    bullets_protagonista[i].direction = 1;
     bullets_protagonista[i].active = false;
     bullets_protagonista[i].image = al_load_bitmap("assets/images/addons/municao_revolver.png");
   }
