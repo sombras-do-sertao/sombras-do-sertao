@@ -46,25 +46,25 @@ void protagonistaMovement(int finalX, int finalY) {
   if (m == 0 || x == 0) { // Quando o m ou y(quando y é zero o m também é) for zero, a função é na verdade uma constante paralela ao eixo x. Quando x for zero é uma constante paralela ao eixo y
     if (finalX > MAPA_PROTAGONISTA->x) { // Caso de deslocamento positivo no eixo x
       for (int i = 0; i < x; i++) {
-        mapProtagonista->x++;
+        MAPA_PROTAGONISTA->x++;
         passFrame();
       } 
     } 
     else if (finalX < MAPA_PROTAGONISTA->x) { // Caso de deslocamento negativo no eixo x
       for (int i = 0; i > x; i--) {
-        mapProtagonista->x--;
+        MAPA_PROTAGONISTA->x--;
         passFrame();
       }
     }
     else if (finalY > MAPA_PROTAGONISTA->y) { // Caso de deslocamento positivo no eixo y
       for (int i = 0; i < y; i++) {
-        mapProtagonista->y++;
+        MAPA_PROTAGONISTA->y++;
         passFrame();
       }
     }
     else if (finalY < MAPA_PROTAGONISTA->y) { // Caso de deslocamento negativo no eixo y
       for (int i = 0; i > y; i--) {
-        mapProtagonista->y--;
+        MAPA_PROTAGONISTA->y--;
         passFrame();
       }
     }
@@ -72,15 +72,15 @@ void protagonistaMovement(int finalX, int finalY) {
   else if (m > 0) { // É uma função linear crescente ( f(x) = x )
     if (finalX > MAPA_PROTAGONISTA->x && finalY > MAPA_PROTAGONISTA->y) { // Função linear crescente com deslocamento positivo 
       for (int i = 0; i < y/m; i++) {
-        mapProtagonista->x++;
-        mapProtagonista->y += m;
+        MAPA_PROTAGONISTA->x++;
+        MAPA_PROTAGONISTA->y += m;
         passFrame();
       }  
     } 
     else if (finalX < MAPA_PROTAGONISTA->x && finalY < MAPA_PROTAGONISTA->y) { // Função linear crescente com deslocamento negativo 
       for (int i = 0; i > y/m; i--) {
-        mapProtagonista->x--;
-        mapProtagonista->y -= m;
+        MAPA_PROTAGONISTA->x--;
+        MAPA_PROTAGONISTA->y -= m;
         passFrame();
       }
     }
@@ -88,15 +88,15 @@ void protagonistaMovement(int finalX, int finalY) {
   else if (m < 0) { // É uma função linear decrescente( f(x) = -x )
     if (finalX > MAPA_PROTAGONISTA->x && finalY < MAPA_PROTAGONISTA->y) { // Função linear decrescente com deslocamento positivo 
       for (int i = 0; i < y/m; i++) {
-        mapProtagonista->x++;
-        mapProtagonista->y -= m*-1;
+        MAPA_PROTAGONISTA->x++;
+        MAPA_PROTAGONISTA->y -= m*-1;
         passFrame();
       }  
     } 
     else if (finalX < MAPA_PROTAGONISTA->x && finalY > MAPA_PROTAGONISTA->y) { // Função linear decrescente com deslocamento negativo 
       for (int i = 0; i > y/m; i--) {
-        mapProtagonista->x--;
-        mapProtagonista->y += m*-1;
+        MAPA_PROTAGONISTA->x--;
+        MAPA_PROTAGONISTA->y += m*-1;
         passFrame();
       }
     }

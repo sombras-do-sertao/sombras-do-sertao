@@ -12,8 +12,8 @@ void setupEnemies() {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
     enemies[i].x = rand() % (WIDTH_SCREEN - 100);
     enemies[i].y = HEIGHT_SCREEN / 2 - 100;
-    enemies[i].width = 500;
-    enemies[i].height = 500;
+    enemies[i].width = 296;
+    enemies[i].height = 342;
     enemies[i].speed = 10;
     enemies[i].direction = rand() % 4;
     enemies[i].active = true;

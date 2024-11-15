@@ -16,8 +16,8 @@ void setupProtagonista() {
 
   protagonista->x = 20;
   protagonista->y = HEIGHT_SCREEN / 2;
-  protagonista->width = 250;
-  protagonista->height = 330;
+  protagonista->width = 296;
+  protagonista->height = 342;
   protagonista->speed = 20;
   protagonista->direction = 1;
   protagonista->lives = 3;
@@ -36,7 +36,7 @@ void drawProtagonista() {
 
 void moveProtagonista() {
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_UP) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_W)) {
-    if (protagonista->y + protagonista->height <= HEIGHT_SCREEN - protagonista->height) {
+    if (protagonista->y + protagonista->height - 50 <= HEIGHT_SCREEN - protagonista->height) {
       return;
     }
 
