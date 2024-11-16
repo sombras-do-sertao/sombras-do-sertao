@@ -33,8 +33,8 @@ void setupProtagonista() {
 }
 
 void drawProtagonista() {
-  if(frameX > 4 || frameX < 0) {
-    frameX = 0;
+  if(frameX > 3 || frameX < 0) {
+    frameX = 2;
   }
   al_draw_bitmap_region(protagonista->image, frameX * 296, frameY * 342, protagonista->width, protagonista->height, protagonista->x, protagonista->y, 0);
 }
