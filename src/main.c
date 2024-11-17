@@ -99,7 +99,6 @@ void setupAllegro() {
   setupProtagonista();
   setupBulletsProtagonista();
   setupMapProtagonista();
-  setupEnemies();
   setupButtonsConfig();
   setupHome();
   setupGame();
@@ -109,6 +108,8 @@ void setupAllegro() {
   setupStage_3();
   setupStage_4();
   setupStage_5();
+
+  srand(time(NULL));
 }
 
 void destroyAllegro() {
