@@ -42,7 +42,6 @@ void drawProtagonista() {
   }
   al_draw_bitmap_region(protagonista->image, frameX * 296, frameY * 342, protagonista->width, protagonista->height, protagonista->x, protagonista->y, 0);
 }
-//295 x 341
 void moveProtagonista() {
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_UP) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_W)) {
     if (protagonista->y + protagonista->height - 50 <= HEIGHT_SCREEN - protagonista->height) {

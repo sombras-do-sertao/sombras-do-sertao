@@ -39,6 +39,11 @@ float changeScreen(int totalStages) {
       if (!(protagonista->stageX > (screen_thresholds[i] - (protagonista->width / 3)) + protagonista->speed)) {
         protagonista->x = 0;
       }
+
+      if(protagonista->stageX < (screen_thresholds[i] - (protagonista->width / 3)) ) {
+        protagonista->stageX += protagonista->speed;
+      }
+
       break;
     }
   }
