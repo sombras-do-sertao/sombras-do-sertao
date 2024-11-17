@@ -33,4 +33,7 @@ extern struct Button BUTTONS_HOME[BUTTONS_HOME_COUNT];
 bool drawButton(struct Button *button);
 
 bool drawSaveFile(struct saveFile *saveFile, int index);
+
+void setupDied();
+void drawDied();
 #endif
