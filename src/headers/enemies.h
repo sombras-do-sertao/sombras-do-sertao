@@ -47,6 +47,8 @@ void shootBulletEnemy(struct Enemy *enemie);
 
 void handlerEnemies();
 
+void resetEnemies();
+
 void destroyEnemies();
 
 #endif
