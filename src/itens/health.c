@@ -8,8 +8,13 @@
 
 struct HealthBox health_boxes[HEALTH_BOXES_COUNT];
 
-void setupHealthBoxes() {
+void setupHealthBoxes(int quantity) {
   for (int i = 0; i < HEALTH_BOXES_COUNT; i++) {
+    if (i >= quantity) {
+      health_boxes[i].active = false;
+      continue;
+    }
+
     health_boxes[i].x = rand() % (WIDTH_SCREEN - health_boxes[i].width);
     health_boxes[i].y = (rand() % (HEIGHT_SCREEN / 2 + 100)) + (HEIGHT_SCREEN / 2 + 100 - health_boxes[i].height);
     health_boxes[i].width = 192;
@@ -28,7 +33,7 @@ void drawHealthBoxes() {
   }
 }
 
-void resetHealtBoxes() {
+void resetHealthBoxes() {
   for (int i = 0; i < HEALTH_BOXES_COUNT; i++) {
     health_boxes[i].active = false;
   }

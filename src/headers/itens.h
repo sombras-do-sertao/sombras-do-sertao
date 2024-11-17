@@ -25,7 +25,7 @@ struct HealthBox {
   ALLEGRO_BITMAP *image;
 };
 
-#define AMMO_BOXES_COUNT 10
+#define AMMO_BOXES_COUNT 3
 extern struct AmmoBox ammo_boxes[AMMO_BOXES_COUNT];
 
 void setupAmmoBoxes(int quantity);
@@ -33,10 +33,10 @@ void drawAmmoBoxes();
 void resetAmmoBoxes();
 void collectAmmoBox();
 
-#define HEALTH_BOXES_COUNT 10
+#define HEALTH_BOXES_COUNT 3
 extern struct HealthBox health_boxes[HEALTH_BOXES_COUNT];
 
-void setupHealthBoxes();
+void setupHealthBoxes(int quantity);
 void drawHealthBoxes();
 void collectHealthBox();
 void resetHealthBoxes();
