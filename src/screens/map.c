@@ -33,7 +33,7 @@ void destroyMapProtagonista() {
 void passFrame() {
   al_rest(0.001);
   al_draw_bitmap(bg_map, 0, 0, 0);
-  drawMapProtagonista(MAPA_PROTAGONISTA);
+  drawMapProtagonista();
   al_flip_display();
 }
 
@@ -47,25 +47,25 @@ void protagonistaMovement(int finalX, int finalY) {
     if (finalX > MAPA_PROTAGONISTA->x) { // Caso de deslocamento positivo no eixo x
       for (int i = 0; i < x; i++) {
         MAPA_PROTAGONISTA->x++;
-        passFrame(MAPA_PROTAGONISTA);
+        passFrame();
       } 
     } 
     else if (finalX < MAPA_PROTAGONISTA->x) { // Caso de deslocamento negativo no eixo x
       for (int i = 0; i > x; i--) {
         MAPA_PROTAGONISTA->x--;
-        passFrame(MAPA_PROTAGONISTA);
+        passFrame();
       }
     }
     else if (finalY > MAPA_PROTAGONISTA->y) { // Caso de deslocamento positivo no eixo y
       for (int i = 0; i < y; i++) {
         MAPA_PROTAGONISTA->y++;
-        passFrame(MAPA_PROTAGONISTA);
+        passFrame();
       }
     }
     else if (finalY < MAPA_PROTAGONISTA->y) { // Caso de deslocamento negativo no eixo y
       for (int i = 0; i > y; i--) {
         MAPA_PROTAGONISTA->y--;
-        passFrame(MAPA_PROTAGONISTA);
+        passFrame();
       }
     }
   }
@@ -74,14 +74,14 @@ void protagonistaMovement(int finalX, int finalY) {
       for (int i = 0; i < y/m; i++) {
         MAPA_PROTAGONISTA->x++;
         MAPA_PROTAGONISTA->y += m;
-        passFrame(MAPA_PROTAGONISTA);
+        passFrame();
       }  
     } 
     else if (finalX < MAPA_PROTAGONISTA->x && finalY < MAPA_PROTAGONISTA->y) { // Função linear crescente com deslocamento negativo 
       for (int i = 0; i > y/m; i--) {
         MAPA_PROTAGONISTA->x--;
         MAPA_PROTAGONISTA->y -= m;
-        passFrame(MAPA_PROTAGONISTA);
+        passFrame();
       }
     }
   } 
@@ -90,14 +90,14 @@ void protagonistaMovement(int finalX, int finalY) {
       for (int i = 0; i < y/m; i++) {
         MAPA_PROTAGONISTA->x++;
         MAPA_PROTAGONISTA->y -= m*-1;
-        passFrame(MAPA_PROTAGONISTA);
+        passFrame();
       }  
     } 
     else if (finalX < MAPA_PROTAGONISTA->x && finalY > MAPA_PROTAGONISTA->y) { // Função linear decrescente com deslocamento negativo 
       for (int i = 0; i > y/m; i--) {
         MAPA_PROTAGONISTA->x--;
         MAPA_PROTAGONISTA->y += m*-1;
-        passFrame(MAPA_PROTAGONISTA);
+        passFrame();
       }
     }
   }
@@ -190,27 +190,22 @@ void protagonistaMapMovement() {
     switch (MAPA_PROTAGONISTA->stage) {
     case 0:
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_1;
       break;
     case 2:
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_2;
       break;
     case 4:
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_3;
       break;
     case 6:
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_4;
       break;
     case 8:     
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_5;
       break;
     default:
