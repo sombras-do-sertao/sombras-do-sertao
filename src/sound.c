@@ -49,7 +49,14 @@ void setupSamples(void) {
     .name = "shootEnemy"
   };
 
+  Sample pickItem = {
+    .id = 4,
+    .path = "assets/audio/pick-up.mp3",
+    .name = "pickItem"
+  };
+
   samples[0] = menu_click;
   samples[1] = shoot;
   samples[2] = shootEnemy;
+  samples[3] = pickItem;
 }

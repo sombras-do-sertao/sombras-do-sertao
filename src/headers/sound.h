@@ -13,10 +13,11 @@ typedef struct {
 typedef enum {
   MENU_CLICK = 0,
   SHOOT = 1,
-  SHOOT_ENEMY = 2
+  SHOOT_ENEMY = 2,
+  PICK_ITEM = 3,
 } SampleIndex;
 
-#define MAX_SAMPLES 3
+#define MAX_SAMPLES 4
 extern Sample samples[MAX_SAMPLES];
 
 void playSound(int sample_index);
