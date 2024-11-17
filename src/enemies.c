@@ -1,5 +1,6 @@
 #include "headers/enemies.h"
 #include "allegro5/allegro_primitives.h"
+#include "headers/colision.h"
 #include "headers/sound.h"
 #include <stdio.h>
 
@@ -143,6 +144,11 @@ void handlerEnemies() {
 
     drawBulletEnemies();
     bullets_enemies[i].x += bullets_enemies[i].speed * bullets_enemies[i].direction;
+
+    if (colision_bullet_in_protagonista(&bullets_enemies[i], protagonista)) {
+      bullets_enemies[i].active = false;
+      protagonista->health--;
+    }
 
     if (bullets_enemies[i].x > WIDTH_SCREEN || bullets_enemies[i].x < 0) {
       bullets_enemies[i].active = false;

@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include "../headers/helper.h"
 #include "../headers/itens.h"
+#include "../headers/components.h"
 
 ALLEGRO_BITMAP *bg_stage_1;
 
@@ -45,6 +46,11 @@ void destroyStage_1 () {
 }
 
 bool drawStage_1 () {
+  if (protagonista->health <= 0) {
+    drawDied();
+    return true;
+  }
+
   int frame = changeScreen(4);
 
   if (frame != last_frameStage1) {
@@ -63,7 +69,7 @@ bool drawStage_1 () {
       case 1:
         setupFrame4Stage1();
         break;
-  }
+    }
   }
 
   al_draw_bitmap_region(bg_stage_1, frame * WIDTH_SCREEN, 0, WIDTH_SCREEN, 1080, 0, 0, 0);

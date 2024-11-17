@@ -12,7 +12,7 @@ struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
 struct Protagonista *protagonista;
 
 int frameX = 0;
-int frameY = 1;
+int frameY = 0;
 void setupProtagonista() {
   protagonista = malloc(sizeof(struct Protagonista));
 
@@ -30,6 +30,7 @@ void setupProtagonista() {
   protagonista->bullets = 4;
   protagonista->image = al_load_bitmap("assets/images/characters/sprites/protagonista_andando.png");
   protagonista->image_bullet = al_load_bitmap("assets/images/addons/ammo.png");
+  protagonista->image_health = al_load_bitmap("assets/images/addons/heart.png");
 }
 
 void drawProtagonista() {
@@ -153,7 +154,14 @@ void drawBulletCount(int bullets) {
   al_draw_textf(GAME_INFO->font_bullet, AL_COLOR_BLACK, 100, 25, ALLEGRO_ALIGN_LEFT, "%d", bullets);
 }
 
+void drawHealth() {
+  for (int i = 0; i < protagonista->health; i++) {
+    al_draw_bitmap(protagonista->image_health, 0 + (i * 50), 100, 0);
+  }
+}
+
 void handlerProtagonista() {
+  drawHealth();
   drawBulletCount(protagonista->bullets);
   drawProtagonista(protagonista);
   moveProtagonista(protagonista);

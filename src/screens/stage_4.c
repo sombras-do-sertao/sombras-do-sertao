@@ -4,6 +4,7 @@
 #include "../headers/enemies.h"
 #include "../headers/itens.h"
 #include <allegro5/allegro_image.h>
+#include "../headers/components.h"
 #include <stdio.h>
 
 ALLEGRO_BITMAP *bg_stage_4;
@@ -43,6 +44,11 @@ void setupFrame4Stage4() {
 }
 
 bool drawStage_4 () {
+  if (protagonista->health <= 0) {
+    drawDied();
+    return true;
+  }
+
   int frame = changeScreen(4);
 
   if (frame != last_frameStage4) {
