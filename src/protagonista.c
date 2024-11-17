@@ -86,7 +86,7 @@ void shootProtagonista() {
       if (!bullets_protagonista[i].active) {
         bullets_protagonista[i].active = true;
         bullets_protagonista[i].x = protagonista->x + protagonista->width;
-        bullets_protagonista[i].y = protagonista->y + protagonista->height / 2 - 70;
+        bullets_protagonista[i].y = protagonista->y + protagonista->height / 2 - 80;
         bullets_protagonista[i].direction = protagonista->direction;
         bullets_protagonista[i].speed = 50 * protagonista->direction;
         bullets_protagonista[i].image = al_load_bitmap("assets/images/addons/municao_revolver.png");
