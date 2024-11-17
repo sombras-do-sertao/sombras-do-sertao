@@ -190,27 +190,22 @@ void protagonistaMapMovement() {
     switch (MAPA_PROTAGONISTA->stage) {
     case 0:
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_1;
       break;
     case 2:
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_2;
       break;
     case 4:
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_3;
       break;
     case 6:
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_4;
       break;
     case 8:     
       setupProtagonista();
-      setupEnemies(); 
       GAME_INFO->state = STAGE_5;
       break;
     default:
