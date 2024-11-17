@@ -11,8 +11,8 @@ struct BulletProtagonista {
   int width;
   int height;
   int speed;
-  bool active;
   int direction;
+  bool active;
   ALLEGRO_BITMAP *image;
 };
 
