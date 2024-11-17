@@ -12,7 +12,7 @@ struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
 struct Protagonista *protagonista;
 
 int frameX = 0;
-int frameY = 0;
+int frameY = 1;
 void setupProtagonista() {
   protagonista = malloc(sizeof(struct Protagonista));
 
@@ -54,7 +54,6 @@ void moveProtagonista() {
     if (protagonista->y + protagonista->height >= HEIGHT_SCREEN) {
       return;
     }
-
     protagonista->y += protagonista->speed;
   }
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_LEFT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_A)) {
