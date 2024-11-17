@@ -8,9 +8,14 @@ struct BulletEnemy bullets_enemies[BULLETS_ENEMIES_COUNT];
 int last_shoot = 0;
 int delay_shoot = 1;
 
-void setupEnemies() {
+void setupEnemies(int quantity) {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
-    enemies[i].x = rand() % (WIDTH_SCREEN - 100);
+    if (i >= quantity) {
+      enemies[i].active = false;
+      continue;
+    }
+
+    enemies[i].x = rand() % (WIDTH_SCREEN / 2) + (WIDTH_SCREEN / 2);
     enemies[i].y = HEIGHT_SCREEN / 2 - 100;
     enemies[i].width = 296;
     enemies[i].height = 342;
@@ -18,7 +23,7 @@ void setupEnemies() {
     enemies[i].direction = rand() % 4;
     enemies[i].active = true;
     enemies[i].image = al_load_bitmap("assets/images/characters/soldado.png");
-    enemies[i].last_shoot = 0;
+    enemies[i].last_shoot = rand() % 5 + 1;
     enemies[i].time_to_shoot = rand() % 5 + 1;
   }
 
@@ -29,7 +34,8 @@ void setupEnemies() {
     bullets_enemies[i].height = 32;
     bullets_enemies[i].speed = 50;
     bullets_enemies[i].active = false;
-    bullets_enemies[i].image = al_load_bitmap("assets/images/addons/municao_inimigo.png");
+    bullets_enemies[i].image = al_load_bitmap("assets/images/addons/municao_revolver.png");
+    bullets_enemies[i].direction = -1;
   }
 }
 
@@ -40,7 +46,7 @@ void drawEnemie(struct Enemy *enemie) {
 void drawBulletEnemies() {
   for (int i = 0; i < BULLETS_ENEMIES_COUNT; i++) {
     if (bullets_enemies[i].active) {
-      al_draw_bitmap(bullets_enemies[i].image, bullets_enemies[i].x, bullets_enemies[i].y, 0);
+      al_draw_bitmap_region(bullets_enemies[i].image, 0, 10, 21, 10, bullets_enemies[i].x, bullets_enemies[i].y, 0);
     }
   }
 }
@@ -86,7 +92,7 @@ void moveEnemie(struct Enemy *enemie) {
 
 void shootBulletEnemy(struct Enemy *enemie) {
   double current_time = al_get_time();
-  
+
   if (current_time - enemie->last_shoot < enemie->time_to_shoot || current_time - last_shoot < delay_shoot) {
     return;
   }
@@ -100,8 +106,9 @@ void shootBulletEnemy(struct Enemy *enemie) {
       playSound(SHOOT_ENEMY);
 
       bullets_enemies[i].active = true;
-      bullets_enemies[i].x = enemie->x + enemie->width / 2;
-      bullets_enemies[i].y = enemie->y + enemie->height / 2 - 100;
+      bullets_enemies[i].x = enemie->x;
+      bullets_enemies[i].y = enemie->y + enemie->height / 2 - 70;
+
       break;
     }
   }
@@ -120,11 +127,17 @@ void handlerEnemies() {
     if (!bullets_enemies[i].active) continue;
 
     drawBulletEnemies();
-    bullets_enemies[i].x += bullets_enemies[i].speed * -1;
+    bullets_enemies[i].x += bullets_enemies[i].speed * bullets_enemies[i].direction;
 
     if (bullets_enemies[i].x > WIDTH_SCREEN || bullets_enemies[i].x < 0) {
       bullets_enemies[i].active = false;
     }
+  }
+}
+
+void resetEnemies() {
+  for (int i = 0; i < ENEMIES_COUNT; i++) {
+    enemies[i].active = false;
   }
 }
 

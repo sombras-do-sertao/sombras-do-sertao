@@ -2,10 +2,12 @@
 #include "../headers/screens.h"
 #include "../headers/protagonista.h"
 #include "../headers/enemies.h"
+#include "../headers/itens.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 
 ALLEGRO_BITMAP *bg_stage_5;
+int last_frameStage5 = -1;
 
 void setupStage_5 () {
   bg_stage_5 = al_load_bitmap("assets/images/background/bg_stage_5.jpg");
@@ -15,11 +17,59 @@ void destroyStage_5 () {
   al_destroy_bitmap(bg_stage_5);
 }
 
+void setupFrame1Stage5() {
+  setupEnemies(2);
+  setupAmmoBoxes(1);
+}
+
+void setupFrame2Stage5() {
+  resetEnemies();
+  resetAmmoBoxes();
+  setupEnemies(3);
+  setupHealthBoxes(1);
+}
+
+void setupFrame3Stage5() {
+  resetEnemies();
+  resetHealthBoxes();
+  setupEnemies(2);
+  setupAmmoBoxes(1);
+}
+
+void setupFrame4Stage5() {
+  resetEnemies();
+  resetAmmoBoxes();
+  setupEnemies(2);
+}
+
+
 bool drawStage_5 () {
-  al_draw_bitmap_region(bg_stage_5, changeScreen(4) * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+  int frame = changeScreen(4);
+
+  if (frame != last_frameStage5) {
+    last_frameStage5 = frame;
+
+    switch (frame) {
+      case 0:
+        setupFrame1Stage5();
+        break;
+      case 3:
+        setupFrame2Stage5();
+        break;
+      case 2:
+        setupFrame3Stage5();
+        break;
+      case 1:
+        setupFrame4Stage5();
+        break;
+    }
+  }
+
+  al_draw_bitmap_region(bg_stage_5, frame * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   
   handlerProtagonista();
   handlerEnemies();
+  handlerItens();
 
   return true;
 }

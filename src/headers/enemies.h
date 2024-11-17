@@ -25,16 +25,17 @@ struct BulletEnemy {
   int height;
   int speed;
   bool active;
+  int direction;
   ALLEGRO_BITMAP *image;
 };
 
 #define BULLETS_ENEMIES_COUNT 10
-#define ENEMIES_COUNT 2
+#define ENEMIES_COUNT 5
 
 extern struct Enemy enemies[ENEMIES_COUNT];
 extern struct BulletEnemy bullets_enemies[BULLETS_ENEMIES_COUNT];
 
-void setupEnemies();
+void setupEnemies(int quantity);
 
 void drawEnemie(struct Enemy *enemie);
 
@@ -45,6 +46,8 @@ void moveEnemie(struct Enemy *enemie);
 void shootBulletEnemy(struct Enemy *enemie);
 
 void handlerEnemies();
+
+void resetEnemies();
 
 void destroyEnemies();
 
