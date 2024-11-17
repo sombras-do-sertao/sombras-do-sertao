@@ -23,7 +23,7 @@ struct Protagonista {
   int height;
   int speed;
   int direction;
-  int lives;
+  int health;
   int score;
   int stageX;
   int estagioAtual;

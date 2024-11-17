@@ -20,12 +20,12 @@ void setupProtagonista() {
   protagonista->height = 342;
   protagonista->speed = 20;
   protagonista->direction = 1;
-  protagonista->lives = 3;
+  protagonista->health = 3;
   protagonista->score = 0;
   protagonista->stageX = 20;
   protagonista->estagioAtual = 0;
   protagonista->last_shoot = 0;
-  protagonista->bullets = 3;
+  protagonista->bullets = 5;
   protagonista->image = al_load_bitmap("assets/images/characters/protagonista.png");
   protagonista->image_bullet = al_load_bitmap("assets/images/addons/ammo.png");
 }
@@ -50,6 +50,9 @@ void moveProtagonista() {
     protagonista->y += protagonista->speed;
   }
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_LEFT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_A)) {
+    if (protagonista->x <= 0) {
+      return;
+    }
 
     protagonista->direction = -1;
     protagonista->x -= protagonista->speed;
