@@ -27,7 +27,7 @@ void setupProtagonista() {
   protagonista->stageX = 20;
   protagonista->estagioAtual = 0;
   protagonista->last_shoot = 0;
-  protagonista->bullets = 34;
+  protagonista->bullets = 4;
   protagonista->image = al_load_bitmap("assets/images/characters/sprites/protagonista_andando.png");
   protagonista->image_bullet = al_load_bitmap("assets/images/addons/ammo.png");
 }

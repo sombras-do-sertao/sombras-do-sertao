@@ -26,7 +26,7 @@ void setupEnemies(int quantity) {
     enemies[i].speed = 10;
     enemies[i].direction = rand() % 4;
     enemies[i].active = true;
-    enemies[i].image = al_load_bitmap("assets/images/characters/sprites/soldado.png")
+    enemies[i].image = al_load_bitmap("assets/images/characters/sprites/soldado.png");
     enemies[i].last_shoot = rand() % 5 + 1;
     enemies[i].time_to_shoot = rand() % 5 + 1;
   }
