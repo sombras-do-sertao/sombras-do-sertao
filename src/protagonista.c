@@ -12,7 +12,7 @@ struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
 struct Protagonista *protagonista;
 
 int frameX = 0;
-int frameY = 1;
+int frameY = 0;
 void setupProtagonista() {
   protagonista = malloc(sizeof(struct Protagonista));
 
@@ -156,7 +156,7 @@ void drawBulletCount(int bullets) {
 
 void drawHealth() {
   for (int i = 0; i < protagonista->health; i++) {
-    al_draw_bitmap(protagonista->image_health, 0 + (i * 50), 50, 0);
+    al_draw_bitmap(protagonista->image_health, 0 + (i * 50), 100, 0);
   }
 }
 
