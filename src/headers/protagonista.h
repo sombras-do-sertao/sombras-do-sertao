@@ -31,6 +31,7 @@ struct Protagonista {
   int bullets;
   ALLEGRO_BITMAP *image;
   ALLEGRO_BITMAP *image_bullet;
+  ALLEGRO_BITMAP *image_health;
 };
 
 extern struct Protagonista *protagonista;
@@ -46,6 +47,8 @@ void moveProtagonista();
 void drawBulletCount(int bullets);
 void setupBulletsProtagonista();
 void shootProtagonista();
+
+void drawHealth();
 
 void handlerProtagonista();
 
