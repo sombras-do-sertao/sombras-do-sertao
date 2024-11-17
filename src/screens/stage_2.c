@@ -3,6 +3,7 @@
 #include "../headers/protagonista.h"
 #include "../headers/itens.h"
 #include "../headers/enemies.h"
+#include "../headers/components.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 
@@ -43,6 +44,11 @@ void destroyStage_2 () {
 }
 
 bool drawStage_2 () {
+  if (protagonista->health <= 0) {
+    drawDied();
+    return true;
+  }
+
   int frame = changeScreen(4);
 
   if (frame != last_frameStage2) {
