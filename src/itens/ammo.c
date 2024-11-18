@@ -18,7 +18,7 @@ void setupAmmoBoxes(int quantity) {
     ammo_boxes[i].width = 135;
     ammo_boxes[i].height = 113;
     ammo_boxes[i].x = rand() % (WIDTH_SCREEN - ammo_boxes[i].width);
-    ammo_boxes[i].y = (rand() % (HEIGHT_SCREEN / 2 + 100)) + (HEIGHT_SCREEN / 2 + 100 - ammo_boxes[i].height);
+    ammo_boxes[i].y = rand() % (HEIGHT_SCREEN - 756 - ammo_boxes[i].height) + 756;
     ammo_boxes[i].active = true;
     ammo_boxes[i].quantity = 3;
     ammo_boxes[i].image = al_load_bitmap("assets/images/itens/caixa-de-municao.png");
