@@ -51,5 +51,3 @@ dkms.conf
 
 # vscode
 .vscode/
-
-bin/*
