@@ -16,7 +16,7 @@ void setupHealthBoxes(int quantity) {
     }
 
     health_boxes[i].x = rand() % (WIDTH_SCREEN - health_boxes[i].width);
-    health_boxes[i].y = (rand() % (HEIGHT_SCREEN / 2 + 100)) + (HEIGHT_SCREEN / 2 + 100 - health_boxes[i].height);
+    health_boxes[i].y = rand() % (HEIGHT_SCREEN - 756 - health_boxes[i].height) + 756;
     health_boxes[i].width = 192;
     health_boxes[i].height = 114;
     health_boxes[i].active = true;
