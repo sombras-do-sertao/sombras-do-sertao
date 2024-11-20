@@ -8,7 +8,6 @@
 #include <stdio.h>
 
 ALLEGRO_BITMAP *bg_stage_4;
-int last_frameStage4 = -1;
 
 void setupStage_4 () {
   bg_stage_4 = al_load_bitmap("assets/images/background/bg_stage_4.jpg");
@@ -49,12 +48,12 @@ bool drawStage_4 () {
     return true;
   }
 
-  int frame = changeScreen(4);
+  FRAME = changeScreen(4);
 
-  if (frame != last_frameStage4) {
-    last_frameStage4 = frame;
+  if (FRAME != LAST_FRAME) {
+    LAST_FRAME = FRAME;
 
-    switch (frame) {
+    switch (FRAME) {
       case 0:
         setupFrame1Stage4();
         break;

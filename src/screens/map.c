@@ -187,29 +187,27 @@ void protagonistaMapMovement() {
         break;
     }
   } else if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_ENTER)) {
+    LAST_FRAME = -1;
+    setupProtagonista();
+
     switch (MAPA_PROTAGONISTA->stage) {
-    case 0:
-      setupProtagonista();
-      GAME_INFO->state = STAGE_1;
-      break;
-    case 2:
-      setupProtagonista();
-      GAME_INFO->state = STAGE_2;
-      break;
-    case 4:
-      setupProtagonista();
-      GAME_INFO->state = STAGE_3;
-      break;
-    case 6:
-      setupProtagonista();
-      GAME_INFO->state = STAGE_4;
-      break;
-    case 8:     
-      setupProtagonista();
-      GAME_INFO->state = STAGE_5;
-      break;
-    default:
-      break;  
+      case 0:
+        GAME_INFO->state = STAGE_1;
+        break;
+      case 2:
+        GAME_INFO->state = STAGE_2;
+        break;
+      case 4:
+        GAME_INFO->state = STAGE_3;
+        break;
+      case 6:
+        GAME_INFO->state = STAGE_4;
+        break;
+      case 8:     
+        GAME_INFO->state = STAGE_5;
+        break;
+      default:
+        break;  
     }
   }
 }
