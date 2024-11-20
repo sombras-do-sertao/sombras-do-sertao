@@ -52,7 +52,7 @@ void drawEnemie(struct Enemy *enemie) {
     frameX_Enemy = 3;
   }
 
-  al_draw_bitmap_region(enemie->image, frameX_Enemy * 296, frameY_Enemy * 342, enemie->width, enemie->height, enemie->x, enemie->y, 0);
+  al_draw_bitmap_region(enemie->image, frameX_Enemy * enemies[i].width, frameY_Enemy * enemies[i].height, enemie->width, enemie->height, enemie->x, enemie->y, 0);
 }
 
 void drawBulletEnemies() {
@@ -170,4 +170,16 @@ void destroyEnemies() {
   for (int i = 0; i < BULLETS_ENEMIES_COUNT; i++) {
     al_destroy_bitmap(bullets_enemies[i].image);
   }
+}
+
+int getEnemiesActive() {
+  int count = 0;
+
+  for (int i = 0; i < ENEMIES_COUNT; i++) {
+    if (enemies[i].active) {
+      count++;
+    }
+  }
+
+  return count;
 }

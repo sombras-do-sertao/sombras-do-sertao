@@ -51,4 +51,6 @@ void resetEnemies();
 
 void destroyEnemies();
 
+int getEnemiesActive();
+
 #endif
