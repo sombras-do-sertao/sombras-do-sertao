@@ -1,5 +1,6 @@
 #include "headers/protagonista.h"
 #include "headers/helper.h"
+#include "headers/handle.h"
 #include "headers/enemies.h"
 #include "headers/colision.h"
 #include "headers/sound.h"
@@ -27,13 +28,20 @@ void setupProtagonista() {
   protagonista->stageX = 20;
   protagonista->estagioAtual = 0;
   protagonista->last_shoot = 0;
+  protagonista->last_stab = 0;
   protagonista->bullets = 4;
   protagonista->image = al_load_bitmap("assets/images/characters/sprites/protagonista_andando.png");
+  protagonista->image_stab = al_load_bitmap("assets/images/characters/sprites/protagonista_facada.png");
   protagonista->image_bullet = al_load_bitmap("assets/images/addons/ammo.png");
   protagonista->image_health = al_load_bitmap("assets/images/addons/heart.png");
+  protagonista->is_stab = false;
 }
 
 void drawProtagonista() {
+  if (protagonista->is_stab) {
+    return;
+  }
+
   if(frameX > 3) {
     frameX = 0;
   } 
@@ -148,9 +156,52 @@ void shootProtagonista() {
   }
 }
 
-void drawBulletCount(int bullets) {
+void stabProtagonista() {
+  double current_time = al_get_time();
+
+  if (!al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_F)) {
+    return;
+  } else if (current_time - protagonista->last_stab < 3) {
+    return;
+  }
+
+  protagonista->last_stab = current_time;
+  protagonista->is_stab = true;
+  playSound(KNIFE_HIT);
+
+  float delay_sprite = 0.05;
+  int frameY = protagonista->direction == 1 ? 0 : 342;
+  for (int i = 0; i < 4; i++) {
+    handleScrens();
+    al_draw_bitmap_region(protagonista->image_stab, i * 296, frameY, 296, 342, protagonista->x, protagonista->y, 0);
+
+    al_flip_display();
+    al_rest(delay_sprite);
+  }
+  for (int i = 3; i >= 0; i--) {
+    handleScrens();
+    al_draw_bitmap_region(protagonista->image_stab, i * 296, frameY, 296, 342, protagonista->x, protagonista->y, 0);
+
+    al_flip_display();
+    al_rest(delay_sprite);
+  }
+
+  for (int i = 0; i < ENEMIES_COUNT; i++) {
+    if (!enemies[i].active) continue;
+
+    if (colision_protagonista_in_enemy(protagonista, &enemies[i])) {
+      enemies[i].active = false;
+      protagonista->is_stab = false;
+      return;
+    }
+  }
+
+  protagonista->is_stab = false;
+}
+
+void drawBulletCount() {
   al_draw_bitmap(protagonista->image_bullet, 0, 10, 0);
-  al_draw_textf(GAME_INFO->font_bullet, AL_COLOR_BLACK, 100, 25, ALLEGRO_ALIGN_LEFT, "%d", bullets);
+  al_draw_textf(GAME_INFO->font_bullet, AL_COLOR_BLACK, 100, 25, ALLEGRO_ALIGN_LEFT, "%d", protagonista->bullets);
 }
 
 void drawHealth() {
@@ -161,8 +212,9 @@ void drawHealth() {
 
 void handlerProtagonista() {
   drawHealth();
-  drawBulletCount(protagonista->bullets);
-  drawProtagonista(protagonista);
-  moveProtagonista(protagonista);
-  shootProtagonista(protagonista);
+  drawBulletCount();
+  drawProtagonista();
+  moveProtagonista();
+  shootProtagonista();
+  stabProtagonista();
 }

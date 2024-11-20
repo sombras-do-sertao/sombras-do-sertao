@@ -26,3 +26,7 @@ bool colision_ammoBox_in_protagonista(struct AmmoBox *ammo_box, struct Protagoni
 bool colision_healthBox_in_protagonista(struct HealthBox *health_box, struct Protagonista *protagonista) {
   return colision_rect(health_box->x, health_box->y, health_box->width, health_box->height, protagonista->x, protagonista->y, protagonista->width / 2, protagonista->height);
 }
+
+bool colision_protagonista_in_enemy(struct Protagonista *protagonista, struct Enemy *enemy) {
+  return colision_rect(protagonista->x, protagonista->y, protagonista->width, protagonista->height, enemy->x, enemy->y, enemy->width, enemy->height);
+}

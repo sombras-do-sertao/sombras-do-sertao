@@ -55,8 +55,15 @@ void setupSamples(void) {
     .name = "pickItem"
   };
 
+  Sample knifeHit = {
+    .id = 5,
+    .path = "assets/audio/knife-stab.mp3",
+    .name = "knifeHit"
+  };
+
   samples[0] = menu_click;
   samples[1] = shoot;
   samples[2] = shootEnemy;
   samples[3] = pickItem;
+  samples[4] = knifeHit;
 }
