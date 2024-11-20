@@ -28,10 +28,13 @@ struct Protagonista {
   int stageX;
   int estagioAtual;
   double last_shoot;
+  double last_stab;
   int bullets;
+  bool is_stab;
   ALLEGRO_BITMAP *image;
   ALLEGRO_BITMAP *image_bullet;
   ALLEGRO_BITMAP *image_health;
+  ALLEGRO_BITMAP *image_stab;
 };
 
 extern struct Protagonista *protagonista;
@@ -44,9 +47,11 @@ void setupProtagonista();
 void drawProtagonista();
 void moveProtagonista();
 
-void drawBulletCount(int bullets);
+void drawBulletCount();
 void setupBulletsProtagonista();
 void shootProtagonista();
+
+void stabProtagonista();
 
 void drawHealth();
 

@@ -1,6 +1,7 @@
 #include "headers/handle.h"
 #include "headers/screens.h"
 #include "headers/helper.h"
+#include "headers/protagonista.h"
 
 bool handleScrens () {
   bool redraw = true;
@@ -20,7 +21,7 @@ bool handleScrens () {
       }
   }
 
-  if(redraw && al_is_event_queue_empty(GAME_INFO->queue)) {
+  if(redraw && al_is_event_queue_empty(GAME_INFO->queue) || protagonista->is_stab) {
     al_clear_to_color(AL_COLOR_BLACK);
 
     switch (GAME_INFO->state) {
