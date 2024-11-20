@@ -98,6 +98,7 @@ void setupBulletsProtagonista() {
     bullets_protagonista[i].direction = 1;
     bullets_protagonista[i].active = false;
     bullets_protagonista[i].direction = 1;
+    bullets_protagonista[i].image = al_load_bitmap("assets/images/addons/municao_revolver.png");
   }
 }
 
@@ -120,7 +121,6 @@ void shootProtagonista() {
         bullets_protagonista[i].y = protagonista->y + protagonista->height / 2 - 80;
         bullets_protagonista[i].direction = protagonista->direction;
         bullets_protagonista[i].speed = 50 * protagonista->direction;
-        bullets_protagonista[i].image = al_load_bitmap("assets/images/addons/municao_revolver.png");
 
         protagonista->last_shoot = current_time;
         protagonista->bullets--;
