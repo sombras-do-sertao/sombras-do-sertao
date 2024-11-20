@@ -12,6 +12,7 @@ struct Enemy {
   int height;
   int speed;
   int direction;
+  int side;
   bool active;
   int last_shoot;
   int time_to_shoot;

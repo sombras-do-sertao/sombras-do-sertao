@@ -2,6 +2,7 @@
 #include "allegro5/allegro_primitives.h"
 #include "headers/colision.h"
 #include "headers/sound.h"
+#include "headers/protagonista.h"
 #include <stdio.h>
 
 struct Enemy enemies[ENEMIES_COUNT];
@@ -11,7 +12,6 @@ int last_shoot = 0;
 int delay_shoot = 1;
 
 int frameX_Enemy = 0;
-int frameY_Enemy = 1;
 
 void setupEnemies(int quantity) {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
@@ -30,6 +30,7 @@ void setupEnemies(int quantity) {
     enemies[i].image = al_load_bitmap("assets/images/characters/sprites/soldado.png");
     enemies[i].last_shoot = rand() % 5 + 1;
     enemies[i].time_to_shoot = rand() % 5 + 1;
+    enemies[i].side = 1;
   }
 
   for (int i = 0; i < BULLETS_ENEMIES_COUNT; i++) {
@@ -52,7 +53,13 @@ void drawEnemie(struct Enemy *enemie) {
     frameX_Enemy = 3;
   }
 
-  al_draw_bitmap_region(enemie->image, frameX_Enemy * enemies[i].width, frameY_Enemy * enemies[i].height, enemie->width, enemie->height, enemie->x, enemie->y, 0);
+  if (protagonista->x < enemie->x) {
+    enemie->side = 1;
+  } else if (protagonista->x > enemie->x) {
+    enemie->side = 0; 
+  }
+
+  al_draw_bitmap_region(enemie->image, frameX_Enemy * enemie->width, enemie->side * enemie->height, enemie->width, enemie->height, enemie->x, enemie->y, 0);
 }
 
 void drawBulletEnemies() {
@@ -122,8 +129,15 @@ void shootBulletEnemy(struct Enemy *enemie) {
       playSound(SHOOT_ENEMY);
 
       bullets_enemies[i].active = true;
-      bullets_enemies[i].x = enemie->x;
       bullets_enemies[i].y = enemie->y + enemie->height / 2 - 70;
+      
+      if (enemie->side == 0) {
+        bullets_enemies[i].direction = 1;
+        bullets_enemies[i].x = enemie->x + enemie->width;
+      } else {
+        bullets_enemies[i].direction = -1;
+        bullets_enemies[i].x = enemie->x;
+      }
 
       break;
     }
