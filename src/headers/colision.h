@@ -19,4 +19,6 @@ bool colision_ammoBox_in_protagonista(struct AmmoBox *ammo_box, struct Protagoni
 
 bool colision_healthBox_in_protagonista(struct HealthBox *health_box, struct Protagonista *protagonista);
 
+bool colision_protagonista_in_enemy(struct Protagonista *protagonista, struct Enemy *enemy);
+
 #endif
