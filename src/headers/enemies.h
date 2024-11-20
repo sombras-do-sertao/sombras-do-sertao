@@ -13,6 +13,7 @@ struct Enemy {
   int speed;
   int direction;
   int side;
+  int frame;
   bool active;
   int last_shoot;
   int time_to_shoot;

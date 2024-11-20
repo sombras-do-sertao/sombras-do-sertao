@@ -11,8 +11,6 @@ struct BulletEnemy bullets_enemies[BULLETS_ENEMIES_COUNT];
 int last_shoot = 0;
 int delay_shoot = 1;
 
-int frameX_Enemy = 0;
-
 void setupEnemies(int quantity) {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
     if (i >= quantity) {
@@ -31,6 +29,7 @@ void setupEnemies(int quantity) {
     enemies[i].last_shoot = rand() % 5 + 1;
     enemies[i].time_to_shoot = rand() % 5 + 1;
     enemies[i].side = 1;
+    enemies[i].frame = 0;
   }
 
   for (int i = 0; i < BULLETS_ENEMIES_COUNT; i++) {
@@ -46,11 +45,11 @@ void setupEnemies(int quantity) {
 }
 
 void drawEnemie(struct Enemy *enemie) {
- if(frameX_Enemy > 3) {
-    frameX_Enemy = 0;
+ if(enemie->frame > 3) {
+    enemie->frame = 0;
   } 
-  if(frameX_Enemy < 0) {
-    frameX_Enemy = 3;
+  if(enemie->frame < 0) {
+    enemie->frame = 3;
   }
 
   if (protagonista->x < enemie->x) {
@@ -59,7 +58,7 @@ void drawEnemie(struct Enemy *enemie) {
     enemie->side = 0; 
   }
 
-  al_draw_bitmap_region(enemie->image, frameX_Enemy * enemie->width, enemie->side * enemie->height, enemie->width, enemie->height, enemie->x, enemie->y, 0);
+  al_draw_bitmap_region(enemie->image, enemie->frame * enemie->width, enemie->side * enemie->height, enemie->width, enemie->height, enemie->x, enemie->y, 0);
 }
 
 void drawBulletEnemies() {
@@ -93,22 +92,22 @@ void moveEnemie(struct Enemy *enemie) {
   if (enemie->direction == 0) { // left
     if (enemie->x - enemie->width >= 0) {
       enemie->x -= enemie->speed;
-      frameX_Enemy--;
+      enemie->frame--;
     }
   } else if (enemie->direction == 1) { // right
     if (enemie->x + enemie->width + enemie->speed <= WIDTH_SCREEN) {
       enemie->x += enemie->speed;
-      frameX_Enemy++;
+      enemie->frame++;
     }
   } else if (enemie->direction == 2) { // up
     if (enemie->y + enemie->height >= HEIGHT_SCREEN - enemie->height + 200) {
       enemie->y -= enemie->speed;
-      frameX_Enemy++;
+      enemie->frame++;
     }
   } else if (enemie->direction == 3) { // down
     if (enemie->y + enemie->height + enemie->speed <= HEIGHT_SCREEN) {
       enemie->y += enemie->speed;
-      frameX_Enemy--;
+      enemie->frame--;
     }
   }
 }
