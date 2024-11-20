@@ -15,10 +15,10 @@ void setupHealthBoxes(int quantity) {
       continue;
     }
 
-    health_boxes[i].x = rand() % (WIDTH_SCREEN - health_boxes[i].width);
-    health_boxes[i].y = rand() % (HEIGHT_SCREEN - 756 - health_boxes[i].height) + 756;
     health_boxes[i].width = 192;
     health_boxes[i].height = 114;
+    health_boxes[i].x = rand() % (WIDTH_SCREEN - health_boxes[i].width / 2) + health_boxes[i].width / 2;
+    health_boxes[i].y = rand() % (HEIGHT_SCREEN - 756) + 756 - health_boxes[i].height / 2;
     health_boxes[i].active = true;
     health_boxes[i].quantity = 3;
     health_boxes[i].image = al_load_bitmap("assets/images/itens/kit-medico.png");
@@ -36,6 +36,7 @@ void drawHealthBoxes() {
 void resetHealthBoxes() {
   for (int i = 0; i < HEALTH_BOXES_COUNT; i++) {
     health_boxes[i].active = false;
+    al_destroy_bitmap(health_boxes[i].image);
   }
 }
 

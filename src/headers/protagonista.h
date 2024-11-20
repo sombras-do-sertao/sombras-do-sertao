@@ -41,6 +41,7 @@ extern struct Protagonista *protagonista;
 
 #define BULLETS_PROTAGONISTA_COUNT 3
 #define SHOOT_DELAY 0.9
+#define STAB_DELAY 2
 extern struct BulletProtagonista bullets_protagonista[BULLETS_PROTAGONISTA_COUNT];
 
 void setupProtagonista();

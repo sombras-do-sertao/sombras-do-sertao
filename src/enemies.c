@@ -2,6 +2,7 @@
 #include "allegro5/allegro_primitives.h"
 #include "headers/colision.h"
 #include "headers/sound.h"
+#include "headers/protagonista.h"
 #include <stdio.h>
 
 struct Enemy enemies[ENEMIES_COUNT];
@@ -9,9 +10,6 @@ struct BulletEnemy bullets_enemies[BULLETS_ENEMIES_COUNT];
 
 int last_shoot = 0;
 int delay_shoot = 1;
-
-int frameX_Enemy = 0;
-int frameY_Enemy = 1;
 
 void setupEnemies(int quantity) {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
@@ -30,6 +28,8 @@ void setupEnemies(int quantity) {
     enemies[i].image = al_load_bitmap("assets/images/characters/sprites/soldado.png");
     enemies[i].last_shoot = rand() % 5 + 1;
     enemies[i].time_to_shoot = rand() % 5 + 1;
+    enemies[i].side = 1;
+    enemies[i].frame = 0;
   }
 
   for (int i = 0; i < BULLETS_ENEMIES_COUNT; i++) {
@@ -45,14 +45,20 @@ void setupEnemies(int quantity) {
 }
 
 void drawEnemie(struct Enemy *enemie) {
- if(frameX_Enemy > 3) {
-    frameX_Enemy = 0;
+ if(enemie->frame > 3) {
+    enemie->frame = 0;
   } 
-  if(frameX_Enemy < 0) {
-    frameX_Enemy = 3;
+  if(enemie->frame < 0) {
+    enemie->frame = 3;
   }
 
-  al_draw_bitmap_region(enemie->image, frameX_Enemy * 296, frameY_Enemy * 342, enemie->width, enemie->height, enemie->x, enemie->y, 0);
+  if (protagonista->x < enemie->x) {
+    enemie->side = 1;
+  } else if (protagonista->x > enemie->x) {
+    enemie->side = 0; 
+  }
+
+  al_draw_bitmap_region(enemie->image, enemie->frame * enemie->width, enemie->side * enemie->height, enemie->width, enemie->height, enemie->x, enemie->y, 0);
 }
 
 void drawBulletEnemies() {
@@ -86,22 +92,22 @@ void moveEnemie(struct Enemy *enemie) {
   if (enemie->direction == 0) { // left
     if (enemie->x - enemie->width >= 0) {
       enemie->x -= enemie->speed;
-      frameX_Enemy--;
+      enemie->frame--;
     }
   } else if (enemie->direction == 1) { // right
     if (enemie->x + enemie->width + enemie->speed <= WIDTH_SCREEN) {
       enemie->x += enemie->speed;
-      frameX_Enemy++;
+      enemie->frame++;
     }
   } else if (enemie->direction == 2) { // up
     if (enemie->y + enemie->height >= HEIGHT_SCREEN - enemie->height + 200) {
       enemie->y -= enemie->speed;
-      frameX_Enemy++;
+      enemie->frame++;
     }
   } else if (enemie->direction == 3) { // down
     if (enemie->y + enemie->height + enemie->speed <= HEIGHT_SCREEN) {
       enemie->y += enemie->speed;
-      frameX_Enemy--;
+      enemie->frame--;
     }
   }
 }
@@ -122,8 +128,15 @@ void shootBulletEnemy(struct Enemy *enemie) {
       playSound(SHOOT_ENEMY);
 
       bullets_enemies[i].active = true;
-      bullets_enemies[i].x = enemie->x;
       bullets_enemies[i].y = enemie->y + enemie->height / 2 - 70;
+      
+      if (enemie->side == 0) {
+        bullets_enemies[i].direction = 1;
+        bullets_enemies[i].x = enemie->x + enemie->width;
+      } else {
+        bullets_enemies[i].direction = -1;
+        bullets_enemies[i].x = enemie->x;
+      }
 
       break;
     }
@@ -159,6 +172,7 @@ void handlerEnemies() {
 void resetEnemies() {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
     enemies[i].active = false;
+    al_destroy_bitmap(enemies[i].image);
   }
 }
 
@@ -170,4 +184,16 @@ void destroyEnemies() {
   for (int i = 0; i < BULLETS_ENEMIES_COUNT; i++) {
     al_destroy_bitmap(bullets_enemies[i].image);
   }
+}
+
+int getEnemiesActive() {
+  int count = 0;
+
+  for (int i = 0; i < ENEMIES_COUNT; i++) {
+    if (enemies[i].active) {
+      count++;
+    }
+  }
+
+  return count;
 }

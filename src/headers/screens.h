@@ -6,6 +6,9 @@
 #include <allegro5/allegro_image.h>
 #include "helper.h"
 
+extern int FRAME;
+extern int LAST_FRAME; // -1
+
 extern ALLEGRO_BITMAP *bg_home;
 void setupHome();
 void destroyHome(void);

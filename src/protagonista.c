@@ -19,8 +19,8 @@ void setupProtagonista() {
 
   protagonista->x = 20;
   protagonista->y = HEIGHT_SCREEN / 2;
-  protagonista->width = 295;
-  protagonista->height = 341;
+  protagonista->width = 296;
+  protagonista->height = 342;
   protagonista->speed = 20;
   protagonista->direction = 1;
   protagonista->health = 3;
@@ -48,7 +48,7 @@ void drawProtagonista() {
   if(frameX < 0) {
     frameX = 3;
   }
-  al_draw_bitmap_region(protagonista->image, frameX * 296, frameY * 342, protagonista->width, protagonista->height, protagonista->x, protagonista->y, 0);
+  al_draw_bitmap_region(protagonista->image, frameX * protagonista->width, frameY * protagonista->height, protagonista->width, protagonista->height, protagonista->x, protagonista->y, 0);
 }
 void moveProtagonista() {
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_UP) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_W)) {
@@ -76,7 +76,10 @@ void moveProtagonista() {
     frameX--;
   }
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_RIGHT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_D)) {
-    
+    if (protagonista->x + protagonista->width >= WIDTH_SCREEN && getEnemiesActive() > 0) {
+      return;
+    }
+
     protagonista->direction = 1;
     protagonista->x += protagonista->speed;
     protagonista->stageX += protagonista->speed;
@@ -95,6 +98,7 @@ void setupBulletsProtagonista() {
     bullets_protagonista[i].direction = 1;
     bullets_protagonista[i].active = false;
     bullets_protagonista[i].direction = 1;
+    bullets_protagonista[i].image = al_load_bitmap("assets/images/addons/municao_revolver.png");
   }
 }
 
@@ -107,12 +111,16 @@ void shootProtagonista() {
     ) {
     for (int i = 0; i < BULLETS_PROTAGONISTA_COUNT; i++) {
       if (!bullets_protagonista[i].active) {
+        if (protagonista->direction == 1) {
+          bullets_protagonista[i].x = protagonista->x + protagonista->width;
+        } else {
+          bullets_protagonista[i].x = protagonista->x;
+        }
+
         bullets_protagonista[i].active = true;
-        bullets_protagonista[i].x = protagonista->x + protagonista->width;
         bullets_protagonista[i].y = protagonista->y + protagonista->height / 2 - 80;
         bullets_protagonista[i].direction = protagonista->direction;
         bullets_protagonista[i].speed = 50 * protagonista->direction;
-        bullets_protagonista[i].image = al_load_bitmap("assets/images/addons/municao_revolver.png");
 
         protagonista->last_shoot = current_time;
         protagonista->bullets--;
@@ -161,7 +169,7 @@ void stabProtagonista() {
 
   if (!al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_F)) {
     return;
-  } else if (current_time - protagonista->last_stab < 3) {
+  } else if (current_time - protagonista->last_stab < STAB_DELAY) {
     return;
   }
 
@@ -170,17 +178,17 @@ void stabProtagonista() {
   playSound(KNIFE_HIT);
 
   float delay_sprite = 0.05;
-  int frameY = protagonista->direction == 1 ? 0 : 342;
+  int frameY = protagonista->direction == 1 ? 0 : protagonista->height;
   for (int i = 0; i < 4; i++) {
     handleScrens();
-    al_draw_bitmap_region(protagonista->image_stab, i * 296, frameY, 296, 342, protagonista->x, protagonista->y, 0);
+    al_draw_bitmap_region(protagonista->image_stab, i * protagonista->width, frameY, protagonista->width, protagonista->height, protagonista->x, protagonista->y, 0);
 
     al_flip_display();
     al_rest(delay_sprite);
   }
   for (int i = 3; i >= 0; i--) {
     handleScrens();
-    al_draw_bitmap_region(protagonista->image_stab, i * 296, frameY, 296, 342, protagonista->x, protagonista->y, 0);
+    al_draw_bitmap_region(protagonista->image_stab, i * protagonista->width, frameY, protagonista->width, protagonista->height, protagonista->x, protagonista->y, 0);
 
     al_flip_display();
     al_rest(delay_sprite);
