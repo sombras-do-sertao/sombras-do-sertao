@@ -172,6 +172,7 @@ void handlerEnemies() {
 void resetEnemies() {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
     enemies[i].active = false;
+    al_destroy_bitmap(enemies[i].image);
   }
 }
 
