@@ -169,7 +169,7 @@ void stabProtagonista() {
 
   if (!al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_F)) {
     return;
-  } else if (current_time - protagonista->last_stab < 3) {
+  } else if (current_time - protagonista->last_stab < STAB_DELAY) {
     return;
   }
 
