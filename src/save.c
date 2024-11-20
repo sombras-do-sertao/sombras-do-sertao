@@ -12,7 +12,6 @@ struct saveFile FILES[SAVEFILES_COUNT];
 
 void saveHandler() {
   int result = al_show_native_message_box(GAME_INFO->display, "Novo Jogo", "Salvar Jogo", "Deseja salvar o jogo?", NULL, ALLEGRO_MESSAGEBOX_YES_NO);
-  ALLEGRO_BITMAP *image = al_load_bitmap("assets/images/background/bg_home.jpg");
 
   if (result == 1) {
     int width_dialog = 400;
@@ -27,7 +26,7 @@ void saveHandler() {
       al_wait_for_event(GAME_INFO->queue, &GAME_INFO->event);
       al_get_mouse_state(GAME_INFO->mouse_state);
 
-      al_draw_bitmap(image, 0, 0, 0);
+      al_draw_bitmap(bg_home, 0, 0, 0);
 
       al_draw_filled_rounded_rectangle(window_x, window_y, window_x + width_dialog, window_y + height_dialog, 10, 10, al_map_rgb(50, 50, 50));
       al_draw_rectangle(window_x, window_y, window_x + width_dialog, window_y + height_dialog, AL_COLOR_WHITE, 2);
@@ -83,8 +82,6 @@ void saveHandler() {
       // TODO: Perguntar o nome do novo save e salvar
       // saveGame(FILES[selected_slot - 1].name, "Alias");
     }
-
-    al_destroy_bitmap(image);
   }
 }
 
