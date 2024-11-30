@@ -139,7 +139,7 @@ void loadSaves() {
   fclose(file);
 }
 
-void saveGame(char *save_name, char *alias) {
+void saveGame() {
   FILE *file = fopen("data/save.txt", "w");
 
   if (file == NULL) {
@@ -147,7 +147,27 @@ void saveGame(char *save_name, char *alias) {
     return;
   }
 
-  fprintf(file, "Save Name: %s\n", save_name);
-  fprintf(file, "Alias: %s\n", alias);
+  for (int i = 0; i < SAVEFILES_COUNT; i++) {
+    if (FILES[i].alias == GAME_INFO->save->alias) {
+      fprintf(file, "Save %d: \n", i + 1);
+      fprintf(file, "name: %s\n", FILES[i].name);
+      fprintf(file, "alias: %s\n", FILES[i].alias);
+      fprintf(file, "stage: %d\n", GAME_INFO->save->stage);
+      fprintf(file, "seconds: %.2f\n", GAME_INFO->save->seconds);
+      fprintf(file, "honor: %d\n", GAME_INFO->save->honor);
+      fprintf(file, "\n");
+
+      continue;
+    }
+    
+    fprintf(file, "Save %d: \n", i + 1);
+    fprintf(file, "name: %s\n", FILES[i].name);
+    fprintf(file, "alias: %s\n", FILES[i].alias);
+    fprintf(file, "stage: %s\n", FILES[i].stage);
+    fprintf(file, "seconds: %s\n", FILES[i].seconds);
+    fprintf(file, "honor: %s\n", FILES[i].honor);
+    fprintf(file, "\n");
+  }
+
   fclose(file);
 }

@@ -39,6 +39,7 @@ typedef enum {
 
 struct GameSave {
   int stage;
+  char *alias;
   int honor;
   float seconds;
 };

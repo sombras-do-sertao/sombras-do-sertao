@@ -20,4 +20,6 @@ void loadSaves();
 
 void saveHandler();
 
+void saveGame();
+
 #endif

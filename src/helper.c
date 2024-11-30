@@ -1,5 +1,6 @@
 #include "headers/helper.h"
 #include "headers/protagonista.h"
+#include "headers/save.h"
 #include "headers/screens.h"
 #include <stdio.h>
 #include <allegro5/allegro5.h>
@@ -50,7 +51,7 @@ float changeScreen(int totalStages) {
 
   if (protagonista->stageX >= 7680) {
     GAME_INFO->state = MAP;
-    GAME_INFO->save->stage += 1;
+    GAME_INFO->save->stage += 2;
 
     protagonista->stageX = 0;
     protagonista->x = 0;
@@ -58,6 +59,8 @@ float changeScreen(int totalStages) {
     float timer_interval = al_get_timer_speed(GAME_INFO->timer);
     float elapsed_seconds = al_get_timer_count(GAME_INFO->timer) * timer_interval;
     GAME_INFO->save->seconds += elapsed_seconds;
+
+    saveGame();
   }
 
   return stage;
