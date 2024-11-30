@@ -102,6 +102,7 @@ void setupAllegro() {
   setupBulletsProtagonista();
   setupMapProtagonista();
   setupButtonsConfig();
+  setupTutorial();
   setupDied();
   setupHome();
   setupGame();
