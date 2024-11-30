@@ -5,7 +5,7 @@ struct saveFile {
   char *name;
   char *alias; 
   char *stage;
-  char *minutes;
+  char *seconds;
   char *honor;
   ALLEGRO_FONT *font;
   ALLEGRO_COLOR font_color;

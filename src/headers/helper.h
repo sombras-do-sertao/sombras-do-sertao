@@ -40,7 +40,7 @@ typedef enum {
 struct GameSave {
   int stage;
   int honor;
-  float minutes;
+  float seconds;
 };
 
 struct AllegroGame {

@@ -50,8 +50,14 @@ float changeScreen(int totalStages) {
 
   if (protagonista->stageX >= 7680) {
     GAME_INFO->state = MAP;
+    GAME_INFO->save->stage += 1;
+
     protagonista->stageX = 0;
     protagonista->x = 0;
+
+    float timer_interval = al_get_timer_speed(GAME_INFO->timer);
+    float elapsed_seconds = al_get_timer_count(GAME_INFO->timer) * timer_interval;
+    GAME_INFO->save->seconds += elapsed_seconds;
   }
 
   return stage;

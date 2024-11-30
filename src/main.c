@@ -58,7 +58,7 @@ void initializeAllegro() {
 
   GAME_INFO->save->stage = 0;
   GAME_INFO->save->honor = 0;
-  GAME_INFO->save->minutes = 0.0;
+  GAME_INFO->save->seconds = 0.0;
 
   if (!GAME_INFO->timer || !GAME_INFO->queue || !GAME_INFO->display) {
     fprintf(stderr, "Fail to load Allegro.\n");

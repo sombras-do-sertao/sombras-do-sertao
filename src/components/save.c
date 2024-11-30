@@ -20,8 +20,8 @@ bool drawSaveFile(struct saveFile *saveFile, int index) {
   int honor_x = currentStage_x + 310;
   int honor_y = currentStage_y + 10;
 
-  int minutes_x = honor_x + 180;
-  int minutes_y = honor_y;
+  int seconds_x = honor_x + 180;
+  int seconds_y = honor_y;
   
   int imageX = WIDTH_SCREEN /2 - 379;
   int imageY = y;
@@ -32,12 +32,12 @@ bool drawSaveFile(struct saveFile *saveFile, int index) {
   al_draw_text(saveFile->smallerFont, saveFile->font_color, currentStage_x, currentStage_y, 0, "Fase:");
   al_draw_text(saveFile->smallerFont, saveFile->font_color, currentStage_x + 50, currentStage_y, 0, saveFile->stage);
   al_draw_text(saveFile->smallerFont, saveFile->font_color,  honor_x, honor_y, 0, saveFile->honor);
-  al_draw_text(saveFile->smallerFont, saveFile->font_color,  minutes_x, minutes_y, 0, saveFile->minutes);
+  al_draw_text(saveFile->smallerFont, saveFile->font_color,  seconds_x, seconds_y, 0, saveFile->seconds);
     
-  if (atoi(saveFile->minutes) > 1) {
-    int text_width = al_get_text_width(saveFile->smallerFont, saveFile->minutes);
-    minutes_x += text_width;
-    al_draw_text(saveFile->smallerFont, saveFile->font_color, minutes_x + 5, minutes_y, 0, "S");
+  if (atoi(saveFile->seconds) > 1) {
+    int text_width = al_get_text_width(saveFile->smallerFont, saveFile->seconds);
+    seconds_x += text_width;
+    al_draw_text(saveFile->smallerFont, saveFile->font_color, seconds_x + 5, seconds_y, 0, "S");
   }
 
   return isMouseOverBox(GAME_INFO->mouse_state, x - 180, y, width + 360, height);

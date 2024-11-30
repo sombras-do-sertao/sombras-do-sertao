@@ -100,7 +100,7 @@ void loadSaves() {
     save.name = malloc(255 * sizeof(char));
     save.alias = malloc(255 * sizeof(char));
     save.stage = malloc(255 * sizeof(char));
-    save.minutes = malloc(255 * sizeof(char));
+    save.seconds = malloc(255 * sizeof(char));
     save.honor = malloc(255 * sizeof(char));
 
     if (fgets(buffer, sizeof(buffer), file) == NULL) {
@@ -123,8 +123,8 @@ void loadSaves() {
       break;
     }
 
-    if (fscanf(file, "minutes: %[^\n]\n", save.minutes) != 1) {
-      printf("Erro ao ler minutes do save %d\n", i + 1);
+    if (fscanf(file, "seconds: %[^\n]\n", save.seconds) != 1) {
+      printf("Erro ao ler seconds do save %d\n", i + 1);
       break;
     }
 
