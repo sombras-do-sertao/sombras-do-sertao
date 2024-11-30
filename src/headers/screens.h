@@ -73,4 +73,9 @@ void setupSaves();
 void destroySaves();
 bool drawSaves();
 
+extern ALLEGRO_BITMAP *bg_tutorial;
+void setupTutorial();
+void destroyTutorial();
+bool drawTutorial();
+
 #endif
