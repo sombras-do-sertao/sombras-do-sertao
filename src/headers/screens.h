@@ -24,6 +24,7 @@ void destroyGame();
 bool drawGame();
 
 extern ALLEGRO_BITMAP *bg_map;
+extern ALLEGRO_BITMAP *icon_map;
 void setupMap();
 void destroyMap();
 bool drawMap();
