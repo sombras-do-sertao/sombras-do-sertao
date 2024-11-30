@@ -11,6 +11,10 @@ struct AmmoBox ammo_boxes[AMMO_BOXES_COUNT];
 
 void setupAmmoBoxes(int quantity) {
   for (int i = 0; i < AMMO_BOXES_COUNT; i++) {
+    if (!ammo_boxes[i].image) {
+      ammo_boxes[i].image = al_load_bitmap("assets/images/itens/caixa-de-municao.png");
+    }
+
     if (i >= quantity) {
       ammo_boxes[i].active = false;
       continue;
@@ -23,7 +27,6 @@ void setupAmmoBoxes(int quantity) {
 
     ammo_boxes[i].active = true;
     ammo_boxes[i].quantity = 3;
-    ammo_boxes[i].image = al_load_bitmap("assets/images/itens/caixa-de-municao.png");
   }
 }
 
@@ -38,7 +41,6 @@ void drawAmmoBoxes() {
 void resetAmmoBoxes() {
   for (int i = 0; i < AMMO_BOXES_COUNT; i++) {
     ammo_boxes[i].active = false;
-    al_destroy_bitmap(ammo_boxes[i].image);
   }
 }
 
