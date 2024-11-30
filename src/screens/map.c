@@ -7,10 +7,12 @@
 #include <stdio.h>
 
 ALLEGRO_BITMAP *bg_map;
+ALLEGRO_BITMAP *icon_map;
 struct MapProtagonista *MAPA_PROTAGONISTA;
 
 void setupMap() {
   bg_map = al_load_bitmap("assets/images/background/bg_map.jpg");
+  icon_map = al_load_bitmap("assets/images/addons/caveira.png");
 }
 
 void setupMapProtagonista () {
@@ -24,6 +26,7 @@ void setupMapProtagonista () {
 
 void destroyMap() {
   al_destroy_bitmap(bg_map);
+  al_destroy_bitmap(icon_map);
 }
 
 void destroyMapProtagonista() {
@@ -258,6 +261,30 @@ void positionProtagonistaMap() {
 
 void drawMapProtagonista () {
   al_draw_bitmap(MAPA_PROTAGONISTA->image, MAPA_PROTAGONISTA->x, MAPA_PROTAGONISTA->y, 0);
+  int skullSize = 50;
+
+  switch (GAME_INFO->save->stage) {
+    case 0:
+      al_draw_bitmap(icon_map, 538, 705 + skullSize, 0);
+      al_draw_bitmap(icon_map, 950, 269 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1318, 515 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1576, 176 + skullSize, 0);
+      break;
+    case 2:
+      al_draw_bitmap(icon_map, 950, 269 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1318, 515 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1576, 176 + skullSize, 0);
+      break;
+    case 4:
+      al_draw_bitmap(icon_map, 1318, 515 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1576, 176 + skullSize, 0);
+      break;
+    case 6:
+      al_draw_bitmap(icon_map, 1576, 176 + skullSize, 0);
+      break;
+    default:
+      break;
+  }
 }
 
 bool drawMap() {
