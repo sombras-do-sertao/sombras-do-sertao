@@ -147,6 +147,7 @@ void protagonistaMapMovement() {
     }
   } else if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_RIGHT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_D)) {
     if (MAPA_PROTAGONISTA->stage == 8) return;
+    if (MAPA_PROTAGONISTA->stage + 1 > GAME_INFO->save->stage) return;
 
     MAPA_PROTAGONISTA->stage++;
 
