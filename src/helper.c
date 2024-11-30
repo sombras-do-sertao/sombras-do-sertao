@@ -61,6 +61,8 @@ float changeScreen(int totalStages) {
     GAME_INFO->save->seconds += elapsed_seconds;
 
     saveGame();
+    loadSaves();
+    setupSaves();
   }
 
   return stage;
