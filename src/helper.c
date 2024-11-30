@@ -51,7 +51,10 @@ float changeScreen(int totalStages) {
 
   if (protagonista->stageX >= 7680) {
     GAME_INFO->state = MAP;
-    GAME_INFO->save->stage += 2;
+
+    if (MAPA_PROTAGONISTA->stage == GAME_INFO->save->stage) {
+      if (GAME_INFO->save->stage != 8) GAME_INFO->save->stage += 2;
+    }
 
     protagonista->stageX = 0;
     protagonista->x = 0;
