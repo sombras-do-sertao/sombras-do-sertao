@@ -13,6 +13,10 @@ int delay_shoot = 1;
 
 void setupEnemies(int quantity) {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
+    if (!enemies[i].image) {
+      enemies[i].image = al_load_bitmap("assets/images/characters/sprites/soldado.png");
+    }
+
     if (i >= quantity) {
       enemies[i].active = false;
       continue;
@@ -25,7 +29,6 @@ void setupEnemies(int quantity) {
     enemies[i].speed = 10;
     enemies[i].direction = rand() % 4;
     enemies[i].active = true;
-    enemies[i].image = al_load_bitmap("assets/images/characters/sprites/soldado.png");
     enemies[i].last_shoot = rand() % 5 + 1;
     enemies[i].time_to_shoot = rand() % 5 + 1;
     enemies[i].side = 1;
@@ -172,7 +175,6 @@ void handlerEnemies() {
 void resetEnemies() {
   for (int i = 0; i < ENEMIES_COUNT; i++) {
     enemies[i].active = false;
-    al_destroy_bitmap(enemies[i].image);
   }
 }
 
