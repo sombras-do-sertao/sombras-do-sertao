@@ -48,7 +48,7 @@ bool drawStage_4 () {
     return true;
   }
 
-  FRAME = changeScreen(4);
+  FRAME = changeScreen(4, MAP);
 
   if (FRAME != LAST_FRAME) {
     LAST_FRAME = FRAME;
@@ -69,7 +69,7 @@ bool drawStage_4 () {
     }
   }
 
-  al_draw_bitmap_region(bg_stage_4, changeScreen(4) * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+  al_draw_bitmap_region(bg_stage_4, FRAME * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   
   handlerProtagonista();
   handlerEnemies();

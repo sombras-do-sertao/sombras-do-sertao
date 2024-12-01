@@ -57,6 +57,13 @@ bool handleScrens () {
         break;
       case TUTORIAL:
         if(!drawTutorial()) GAME_INFO->state = MENU;
+        break;
+      case INICIO:
+        if(!drawInicio()) GAME_INFO->state = MENU;
+        break;
+      case FIM: 
+        if(!drawFim()) GAME_INFO->state = MENU;
+        break;
       default:
         break;
     }

@@ -49,7 +49,7 @@ bool drawStage_5 () {
     return true;
   }
 
-  FRAME = changeScreen(4);
+  FRAME = changeScreen(4, FIM);
 
   if (FRAME != LAST_FRAME) {
     LAST_FRAME = FRAME;

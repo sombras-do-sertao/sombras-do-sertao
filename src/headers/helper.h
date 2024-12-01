@@ -38,6 +38,8 @@ typedef enum {
   STAGE_5 = 8,
   SAVES = 9,
   TUTORIAL = 10,
+  INICIO = 11,
+  FIM = 12
 } GameState;
 
 struct GameSave {
@@ -71,6 +73,6 @@ bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, c
 
 bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int box_width, int box_height);
 
-float changeScreen(int totalStages);
+float changeScreen(int totalStages, GameState state);
 
 #endif

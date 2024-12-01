@@ -6,5 +6,7 @@ extern char *text2[];
 extern char *text3[];
 extern char *text4[];
 extern char *text5[];
+extern char *TEXT_INICIO[];
+extern char *TEXT_FIM[];
 
 #endif

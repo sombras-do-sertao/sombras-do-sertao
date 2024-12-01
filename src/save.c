@@ -13,6 +13,11 @@ struct saveFile FILES[SAVEFILES_COUNT];
 void saveHandler() {
   int result = al_show_native_message_box(GAME_INFO->display, "Novo Jogo", "Salvar Jogo", "Deseja salvar o jogo?", NULL, ALLEGRO_MESSAGEBOX_YES_NO);
 
+  GAME_INFO->save->stage = 0;
+  GAME_INFO->save->seconds = 0;
+  GAME_INFO->save->honor = 0;
+  GAME_INFO->save->stage = 0;
+
   if (result == 1) {
     int width_dialog = 400;
     int height_dialog = 200;

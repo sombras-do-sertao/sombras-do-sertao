@@ -125,7 +125,7 @@ bool drawHome () {
           case START_GAME: {
             saveHandler();
             MAPA_PROTAGONISTA->stage = 0;
-            GAME_INFO->state = MAP;
+            GAME_INFO->state = INICIO;
             break;
           }
           case SETTINGS:

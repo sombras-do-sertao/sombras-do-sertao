@@ -150,6 +150,7 @@ void destroyAllegro() {
   destroyStage_4();
   destroyStage_5();
   destroySaves();
+  destroyTutorial();
   free(GAME_INFO->save);
   free(GAME_INFO->mouse_state);
   free(GAME_INFO);

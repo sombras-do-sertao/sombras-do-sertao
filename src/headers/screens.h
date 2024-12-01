@@ -78,4 +78,8 @@ void setupTutorial();
 void destroyTutorial();
 bool drawTutorial();
 
+bool drawInicio();
+
+bool drawFim();
+
 #endif
