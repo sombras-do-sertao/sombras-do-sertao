@@ -6,9 +6,10 @@ cls
 :: Diretórios
 set SRC_DIR=src
 set BIN_DIR=bin
+set DIALOG_DIR=data/dialog
 
 :: Arquivos fonte
-set SRCS=%SRC_DIR%\*.c
+set SRCS=%SRC_DIR%\*.c %DIALOG_DIR%\*.c
 
 :: Nome e diretorio do executável
 set TARGET=%BIN_DIR%\SombrasDoSertao.exe

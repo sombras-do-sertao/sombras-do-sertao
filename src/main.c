@@ -47,8 +47,9 @@ void initializeAllegro() {
 
   GAME_INFO->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
   GAME_INFO->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
+  GAME_INFO->font_dialog = al_load_font(FONT_PATH, FONT_SIZE_DIALOG, 0);
   GAME_INFO->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
-  GAME_INFO->font_bullet = al_load_font(FONT_PATH, 50, 0);
+  GAME_INFO->font_bullet = al_load_font(FONT_PATH, FONT_SIZE_BULLET, 0);
 
   GAME_INFO->timer = al_create_timer(1.0 / FPS);
   GAME_INFO->queue = al_create_event_queue();
@@ -107,6 +108,7 @@ void setupAllegro() {
   setupHome();
   setupGame();
   setupMap();
+  setupDialog();
   setupStage_1();
   setupStage_2();
   setupStage_3();

@@ -14,7 +14,8 @@
     "stdio.h": "c",
     "allegro_native_dialog.h": "c",
     "string.h": "c",
-    "colision.h": "c"
+    "colision.h": "c",
+    "dialog.h": "c"
   },
   "editor.tabSize": 2,
 }

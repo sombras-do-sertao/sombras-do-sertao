@@ -1,0 +1,5 @@
+#include "dialog/fase1.c"
+#include "dialog/fase2.c"
+#include "dialog/fase3.c"
+#include "dialog/fase4.c"
+#include "dialog/fase5.c"

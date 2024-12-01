@@ -2,6 +2,7 @@
 #include "../headers/screens.h"
 #include "../headers/helper.h"
 #include "../headers/protagonista.h"
+#include "../headers/components.h"
 #include "../headers/enemies.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
@@ -107,6 +108,14 @@ void protagonistaMovement(int finalX, int finalY) {
 }
 
 void protagonistaMapMovement() {
+  if (MAPA_PROTAGONISTA->stage % 2 != 0) {
+    //  stage 1 = dialog_id 1, stage 3 = dialog_id 2, stage 5 = dialog_id 3, stage 7 = dialog_id 4
+
+    int dialog_id = (MAPA_PROTAGONISTA->stage / 2) + 1;
+
+    drawDialog(dialog_id);
+  }
+
   if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_LEFT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_A)) {
     if (MAPA_PROTAGONISTA->stage == 0) return;
 

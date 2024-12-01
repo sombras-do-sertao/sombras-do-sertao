@@ -12,6 +12,8 @@ extern struct AllegroGame *GAME_INFO;
 #define FONT_PATH "assets/fonts/Roboto-Regular.ttf"
 #define FONT_SIZE 18
 #define FONT_SIZE_SMALL 14
+#define FONT_SIZE_DIALOG 18
+#define FONT_SIZE_BULLET 50
 #define FONT_SIZE_BIG 24
 
 #define AL_COLOR_BLACK al_map_rgb(0, 0, 0)
@@ -40,6 +42,7 @@ typedef enum {
 
 struct GameSave {
   int stage;
+  char *name;
   char *alias;
   int honor;
   float seconds;
@@ -54,6 +57,7 @@ struct AllegroGame {
   ALLEGRO_FONT *font_small;
   ALLEGRO_FONT *font_big;
   ALLEGRO_FONT *font_bullet;
+  ALLEGRO_FONT *font_dialog;
   ALLEGRO_MOUSE_STATE *mouse_state;
   ALLEGRO_KEYBOARD_STATE key_state;
   GameState state;
