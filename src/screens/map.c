@@ -3,6 +3,7 @@
 #include "../headers/helper.h"
 #include "../headers/protagonista.h"
 #include "../headers/enemies.h"
+#include "../headers/dialogue_box.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 
@@ -75,7 +76,7 @@ void protagonistaMovement(int finalX, int finalY) {
         MAPA_PROTAGONISTA->x++;
         MAPA_PROTAGONISTA->y += m;
         passFrame();
-      }  
+      }
     } 
     else if (finalX < MAPA_PROTAGONISTA->x && finalY < MAPA_PROTAGONISTA->y) { // Função linear crescente com deslocamento negativo 
       for (int i = 0; i > y/m; i--) {
@@ -142,11 +143,15 @@ void protagonistaMapMovement() {
       protagonistaMovement(1589, 392);
       protagonistaMovement(1571, 436);
       break;
+    case 8:
+      protagonistaMovement(1589, 928);
+      protagonistaMovement(1589, 169);
+      break;
     default:
       break;
     }
   } else if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_RIGHT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_D)) {
-    if (MAPA_PROTAGONISTA->stage == 8) return;
+    if (MAPA_PROTAGONISTA->stage == 9) return;
 
     MAPA_PROTAGONISTA->stage++;
 
@@ -183,6 +188,10 @@ void protagonistaMapMovement() {
         protagonistaMovement(1589, 392);
         protagonistaMovement(1589, 169);
         break;
+      case 9:
+        protagonistaMovement(1589, 928);
+        protagonistaMovement(1619, 928);
+        break;
       default:
         break;
     }
@@ -200,6 +209,9 @@ void protagonistaMapMovement() {
       setupProtagonista();
       GAME_INFO->state = STAGE_3;
       break;
+    case 5: // Caixa de dialogo extra do stage 5
+      drawDialogueBox(10);
+      break;
     case 6:
       setupProtagonista();
       GAME_INFO->state = STAGE_4;
@@ -207,6 +219,9 @@ void protagonistaMapMovement() {
     case 8:     
       setupProtagonista();
       GAME_INFO->state = STAGE_5;
+      break;
+    case 9: // Caixa de dialogo extra do stage 9
+      drawDialogueBox(18);
       break;
     default:
       break;  
@@ -252,6 +267,10 @@ void positionProtagonistaMap() {
     MAPA_PROTAGONISTA->x = 1589;
     MAPA_PROTAGONISTA->y = 169;
     break;
+  case 9:
+    MAPA_PROTAGONISTA->x = 1619;
+    MAPA_PROTAGONISTA->y = 928; 
+    break;
   default:
     break;
   }
@@ -264,8 +283,8 @@ void drawMapProtagonista () {
 bool drawMap() {
   al_draw_bitmap(bg_map, 0, 0, 0);
   drawMapProtagonista();
+  drawDialogueBox(MAPA_PROTAGONISTA->stage);
   protagonistaMapMovement();
   positionProtagonistaMap();
-
   return true;
 }

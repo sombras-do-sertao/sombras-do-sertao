@@ -14,6 +14,7 @@
 #include "headers/screens.h"
 #include "headers/protagonista.h"
 #include "headers/enemies.h"
+#include "headers/dialogue_box.h"
 
 struct AllegroGame *GAME_INFO;
 
@@ -104,6 +105,7 @@ void setupAllegro() {
   setupHome();
   setupGame();
   setupMap();
+  setupDialogueBox();
   setupStage_1();
   setupStage_2();
   setupStage_3();
@@ -145,6 +147,7 @@ void destroyAllegro() {
   destroyStage_4();
   destroyStage_5();
   destroySaves();
+  destroyDialogueBox();
   free(GAME_INFO->save);
   free(GAME_INFO->mouse_state);
   free(GAME_INFO);
