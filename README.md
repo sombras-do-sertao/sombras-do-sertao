@@ -10,6 +10,12 @@ Ambientado no início do século XX, você é o integrante de um grupo de cangac
 
 Sombras do Sertão utiliza a biblioteca Allegro 5, uma poderosa API de desenvolvimento de jogos 2D em C. Ela oferece suporte para gráficos, entrada de usuário, áudio, timers e muito mais. O Allegro é ideal para jogos retrô devido à sua simplicidade e eficiência. Para mais informações, visite o [site oficial](https://liballeg.org/).
 
+## 📹 Gameplay
+
+Confira o vídeo abaixo para ver o jogo em ação:
+
+[![Sombras do Sertão - Gameplay](assets/images/game.png)](https://youtu.be/VfQT6NEnHvY)
+
 ## 🎮 Como Jogar
 
 ### 🪟 Windows
@@ -26,3 +32,19 @@ Sombras do Sertão utiliza a biblioteca Allegro 5, uma poderosa API de desenvolv
 1. **use o script de instalação**: Para instalar as dependências do jogo, execute o script `scripts/setup.sh`. Este script instalará as dependências necessárias para compilar o jogo.
 2. **Compile o jogo**: Temos um script de compilação pronto para uso. Execute o arquivo `scripts/compiler.sh` para compilar o código-fonte. O arquivo binario gerado estará localizado na pasta `bin`.
 3. **Execute o jogo**: Para executar o jogo você pode passar a flag `--run` para executar o jogo automaticamente após a compilação ou clicar duas vezes no arquivo `SombrasDoSertao` na pasta `bin`.
+
+## 📖 Tutorial
+
+### Como Jogar
+
+1. **Movimentação**: Use as teclas de seta ou `W`, `A`, `S`, `D` para mover o protagonista.
+2. **Atirar**: Pressione a tecla `espaço` para atirar.
+3. **Facada**: Pressione a tecla `F` para dar uma facada.
+5. **Pausar**: Pressione a tecla `ESC` para pausar o jogo e acessar o menu.
+6. **Selecionar Opção**: Use o `enter` para acessar as fases.
+
+### Objetivos do Jogo
+
+- **Sobreviver**: Evite os inimigos e mantenha sua saúde.
+- **Colete Itens**: Pegue munição e kits médicos para se manter no jogo.
+- **Complete as Fases**: Progrida através das fases derrotando inimigos.
