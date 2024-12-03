@@ -79,8 +79,13 @@ void saveHandler() {
     }
 
     if (selected_slot != -1) {
-      // TODO: Perguntar o nome do novo save e salvar
-      // saveGame(FILES[selected_slot - 1].name, "Alias");
+      GAME_INFO->save->alias = FILES[selected_slot - 1].alias;
+      GAME_INFO->save->stage = 0;
+      GAME_INFO->save->honor = 0;
+      GAME_INFO->save->seconds = 0;
+      GAME_INFO->save->name = FILES[selected_slot - 1].name;
+
+      saveGame();
     }
   }
 }
