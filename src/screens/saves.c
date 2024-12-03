@@ -39,11 +39,12 @@ bool drawSaves() {
       if (GAME_INFO->event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
         printf("%s clicked\n", FILES[i].name);
         playSound(MENU_CLICK);
-
+        
         printf("Stage: %d\n", atoi(FILES[i].stage));
         
         MAPA_PROTAGONISTA->stage = atoi(FILES[i].stage);
         GAME_INFO->state = MAP;
+        GAME_INFO->save->name = FILES[i].name;
 
         printf("Stage: %d\n", MAPA_PROTAGONISTA->stage);
       }

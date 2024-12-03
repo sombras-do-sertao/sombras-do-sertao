@@ -41,6 +41,7 @@ struct GameSave {
   int stage;
   int honor;
   float minutes;
+  char *name;
 };
 
 struct AllegroGame {
