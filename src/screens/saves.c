@@ -46,6 +46,8 @@ bool drawSaves() {
         GAME_INFO->save->alias = FILES[i].alias;
         GAME_INFO->save->honor = atoi(FILES[i].honor);
         GAME_INFO->save->seconds = atof(FILES[i].seconds);
+        GAME_INFO->save->name = FILES[i].name;
+        GAME_INFO->state = MAP;
 
         GAME_INFO->state = MAP;
       }
