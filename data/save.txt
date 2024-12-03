@@ -16,7 +16,7 @@ Save 3:
 name: Lucão
 alias: Save 3
 stage: 9
-minutes: 7.2
+minutes: 23.2
 honor: 1
 
 Save 4:

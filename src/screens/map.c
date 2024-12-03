@@ -226,6 +226,8 @@ void protagonistaMapMovement() {
     default:
       break;  
     }
+  } else if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_SPACE) && MAPA_PROTAGONISTA->stage == 0) { // Caixa de dialogo extra do stage 0
+    drawDialogueBox(14);
   }
 }
 
