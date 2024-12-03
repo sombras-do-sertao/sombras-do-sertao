@@ -18,6 +18,8 @@
 
 struct AllegroGame *GAME_INFO;
 
+#define FPS 30.0
+
 void initializeAllegro() {
   ALLEGRO_MONITOR_INFO monitor_info;
 
@@ -49,7 +51,7 @@ void initializeAllegro() {
   GAME_INFO->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
   GAME_INFO->font_bullet = al_load_font(FONT_PATH, 50, 0);
 
-  GAME_INFO->timer = al_create_timer(1.0 / 30.0);
+  GAME_INFO->timer = al_create_timer(1.0 / FPS);
   GAME_INFO->queue = al_create_event_queue();
   GAME_INFO->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
 
@@ -57,7 +59,7 @@ void initializeAllegro() {
 
   GAME_INFO->save->stage = 0;
   GAME_INFO->save->honor = 0;
-  GAME_INFO->save->minutes = 0.0;
+  GAME_INFO->save->seconds = 0.0;
 
   if (!GAME_INFO->timer || !GAME_INFO->queue || !GAME_INFO->display) {
     fprintf(stderr, "Fail to load Allegro.\n");
@@ -101,6 +103,7 @@ void setupAllegro() {
   setupBulletsProtagonista();
   setupMapProtagonista();
   setupButtonsConfig();
+  setupTutorial();
   setupDied();
   setupHome();
   setupGame();

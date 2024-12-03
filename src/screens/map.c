@@ -8,10 +8,12 @@
 #include <stdio.h>
 
 ALLEGRO_BITMAP *bg_map;
+ALLEGRO_BITMAP *icon_map;
 struct MapProtagonista *MAPA_PROTAGONISTA;
 
 void setupMap() {
   bg_map = al_load_bitmap("assets/images/background/bg_map.jpg");
+  icon_map = al_load_bitmap("assets/images/addons/caveira.png");
 }
 
 void setupMapProtagonista () {
@@ -25,6 +27,7 @@ void setupMapProtagonista () {
 
 void destroyMap() {
   al_destroy_bitmap(bg_map);
+  al_destroy_bitmap(icon_map);
 }
 
 void destroyMapProtagonista() {
@@ -151,6 +154,8 @@ void protagonistaMapMovement() {
       break;
     }
   } else if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_RIGHT) || al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_D)) {
+    if (MAPA_PROTAGONISTA->stage == 8) return;
+    if (MAPA_PROTAGONISTA->stage + 1 > GAME_INFO->save->stage) return;
     if (MAPA_PROTAGONISTA->stage == 9) return;
 
     MAPA_PROTAGONISTA->stage++;
@@ -196,6 +201,9 @@ void protagonistaMapMovement() {
         break;
     }
   } else if (al_key_down(&GAME_INFO->key_state, ALLEGRO_KEY_ENTER)) {
+    LAST_FRAME = -1;
+    setupProtagonista();
+
     switch (MAPA_PROTAGONISTA->stage) {
     case 0:
       setupProtagonista();
@@ -280,6 +288,30 @@ void positionProtagonistaMap() {
 
 void drawMapProtagonista () {
   al_draw_bitmap(MAPA_PROTAGONISTA->image, MAPA_PROTAGONISTA->x, MAPA_PROTAGONISTA->y, 0);
+  int skullSize = 50;
+
+  switch (GAME_INFO->save->stage) {
+    case 0:
+      al_draw_bitmap(icon_map, 538, 705 + skullSize, 0);
+      al_draw_bitmap(icon_map, 950, 269 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1318, 515 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1576, 176 + skullSize, 0);
+      break;
+    case 2:
+      al_draw_bitmap(icon_map, 950, 269 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1318, 515 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1576, 176 + skullSize, 0);
+      break;
+    case 4:
+      al_draw_bitmap(icon_map, 1318, 515 + skullSize, 0);
+      al_draw_bitmap(icon_map, 1576, 176 + skullSize, 0);
+      break;
+    case 6:
+      al_draw_bitmap(icon_map, 1576, 176 + skullSize, 0);
+      break;
+    default:
+      break;
+  }
 }
 
 bool drawMap() {

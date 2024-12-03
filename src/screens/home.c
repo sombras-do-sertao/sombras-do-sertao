@@ -19,9 +19,14 @@ void setupHome() {
   int width = 335;
   int height = 65;
 
+  int y = HEIGHT_SCREEN / 2;
+  int spaceY = 100;
+
+  int x = WIDTH_SCREEN / 2 - width / 2;
+
   struct Button saves = {
-    WIDTH_SCREEN /2 - width/2,
-    HEIGHT_SCREEN / 2 - 50,
+    x,
+    y - spaceY,
     width,
     height,
     "Continuar",
@@ -34,8 +39,8 @@ void setupHome() {
   BUTTONS_HOME[SAVE_OPTIONS] = saves;
 
    struct Button start_game = {
-    WIDTH_SCREEN / 2 - width/2,
-    HEIGHT_SCREEN / 2 + 50,
+    x,
+    y,
     width,
     height,
     "Novo Jogo",
@@ -48,8 +53,8 @@ void setupHome() {
   BUTTONS_HOME[START_GAME] = start_game;
 
   struct Button settings = {
-    WIDTH_SCREEN /2 - width/2,
-    HEIGHT_SCREEN / 2 + 150,
+    x,
+    y + spaceY,
     width,
     height,
     "Configurações",
@@ -61,10 +66,23 @@ void setupHome() {
   };
   BUTTONS_HOME[SETTINGS] = settings;
 
+  struct Button tutorial = {
+    x,
+    y + spaceY * 2,
+    width,
+    height,
+    "Tutorial",
+    "tutorial",
+    fontButton,
+    AL_COLOR_WHITE,
+    AL_COLOR_BROWN,
+    FILLED,
+  };
+  BUTTONS_HOME[TUTORIALS] = tutorial;
 
   struct Button exit = {
-    WIDTH_SCREEN / 2 - width/2,
-    HEIGHT_SCREEN / 2 + 250,
+    x,
+    y + spaceY * 3,
     width,
     height,
     "Sair",
@@ -112,6 +130,9 @@ bool drawHome () {
           }
           case SETTINGS:
             GAME_INFO->state = CONFIG;
+            break;
+          case TUTORIALS:
+            GAME_INFO->state = TUTORIAL;
             break;
           case EXIT:
             return false;

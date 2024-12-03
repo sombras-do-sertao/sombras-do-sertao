@@ -6,6 +6,9 @@
 #include <allegro5/allegro_image.h>
 #include "helper.h"
 
+extern int FRAME;
+extern int LAST_FRAME; // -1
+
 extern ALLEGRO_BITMAP *bg_home;
 void setupHome();
 void destroyHome(void);
@@ -21,6 +24,7 @@ void destroyGame();
 bool drawGame();
 
 extern ALLEGRO_BITMAP *bg_map;
+extern ALLEGRO_BITMAP *icon_map;
 void setupMap();
 void destroyMap();
 bool drawMap();
@@ -68,5 +72,10 @@ extern ALLEGRO_BITMAP *fileBackground;
 void setupSaves();
 void destroySaves();
 bool drawSaves();
+
+extern ALLEGRO_BITMAP *bg_tutorial;
+void setupTutorial();
+void destroyTutorial();
+bool drawTutorial();
 
 #endif

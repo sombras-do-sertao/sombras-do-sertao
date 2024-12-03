@@ -9,8 +9,6 @@
 
 ALLEGRO_BITMAP *bg_stage_3;
 
-int last_frameStage3 = -1;
-
 void setupStage_3 () {
   bg_stage_3 = al_load_bitmap("assets/images/background/bg_stage_3.jpg");
 }
@@ -51,12 +49,12 @@ bool drawStage_3 () {
     return true;
   }
 
-  int frame = changeScreen(4);
+  FRAME = changeScreen(4);
 
-  if (frame != last_frameStage3) {
-    last_frameStage3 = frame;
+  if (FRAME != LAST_FRAME) {
+    LAST_FRAME = FRAME;
 
-    switch (frame) {
+    switch (FRAME) {
       case 0:
         setupFrame1Stage3();
         break;
@@ -72,7 +70,7 @@ bool drawStage_3 () {
     }
   }
 
-  al_draw_bitmap_region(bg_stage_3, frame * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+  al_draw_bitmap_region(bg_stage_3, FRAME * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   
   handlerProtagonista();
   handlerEnemies();

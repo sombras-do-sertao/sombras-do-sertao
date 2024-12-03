@@ -12,7 +12,6 @@ struct saveFile FILES[SAVEFILES_COUNT];
 
 void saveHandler() {
   int result = al_show_native_message_box(GAME_INFO->display, "Novo Jogo", "Salvar Jogo", "Deseja salvar o jogo?", NULL, ALLEGRO_MESSAGEBOX_YES_NO);
-  ALLEGRO_BITMAP *image = al_load_bitmap("assets/images/background/bg_home.jpg");
 
   if (result == 1) {
     int width_dialog = 400;
@@ -27,7 +26,7 @@ void saveHandler() {
       al_wait_for_event(GAME_INFO->queue, &GAME_INFO->event);
       al_get_mouse_state(GAME_INFO->mouse_state);
 
-      al_draw_bitmap(image, 0, 0, 0);
+      al_draw_bitmap(bg_home, 0, 0, 0);
 
       al_draw_filled_rounded_rectangle(window_x, window_y, window_x + width_dialog, window_y + height_dialog, 10, 10, al_map_rgb(50, 50, 50));
       al_draw_rectangle(window_x, window_y, window_x + width_dialog, window_y + height_dialog, AL_COLOR_WHITE, 2);
@@ -83,8 +82,6 @@ void saveHandler() {
       // TODO: Perguntar o nome do novo save e salvar
       // saveGame(FILES[selected_slot - 1].name, "Alias");
     }
-
-    al_destroy_bitmap(image);
   }
 }
 
@@ -103,7 +100,7 @@ void loadSaves() {
     save.name = malloc(255 * sizeof(char));
     save.alias = malloc(255 * sizeof(char));
     save.stage = malloc(255 * sizeof(char));
-    save.minutes = malloc(255 * sizeof(char));
+    save.seconds = malloc(255 * sizeof(char));
     save.honor = malloc(255 * sizeof(char));
 
     if (fgets(buffer, sizeof(buffer), file) == NULL) {
@@ -126,8 +123,8 @@ void loadSaves() {
       break;
     }
 
-    if (fscanf(file, "minutes: %[^\n]\n", save.minutes) != 1) {
-      printf("Erro ao ler minutes do save %d\n", i + 1);
+    if (fscanf(file, "seconds: %[^\n]\n", save.seconds) != 1) {
+      printf("Erro ao ler seconds do save %d\n", i + 1);
       break;
     }
 
@@ -142,7 +139,7 @@ void loadSaves() {
   fclose(file);
 }
 
-void saveGame(char *save_name, char *alias) {
+void saveGame() {
   FILE *file = fopen("data/save.txt", "w");
 
   if (file == NULL) {
@@ -150,7 +147,27 @@ void saveGame(char *save_name, char *alias) {
     return;
   }
 
-  fprintf(file, "Save Name: %s\n", save_name);
-  fprintf(file, "Alias: %s\n", alias);
+  for (int i = 0; i < SAVEFILES_COUNT; i++) {
+    if (FILES[i].alias == GAME_INFO->save->alias) {
+      fprintf(file, "Save %d: \n", i + 1);
+      fprintf(file, "name: %s\n", FILES[i].name);
+      fprintf(file, "alias: %s\n", FILES[i].alias);
+      fprintf(file, "stage: %d\n", GAME_INFO->save->stage);
+      fprintf(file, "seconds: %.2f\n", GAME_INFO->save->seconds);
+      fprintf(file, "honor: %d\n", GAME_INFO->save->honor);
+      fprintf(file, "\n");
+
+      continue;
+    }
+    
+    fprintf(file, "Save %d: \n", i + 1);
+    fprintf(file, "name: %s\n", FILES[i].name);
+    fprintf(file, "alias: %s\n", FILES[i].alias);
+    fprintf(file, "stage: %s\n", FILES[i].stage);
+    fprintf(file, "seconds: %s\n", FILES[i].seconds);
+    fprintf(file, "honor: %s\n", FILES[i].honor);
+    fprintf(file, "\n");
+  }
+
   fclose(file);
 }

@@ -5,7 +5,7 @@ struct saveFile {
   char *name;
   char *alias; 
   char *stage;
-  char *minutes;
+  char *seconds;
   char *honor;
   ALLEGRO_FONT *font;
   ALLEGRO_COLOR font_color;
@@ -19,5 +19,7 @@ extern struct saveFile FILES[SAVEFILES_COUNT];
 void loadSaves();
 
 void saveHandler();
+
+void saveGame();
 
 #endif

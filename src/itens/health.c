@@ -10,18 +10,21 @@ struct HealthBox health_boxes[HEALTH_BOXES_COUNT];
 
 void setupHealthBoxes(int quantity) {
   for (int i = 0; i < HEALTH_BOXES_COUNT; i++) {
+    if (!health_boxes[i].image) {
+      health_boxes[i].image = al_load_bitmap("assets/images/itens/kit-medico.png");
+    }
+    
     if (i >= quantity) {
       health_boxes[i].active = false;
       continue;
     }
 
-    health_boxes[i].x = rand() % (WIDTH_SCREEN - health_boxes[i].width);
-    health_boxes[i].y = rand() % (HEIGHT_SCREEN - 756 - health_boxes[i].height) + 756;
     health_boxes[i].width = 192;
     health_boxes[i].height = 114;
+    health_boxes[i].x = rand() % (WIDTH_SCREEN - health_boxes[i].width / 2) + health_boxes[i].width / 2;
+    health_boxes[i].y = rand() % (HEIGHT_SCREEN - 756) + 756 - health_boxes[i].height / 2;
     health_boxes[i].active = true;
     health_boxes[i].quantity = 3;
-    health_boxes[i].image = al_load_bitmap("assets/images/itens/kit-medico.png");
   }
 }
 

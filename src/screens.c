@@ -8,3 +8,7 @@
 #include "screens/stage_4.c"
 #include "screens/stage_5.c"
 #include "screens/saves.c"
+#include "screens/tutorial.c"
+
+int FRAME = 0;
+int LAST_FRAME = -1;

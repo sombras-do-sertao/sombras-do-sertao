@@ -15,9 +15,10 @@ typedef enum {
   SHOOT = 1,
   SHOOT_ENEMY = 2,
   PICK_ITEM = 3,
+  KNIFE_HIT = 4,
 } SampleIndex;
 
-#define MAX_SAMPLES 4
+#define MAX_SAMPLES 5
 extern Sample samples[MAX_SAMPLES];
 
 void playSound(int sample_index);

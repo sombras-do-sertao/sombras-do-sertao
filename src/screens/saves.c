@@ -40,13 +40,16 @@ bool drawSaves() {
         printf("%s clicked\n", FILES[i].name);
         playSound(MENU_CLICK);
         
-        printf("Stage: %d\n", atoi(FILES[i].stage));
-        
         MAPA_PROTAGONISTA->stage = atoi(FILES[i].stage);
-        GAME_INFO->state = MAP;
+        
+        GAME_INFO->save->stage = MAPA_PROTAGONISTA->stage;
+        GAME_INFO->save->alias = FILES[i].alias;
+        GAME_INFO->save->honor = atoi(FILES[i].honor);
+        GAME_INFO->save->seconds = atof(FILES[i].seconds);
         GAME_INFO->save->name = FILES[i].name;
+        GAME_INFO->state = MAP;
 
-        printf("Stage: %d\n", MAPA_PROTAGONISTA->stage);
+        GAME_INFO->state = MAP;
       }
     } else {
       FILES[i].font_color = AL_COLOR_WHITE;

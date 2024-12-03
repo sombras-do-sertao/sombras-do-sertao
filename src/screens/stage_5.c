@@ -8,7 +8,6 @@
 #include <stdio.h>
 
 ALLEGRO_BITMAP *bg_stage_5;
-int last_frameStage5 = -1;
 
 void setupStage_5 () {
   bg_stage_5 = al_load_bitmap("assets/images/background/bg_stage_5.jpg");
@@ -50,12 +49,12 @@ bool drawStage_5 () {
     return true;
   }
 
-  int frame = changeScreen(4);
+  FRAME = changeScreen(4);
 
-  if (frame != last_frameStage5) {
-    last_frameStage5 = frame;
+  if (FRAME != LAST_FRAME) {
+    LAST_FRAME = FRAME;
 
-    switch (frame) {
+    switch (FRAME) {
       case 0:
         setupFrame1Stage5();
         break;
@@ -71,7 +70,7 @@ bool drawStage_5 () {
     }
   }
 
-  al_draw_bitmap_region(bg_stage_5, frame * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+  al_draw_bitmap_region(bg_stage_5, FRAME * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   
   handlerProtagonista();
   handlerEnemies();
