@@ -12,9 +12,7 @@ Sombras do Sertão utiliza a biblioteca Allegro 5, uma poderosa API de desenvolv
 
 ## 📹 Gameplay
 
-Confira o vídeo abaixo para ver o jogo em ação:
-
-[![Sombras do Sertão - Gameplay](assets/images/game.png)](https://youtu.be/VfQT6NEnHvY)
+![Sombras do Sertão - Gameplay](assets/video/gameplay.gif)
 
 ## 🎮 Como Jogar
 
