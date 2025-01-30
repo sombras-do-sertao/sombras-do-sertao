@@ -1,3 +1,17 @@
+<p align="center">
+  <img src="https://img.shields.io/github/languages/top/sombras-do-sertao/sombras-do-sertao" alt="Language">
+  <img src="https://hits.sh/github.com/sombras-do-sertao/sombras-do-sertao.svg?view=today-total" alt="Hits">
+  <img src="https://img.shields.io/badge/Allegro-5.2.0-blue" alt="Version Allegro">
+  <img src="https://img.shields.io/github/license/sombras-do-sertao/sombras-do-sertao" alt="License">
+  <img src="https://img.shields.io/github/stars/sombras-do-sertao/sombras-do-sertao?style=social" alt="GitHub Stars">
+  <img src="https://img.shields.io/github/downloads/sombras-do-sertao/sombras-do-sertao/total" alt="Downloads">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+</p>
+
 # 🌵 Sombras do Sertão
 
 Sombras do Sertão é um jogo de pixel art inspirado no estilo retrô, que te leva ao coração do cangaço, uma época em que destemidos fora-da-lei, conhecidos como cangaceiros, vagavam pelas áridas paisagens do Nordeste do Brasil. Com batalhas intensas, jogabilidade estratégica e uma rica história, por terrenos perigosos, evitando a polícia e derrotando gangues rivais.
@@ -46,3 +60,11 @@ Sombras do Sertão utiliza a biblioteca Allegro 5, uma poderosa API de desenvolv
 - **Sobreviver**: Evite os inimigos e mantenha sua saúde.
 - **Colete Itens**: Pegue munição e kits médicos para se manter no jogo.
 - **Complete as Fases**: Progrida através das fases derrotando inimigos.
+
+## 👥 Contribuidores
+
+<p align="center">
+  <a href="https://github.com/sombras-do-sertao/sombras-do-sertao/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=sombras-do-sertao/sombras-do-sertao" />
+  </a>
+</p>
