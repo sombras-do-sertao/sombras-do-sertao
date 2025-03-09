@@ -11,10 +11,21 @@
 #include "headers/handle.h"
 #include "headers/sound.h"
 #include "headers/components.h"
-#include "headers/screens.h"
 #include "headers/protagonista.h"
 #include "headers/enemies.h"
 #include "headers/dialogue_box.h"
+
+#include "headers/config-screen.h"
+#include "headers/home-screen.h"
+#include "headers/game-screen.h"
+#include "headers/map-screen.h"
+#include "headers/stage_1-screen.h"
+#include "headers/stage_2-screen.h"
+#include "headers/stage_3-screen.h"
+#include "headers/stage_4-screen.h"
+#include "headers/stage_5-screen.h"
+#include "headers/saves-screen.h"
+#include "headers/tutorial-screen.h"
 
 struct AllegroGame *GAME_INFO;
 
