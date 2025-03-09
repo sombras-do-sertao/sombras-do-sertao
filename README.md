@@ -8,8 +8,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows">
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+  <img src="https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white" alt="Windows">
+  <img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black" alt="Linux">
+  <img src="https://custom-icon-badges.demolab.com/badge/Visual%20Studio-5C2D91.svg?&logo=visual-studio&logoColor=white" alt="Visual Studio">
 </p>
 
 # 🌵 Sombras do Sertão
@@ -36,7 +37,23 @@ Sombras do Sertão utiliza a biblioteca Allegro 5, uma poderosa API de desenvolv
 3. **Compile o jogo**: Temos um script de compilação pronto para uso. Execute o arquivo `scripts/compiler.bat` para compilar o código-fonte. O arquivo executavel gerado estará localizado na pasta `bin`.
 4. **Execute o jogo**: Para executar o jogo você pode passar a flag `--run` para executar o jogo automaticamente após a compilação ou clicar duas vezes no arquivo `Sombras do Sertão.bat` na raiz do projeto.
 
-> **Nota**: Para ocorrer tudo certo na compilação, é necessário que o compilador GCC/MinGW esteja adicionado ao PATH do sistema. E também ao chamar o script de compilação deve estar na raiz do projeto.
+> **⚠️ IMPORTANTE ⚠️**  
+> 
+> **Pré-requisitos para compilação:**
+> - O compilador **GCC/MinGW** deve estar adicionado ao **PATH** do sistema
+> - O script de compilação deve ser executado a partir da **raiz do projeto**
+> 
+> Estes requisitos são essenciais para o correto funcionamento do processo de compilação.
+
+---
+
+### 🖥️ **Visual Studio**
+Além do GCC/MinGW, o projeto também oferece suporte para ser usado em conjunto com o Visual Studio. Para usar o projeto com Visual Studio:
+
+1. Abra o Visual Studio
+2. Selecione "Abrir um projeto ou solução" ou clone usando o link do repositório.
+3. Navegue até a pasta do projeto e selecione o arquivo de solução
+4. Use as ferramentas integradas do Visual Studio para compilação e depuração
 
 ---
 
@@ -44,6 +61,13 @@ Sombras do Sertão utiliza a biblioteca Allegro 5, uma poderosa API de desenvolv
 1. **use o script de instalação**: Para instalar as dependências do jogo, execute o script `scripts/setup.sh`. Este script instalará as dependências necessárias para compilar o jogo.
 2. **Compile o jogo**: Temos um script de compilação pronto para uso. Execute o arquivo `scripts/compiler.sh` para compilar o código-fonte. O arquivo binario gerado estará localizado na pasta `bin`.
 3. **Execute o jogo**: Para executar o jogo você pode passar a flag `--run` para executar o jogo automaticamente após a compilação ou clicar duas vezes no arquivo `SombrasDoSertao` na pasta `bin`.
+
+> **ℹ️ AVISO ℹ️**  
+> 
+> O script de instalação (`scripts/setup.sh`) já inclui a instalação do compilador GCC e das dependências do Allegro necessárias para o projeto. Se você preferir instalar manualmente, certifique-se de ter:
+> - GCC (GNU Compiler Collection)
+> - Allegro 5 e suas bibliotecas de desenvolvimento
+> - pkg-config (para localizar as bibliotecas do Allegro)
 
 ## 📖 Tutorial
 
