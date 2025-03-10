@@ -1,7 +1,7 @@
 #include <allegro5/allegro_primitives.h>
-#include "../headers/screens.h"
-#include "../headers/protagonista.h"
-#include "../headers/enemies.h"
+#include "headers/game-screen.h"
+#include "headers/protagonista.h"
+#include "headers/enemies.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 

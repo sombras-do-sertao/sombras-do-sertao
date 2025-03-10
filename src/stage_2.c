@@ -1,49 +1,48 @@
 #include <allegro5/allegro_primitives.h>
-#include "../headers/screens.h"
-#include "../headers/protagonista.h"
-#include "../headers/enemies.h"
-#include "../headers/itens.h"
+#include "headers/stage_2-screen.h"
+#include "headers/protagonista.h"
+#include "headers/itens.h"
+#include "headers/enemies.h"
 #include <allegro5/allegro_image.h>
-#include "../headers/components.h"
+#include "headers/components.h"
 #include <stdio.h>
 
-ALLEGRO_BITMAP *bg_stage_5;
+ALLEGRO_BITMAP *bg_stage_2;
 
-void setupStage_5 () {
-  bg_stage_5 = al_load_bitmap("assets/images/background/bg_stage_5.jpg");
+void setupStage_2 () {
+  bg_stage_2 = al_load_bitmap("assets/images/background/bg_stage_2.jpg");
 }
 
-void destroyStage_5 () {
-  al_destroy_bitmap(bg_stage_5);
-}
-
-void setupFrame1Stage5() {
+void setupFrame1Stage2() {
   setupEnemies(2);
   setupAmmoBoxes(1);
 }
 
-void setupFrame2Stage5() {
+void setupFrame2Stage2() {
   resetEnemies();
   resetAmmoBoxes();
   setupEnemies(3);
   setupHealthBoxes(1);
 }
 
-void setupFrame3Stage5() {
+void setupFrame3Stage2() {
   resetEnemies();
   resetHealthBoxes();
   setupEnemies(2);
   setupAmmoBoxes(1);
 }
 
-void setupFrame4Stage5() {
+void setupFrame4Stage2() {
   resetEnemies();
   resetAmmoBoxes();
   setupEnemies(2);
 }
 
+void destroyStage_2 () {
+  al_destroy_bitmap(bg_stage_2);
+}
 
-bool drawStage_5 () {
+bool drawStage_2 () {
   if (protagonista->health <= 0) {
     drawDied();
     return true;
@@ -56,21 +55,21 @@ bool drawStage_5 () {
 
     switch (FRAME) {
       case 0:
-        setupFrame1Stage5();
+        setupFrame1Stage2();
         break;
       case 3:
-        setupFrame2Stage5();
+        setupFrame2Stage2();
         break;
       case 2:
-        setupFrame3Stage5();
+        setupFrame3Stage2();
         break;
       case 1:
-        setupFrame4Stage5();
+        setupFrame4Stage2();
         break;
     }
   }
-
-  al_draw_bitmap_region(bg_stage_5, FRAME * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
+  
+  al_draw_bitmap_region(bg_stage_2, FRAME * WIDTH_SCREEN , 0, WIDTH_SCREEN, 1080, 0, 0, 0);
   
   handlerProtagonista();
   handlerEnemies();

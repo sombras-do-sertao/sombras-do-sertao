@@ -1,6 +1,10 @@
-#include "../headers/screens.h"
-#include "../headers/components.h"
-#include "../headers/helper.h"
+#include "headers/sound.h"
+#include "headers/helper.h"
+#include "headers/home-screen.h"
+#include "headers/map-screen.h"
+#include "headers/saves-screen.h"
+#include "headers/save.h"
+#include "headers/components.h"
 #include <stdio.h>
 #include <string.h>
 

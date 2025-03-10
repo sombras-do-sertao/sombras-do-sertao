@@ -1,12 +1,16 @@
 #include "headers/helper.h"
 #include "headers/protagonista.h"
 #include "headers/save.h"
-#include "headers/screens.h"
+#include "headers/map-screen.h"
+#include "headers/saves-screen.h"
 #include <stdio.h>
 #include <allegro5/allegro5.h>
 
 int WIDTH_SCREEN = 1920;
 int HEIGHT_SCREEN = 1080;
+
+int LAST_FRAME = -1;
+int FRAME = 0;
 
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
   int text_width = al_get_text_width(font, text);

@@ -1,10 +1,11 @@
 #include <allegro5/allegro_primitives.h>
-#include "../headers/screens.h"
-#include "../headers/protagonista.h"
-#include "../headers/enemies.h"
-#include "../headers/itens.h"
+#include "headers/stage_4-screen.h"
+#include "headers/protagonista.h"
+#include "headers/enemies.h"
+#include "headers/itens.h"
+#include "headers/components.h"
+#include "headers/helper.h"
 #include <allegro5/allegro_image.h>
-#include "../headers/components.h"
 #include <stdio.h>
 
 ALLEGRO_BITMAP *bg_stage_4;

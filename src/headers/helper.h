@@ -24,6 +24,9 @@ extern struct AllegroGame *GAME_INFO;
 #define AL_COLOR_LIGHT_BROWN al_map_rgb(214, 146, 68)
 #define AL_COLOR_DARK_BROWN al_map_rgb(102, 51, 0)
 
+extern int FRAME;
+extern int LAST_FRAME;
+
 typedef enum {
   MENU = 0,
   GAME = 1,

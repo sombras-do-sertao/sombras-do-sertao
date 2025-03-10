@@ -5,8 +5,8 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include "headers/helper.h"
-#include "headers/screens.h"
 #include "headers/save.h"
+#include "headers/home-screen.h"
 
 struct saveFile FILES[SAVEFILES_COUNT];
 

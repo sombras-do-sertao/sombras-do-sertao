@@ -1,8 +1,10 @@
 #include <allegro5/allegro_primitives.h>
-#include "../headers/screens.h"
-#include "../headers/sound.h"
-#include "../headers/components.h"
-#include "../headers/save.h"
+#include "headers/home-screen.h"
+#include "headers/map-screen.h"
+#include "headers/components.h"
+#include "headers/sound.h"
+#include "headers/save.h"
+#include "headers/helper.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 

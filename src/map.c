@@ -1,9 +1,9 @@
 #include <allegro5/allegro_primitives.h>
-#include "../headers/screens.h"
-#include "../headers/helper.h"
-#include "../headers/protagonista.h"
-#include "../headers/enemies.h"
-#include "../headers/dialogue_box.h"
+#include "headers/map-screen.h"
+#include "headers/helper.h"
+#include "headers/protagonista.h"
+#include "headers/enemies.h"
+#include "headers/dialogue_box.h"
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 

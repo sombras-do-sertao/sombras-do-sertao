@@ -52,5 +52,13 @@ dkms.conf
 # vscode
 .vscode/
 
+# Visual Studio
+.vs/
+# Keep user settings ignored (optional)
+*.vcxproj.user
+
+packages/
+
+x64/
+
 bin/
-*.exe

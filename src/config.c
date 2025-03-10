@@ -1,7 +1,9 @@
 #include <allegro5/allegro_primitives.h>
 #include <stdio.h>
-#include "../headers/screens.h"
-#include "../headers/components.h"
+#include "headers/config-screen.h"
+#include "headers/home-screen.h"
+#include "headers/components.h"
+#include "headers/sound.h"
 
 struct Button BUTTONS_CONFIG[BUTTONS_CONFIG_COUNT];
 
